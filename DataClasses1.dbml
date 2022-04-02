@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="shareBike" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=shareBike;Integrated Security=True" SettingsObjectName="Demo.Properties.Settings" SettingsPropertyName="shareBikeConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.bike" Member="bike">
+    <Type Name="bike">
+      <Column Name="id" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="flag" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="current_x" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="current_y" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="total_time" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="bike_orderform" Member="orderform" ThisKey="id" OtherKey="bid" Type="orderform" />
+    </Type>
+  </Table>
+  <Table Name="dbo.customer" Member="customer">
+    <Type Name="customer">
+      <Column Name="id" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="nickname" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="customer_orderform" Member="orderform" ThisKey="id" OtherKey="cid" Type="orderform" />
+    </Type>
+  </Table>
+  <Table Name="dbo.orderform" Member="orderform">
+    <Type Name="orderform">
+      <Column Name="id" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cid" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="bid" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="flag" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="start_x" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="strat_y" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="end_x" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="end_y" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="start_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="end_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="cost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="bike_orderform" Member="bike" ThisKey="bid" OtherKey="id" Type="bike" IsForeignKey="true" />
+      <Association Name="customer_orderform" Member="customer" ThisKey="cid" OtherKey="id" Type="customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
