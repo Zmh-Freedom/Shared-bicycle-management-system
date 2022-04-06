@@ -1,1 +1,0 @@
-# Shared-bicycle-management-system
