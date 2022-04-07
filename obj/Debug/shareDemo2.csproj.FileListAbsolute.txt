@@ -27,7 +27,3 @@ C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.csproj.Generate
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.csproj.CoreCompileInputs.cache
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.exe
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.pdb
-C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.trend.resources
-C:\Users\Freedom\OneDrive\桌面\shareDemo2\bin\Debug\SunnyUI.Common.dll
-C:\Users\Freedom\OneDrive\桌面\shareDemo2\bin\Debug\SunnyUI.dll
-C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.csproj.CopyComplete
