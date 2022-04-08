@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using shareDemo2;
+using shareDemo3;
 namespace shareDemo2
 {
     static class Program
@@ -17,7 +18,7 @@ namespace shareDemo2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new login_Form());
+            Application.Run(new managerForm());
         }
     }
 }

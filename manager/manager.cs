@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using shareDemo2.Trend;
 
 namespace shareDemo3
 {
@@ -170,6 +171,8 @@ namespace shareDemo3
             this.components = new System.ComponentModel.Container();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -202,9 +205,11 @@ namespace shareDemo3
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -224,10 +229,6 @@ namespace shareDemo3
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage6
@@ -250,6 +251,30 @@ namespace shareDemo3
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "下达任务";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.AutoScroll = true;
+            this.splitContainer3.Panel1.Controls.Add(this.pictureBox7);
+            this.splitContainer3.Size = new System.Drawing.Size(908, 553);
+            this.splitContainer3.SplitterDistance = 637;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::shareDemo2.Properties.Resources.map1;
+            this.pictureBox7.Location = new System.Drawing.Point(-7, -3);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(1844, 884);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox7.TabIndex = 0;
+            this.pictureBox7.TabStop = false;
             // 
             // tabPage4
             // 
@@ -361,6 +386,7 @@ namespace shareDemo3
             this.button1.TabIndex = 0;
             this.button1.Text = "趋势分析";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // statusStrip2
             // 
@@ -597,30 +623,6 @@ namespace shareDemo3
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.AutoScroll = true;
-            this.splitContainer3.Panel1.Controls.Add(this.pictureBox7);
-            this.splitContainer3.Size = new System.Drawing.Size(908, 553);
-            this.splitContainer3.SplitterDistance = 637;
-            this.splitContainer3.TabIndex = 0;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::shareDemo2.Properties.Resources.map1;
-            this.pictureBox7.Location = new System.Drawing.Point(-7, -3);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(1844, 884);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox7.TabIndex = 0;
-            this.pictureBox7.TabStop = false;
-            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -631,6 +633,11 @@ namespace shareDemo3
             this.Text = "管理员界面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabPage5.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -658,11 +665,6 @@ namespace shareDemo3
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -709,5 +711,76 @@ namespace shareDemo3
 
 
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int sel1=comboBox1.SelectedIndex;
+            int sel2=comboBox2.SelectedIndex;
+            
+            switch(sel2)
+            {
+                case 0: var order1 = Sel1(sel1); 
+                    Trend  trend = new Trend();
+                    trend.Cratechart1(sel1,sel2,order1);
+                    trend.Show();
+                    break;
+                case 1: var order2 = Sel2(sel1); break;
+                case 2: var order3 = Sel1(sel1);
+                        var order4 = Sel2(sel1);
+                    break;
+
+            }
+        }
+        public IQueryable<DateTime> Sel1(int sel)
+        {
+            switch (sel)
+            {
+                case 0:
+                    var Order1 = from m in dc.orderform
+                                 where m.start_time.Value.Date <= DateTime.Now.Date && m.start_time.Value.Date >= DateTime.Now.Date.AddDays(-3)
+                                 && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
+                                 && m.strat_y >= origin_SelectY && m.strat_y <= origin_SelectY + selectHeight
+                                 select m.start_time.Value.Date; return Order1; 
+                case 1:
+                    var Order2 = from m in dc.orderform
+                                 where m.start_time.Value.Date <= DateTime.Now.Date && m.start_time.Value.Date >= DateTime.Now.Date.AddDays(-7)
+                                 && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
+                                 && m.strat_y >= origin_SelectY && m.strat_y <= origin_SelectY + selectHeight
+                                 select m.start_time.Value.Date; return Order2;
+                case 2:
+                    var Order3 = from m in dc.orderform
+                                 where m.start_time.Value.Date <= DateTime.Now.Date && m.start_time.Value.Date >= DateTime.Now.Date.AddMonths(-3)
+                                 && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
+                                 && m.strat_y >= origin_SelectY && m.strat_y <= origin_SelectY + selectHeight
+                                 select m.start_time.Value.Date; return Order3;
+            }
+            return null;
+        }
+        public IQueryable<DateTime> Sel2(int sel)
+        {
+            switch (sel)
+            {
+                case 0:
+                    var Order1 = from m in dc.orderform
+                                 where m.end_time.Value.Date <= DateTime.Now.Date && m.end_time.Value.Date >= DateTime.Now.Date.AddDays(-3)
+                                 && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
+                                 && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
+                                 select m.end_time.Value.Date; return Order1;
+                case 1:
+                    var Order2 = from m in dc.orderform
+                                 where m.end_time.Value.Date <= DateTime.Now.Date && m.end_time.Value.Date >= DateTime.Now.Date.AddDays(-7)
+                                 && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
+                                 && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
+                                 select m.end_time.Value.Date; return Order2;
+                case 2:
+                    var Order3 = from m in dc.orderform
+                                 where m.start_time.Value.Date <= DateTime.Now.Date && m.end_time.Value.Date >= DateTime.Now.Date.AddMonths(-3)
+                                 && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
+                                 && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
+                                 select m.end_time.Value.Date; return Order3;
+            }
+            return null;
+        }
+
     }
 }
