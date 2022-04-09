@@ -719,14 +719,21 @@ namespace shareDemo3
             
             switch(sel2)
             {
-                case 0: var order1 = Sel1(sel1); 
-                    Trend  trend = new Trend();
-                    trend.Cratechart1(sel1,sel2,order1);
-                    trend.Show();
+                case 1: var order1 = Sel1(sel1); 
+                    Trend  trend1 = new Trend();
+                    trend1.Cratechart1(sel1,sel2,order1);
+                    trend1.Show();
                     break;
-                case 1: var order2 = Sel2(sel1); break;
-                case 2: var order3 = Sel1(sel1);
-                        var order4 = Sel2(sel1);
+                case 2: var order2 = Sel2(sel1);
+                    Trend trend2 = new Trend();
+                    trend2.Cratechart2(sel1, sel2, order2);
+                    trend2.Show(); break;
+                case 0: var order3 = Sel1(sel1);
+                    var order4 = Sel2(sel1);
+                    Trend trend3 = new Trend();
+                    trend3.Cratechart1(sel1, sel2, order3);
+                    trend3.Cratechart2(sel1, sel2, order4);
+                    trend3.Show();
                     break;
 
             }
@@ -737,22 +744,22 @@ namespace shareDemo3
             {
                 case 0:
                     var Order1 = from m in dc.orderform
-                                 where m.start_time.Value.Date <= DateTime.Now.Date && m.start_time.Value.Date >= DateTime.Now.Date.AddDays(-3)
+                                 where m.start_time.Value <= DateTime.Now && m.start_time.Value >= DateTime.Now.AddDays(-3)
                                  && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                                  && m.strat_y >= origin_SelectY && m.strat_y <= origin_SelectY + selectHeight
-                                 select m.start_time.Value.Date; return Order1; 
+                                 select m.start_time.Value; return Order1; 
                 case 1:
                     var Order2 = from m in dc.orderform
-                                 where m.start_time.Value.Date <= DateTime.Now.Date && m.start_time.Value.Date >= DateTime.Now.Date.AddDays(-7)
+                                 where m.start_time.Value <= DateTime.Now && m.start_time.Value >= DateTime.Now.AddDays(-7)
                                  && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                                  && m.strat_y >= origin_SelectY && m.strat_y <= origin_SelectY + selectHeight
-                                 select m.start_time.Value.Date; return Order2;
+                                 select m.start_time.Value; return Order2;
                 case 2:
                     var Order3 = from m in dc.orderform
-                                 where m.start_time.Value.Date <= DateTime.Now.Date && m.start_time.Value.Date >= DateTime.Now.Date.AddMonths(-3)
+                                 where m.start_time.Value <= DateTime.Now && m.start_time.Value >= DateTime.Now.AddMonths(-3)
                                  && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                                  && m.strat_y >= origin_SelectY && m.strat_y <= origin_SelectY + selectHeight
-                                 select m.start_time.Value.Date; return Order3;
+                                 select m.start_time.Value; return Order3;
             }
             return null;
         }
@@ -762,22 +769,34 @@ namespace shareDemo3
             {
                 case 0:
                     var Order1 = from m in dc.orderform
-                                 where m.end_time.Value.Date <= DateTime.Now.Date && m.end_time.Value.Date >= DateTime.Now.Date.AddDays(-3)
+                                 where m.end_time.Value <= DateTime.Now && m.end_time.Value >= DateTime.Now.AddDays(-3)
                                  && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                                  && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m.end_time.Value.Date; return Order1;
+                                 select m.end_time.Value; return Order1;
                 case 1:
                     var Order2 = from m in dc.orderform
-                                 where m.end_time.Value.Date <= DateTime.Now.Date && m.end_time.Value.Date >= DateTime.Now.Date.AddDays(-7)
+                                 where m.end_time.Value <= DateTime.Now && m.end_time.Value >= DateTime.Now.AddDays(-7)
                                  && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                                  && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m.end_time.Value.Date; return Order2;
+                                 select m.end_time.Value; return Order2;
                 case 2:
                     var Order3 = from m in dc.orderform
-                                 where m.start_time.Value.Date <= DateTime.Now.Date && m.end_time.Value.Date >= DateTime.Now.Date.AddMonths(-3)
+                                 where m.end_time.Value <= DateTime.Now && m.end_time.Value >= DateTime.Now.AddMonths(-3)
                                  && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                                  && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m.end_time.Value.Date; return Order3;
+                                 select m.end_time.Value; return Order3;
+                case 3:
+                    var Order4 = from m in dc.orderform
+                                 where m.end_time.Value.Day == DateTime.Now.AddYears(-1).Day
+                                 && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
+                                 && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
+                                 select m.end_time.Value; return Order4;
+                case 4:
+                    var Order5 = from m in dc.orderform
+                                 where m.end_time.Value.Month == DateTime.Now.AddYears(-1).Month
+                                 && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
+                                 && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
+                                 select m.end_time.Value; return Order5;
             }
             return null;
         }

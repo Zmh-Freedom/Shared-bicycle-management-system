@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ct = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
@@ -51,13 +50,9 @@
             this.ct.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.ct.Legends.Add(legend1);
-            this.ct.Location = new System.Drawing.Point(181, 95);
+            this.ct.Location = new System.Drawing.Point(0, 0);
             this.ct.Name = "ct";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.ct.Series.Add(series1);
-            this.ct.Size = new System.Drawing.Size(763, 399);
+            this.ct.Size = new System.Drawing.Size(1127, 613);
             this.ct.TabIndex = 0;
             this.ct.Text = "chart1";
             // 
@@ -65,7 +60,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1228, 661);
+            this.ClientSize = new System.Drawing.Size(1159, 625);
             this.Controls.Add(this.panel1);
             this.Name = "Trend";
             this.Text = "trend";
