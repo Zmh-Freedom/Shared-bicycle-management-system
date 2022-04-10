@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ct = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
@@ -45,10 +45,9 @@
             // 
             // ct
             // 
-            legend1.Name = "Legend1";
-            this.ct.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.ct.Legends.Add(legend2);
             this.ct.Location = new System.Drawing.Point(55, 38);
-            this.ct.MaximumSize = new System.Drawing.Size(1500, 1500);
             this.ct.Name = "ct";
             this.ct.Size = new System.Drawing.Size(1466, 565);
             this.ct.TabIndex = 0;
@@ -58,10 +57,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1580, 662);
             this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(1650, 800);
             this.Name = "Trend";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "趋势分析";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ct)).EndInit();

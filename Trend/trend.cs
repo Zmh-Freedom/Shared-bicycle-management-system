@@ -109,7 +109,7 @@ namespace shareDemo2.Trend
             ct.Series[n_series].Name = "开始用车";
             ct.Series[n_series].ChartArea = ct.ChartAreas[0].Name; //设置图表背景框ChartArea 
             ct.Series[n_series].ChartType = SeriesChartType.Line; //图类型(折线)
-            ct.Series[n_series].Color = Color.Red; //线条颜色
+            ct.Series[n_series].Color = Color.Yellow; //线条颜色
             ct.Series[n_series].BorderWidth = 3; //线条粗细
             ct.Series[n_series].MarkerBorderColor = Color.Red; //标记点边框颜色
             ct.Series[n_series].MarkerBorderWidth = 4; //标记点边框大小

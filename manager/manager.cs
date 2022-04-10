@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using shareDemo2.Trend;
-
+using System.Windows.Forms.DataVisualization.Charting;
 namespace shareDemo3
 {
     public partial class managerForm : Form
@@ -26,7 +26,8 @@ namespace shareDemo3
             silverBrush = new SolidBrush(Color.Silver);
             goldBrush = new SolidBrush(Color.Gold);
             greenBrush = new SolidBrush(Color.Green);
-
+            bike_stratBrush = new SolidBrush(Color.Yellow);
+            bike_endBrush = new SolidBrush(Color.YellowGreen);
             shadowBrush = new SolidBrush(Color.FromArgb(50, Color.SteelBlue));
             bikesDisplay();
             #endregion
@@ -35,6 +36,9 @@ namespace shareDemo3
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
             #endregion
+            //图表初始化
+            
+            Cratechart0();
         }
 
         //展示单车
@@ -120,6 +124,7 @@ namespace shareDemo3
             pictureBox6.Refresh();
             origin_SelectX = e.X - 5;
             origin_SelectY = e.Y - 4;
+            RepaintMap();
         }
 
         private void pictureBox6_MouseUp(object sender, MouseEventArgs e)
@@ -140,6 +145,7 @@ namespace shareDemo3
 
         private SplitContainer splitContainer3;
         private PictureBox pictureBox7;
+        private System.Windows.Forms.DataVisualization.Charting.Chart ct;
 
 
         #region desiner
@@ -169,6 +175,8 @@ namespace shareDemo3
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -205,6 +213,7 @@ namespace shareDemo3
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ct = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -229,6 +238,7 @@ namespace shareDemo3
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ct)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage6
@@ -236,7 +246,7 @@ namespace shareDemo3
             this.tabPage6.Location = new System.Drawing.Point(4, 33);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(914, 559);
+            this.tabPage6.Size = new System.Drawing.Size(1123, 662);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "智能调度";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -281,7 +291,7 @@ namespace shareDemo3
             this.tabPage4.Location = new System.Drawing.Point(4, 33);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(914, 559);
+            this.tabPage4.Size = new System.Drawing.Size(1123, 662);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "仓库数据";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -293,7 +303,7 @@ namespace shareDemo3
             this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(914, 559);
+            this.tabPage2.Size = new System.Drawing.Size(1123, 662);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "用车热图";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -311,13 +321,14 @@ namespace shareDemo3
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.ct);
             this.splitContainer2.Panel2.Controls.Add(this.label8);
             this.splitContainer2.Panel2.Controls.Add(this.label7);
             this.splitContainer2.Panel2.Controls.Add(this.comboBox2);
             this.splitContainer2.Panel2.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel2.Controls.Add(this.button1);
-            this.splitContainer2.Size = new System.Drawing.Size(908, 522);
-            this.splitContainer2.SplitterDistance = 529;
+            this.splitContainer2.Size = new System.Drawing.Size(1117, 625);
+            this.splitContainer2.SplitterDistance = 495;
             this.splitContainer2.TabIndex = 1;
             // 
             // pictureBox6
@@ -393,9 +404,9 @@ namespace shareDemo3
             this.statusStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel5});
-            this.statusStrip2.Location = new System.Drawing.Point(3, 525);
+            this.statusStrip2.Location = new System.Drawing.Point(3, 628);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(908, 31);
+            this.statusStrip2.Size = new System.Drawing.Size(1117, 31);
             this.statusStrip2.TabIndex = 0;
             // 
             // toolStripStatusLabel5
@@ -413,7 +424,7 @@ namespace shareDemo3
             this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(914, 559);
+            this.tabPage1.Size = new System.Drawing.Size(1123, 662);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "地图快照";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -441,8 +452,8 @@ namespace shareDemo3
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(908, 522);
-            this.splitContainer1.SplitterDistance = 548;
+            this.splitContainer1.Size = new System.Drawing.Size(1117, 625);
+            this.splitContainer1.SplitterDistance = 674;
             this.splitContainer1.TabIndex = 1;
             // 
             // pictureBox1
@@ -559,9 +570,9 @@ namespace shareDemo3
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(3, 525);
+            this.statusStrip1.Location = new System.Drawing.Point(3, 628);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(908, 31);
+            this.statusStrip1.Size = new System.Drawing.Size(1117, 31);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "X";
             // 
@@ -604,7 +615,7 @@ namespace shareDemo3
             this.tabControl1.Location = new System.Drawing.Point(-1, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(922, 596);
+            this.tabControl1.Size = new System.Drawing.Size(1131, 699);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage3
@@ -612,7 +623,7 @@ namespace shareDemo3
             this.tabPage3.Location = new System.Drawing.Point(4, 33);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(914, 559);
+            this.tabPage3.Size = new System.Drawing.Size(1123, 662);
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "人事管理";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -623,11 +634,25 @@ namespace shareDemo3
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // ct
+            // 
+            this.ct.Enabled = false;
+            legend2.Name = "Legend1";
+            this.ct.Legends.Add(legend2);
+            this.ct.Location = new System.Drawing.Point(26, 416);
+            this.ct.Name = "ct";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.ct.Series.Add(series2);
+            this.ct.Size = new System.Drawing.Size(846, 495);
+            this.ct.TabIndex = 5;
+            this.ct.Text = "chart1";
+            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(920, 592);
+            this.ClientSize = new System.Drawing.Size(1129, 695);
             this.Controls.Add(this.tabControl1);
             this.Name = "managerForm";
             this.Text = "管理员界面";
@@ -665,6 +690,7 @@ namespace shareDemo3
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ct)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -711,34 +737,37 @@ namespace shareDemo3
 
 
         #endregion
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
+            ct.Series.Clear();
+            n_series = -1;
             int sel1=comboBox1.SelectedIndex;
             int sel2=comboBox2.SelectedIndex;
-            
-            switch(sel2)
+            trend_start = 0;
+            trend_end = 0;
+            RepaintMap();
+            switch (sel2)
             {
                 case 1: var order1 = Sel1(sel1); 
-                    Trend  trend1 = new Trend();
-                    trend1.Cratechart1(sel1,sel2,order1);
-                    trend1.Show();
+                    Cratechart1(sel1,sel2,order1);
+                    Dream_trendbike(order1, 1);
                     break;
                 case 2: var order2 = Sel2(sel1);
-                    Trend trend2 = new Trend();
-                    trend2.Cratechart2(sel1, sel2, order2);
-                    trend2.Show(); break;
+                    Cratechart2(sel1, sel2, order2);
+                    Dream_trendbike(order2, 2);
+                    break;
                 case 0: var order3 = Sel1(sel1);
                     var order4 = Sel2(sel1);
-                    Trend trend3 = new Trend();
-                    trend3.Cratechart1(sel1, sel2, order3);
-                    trend3.Cratechart2(sel1, sel2, order4);
-                    trend3.Show();
+                    Cratechart1(sel1, sel2, order3);
+                    Cratechart2(sel1, sel2, order4);
+                    Dream_trendbike(order3, 1);
+                    Dream_trendbike(order4, 2);
                     break;
 
             }
         }
-        public IQueryable<DateTime> Sel1(int sel)
+        public IQueryable<orderform> Sel1(int sel)
         {
             switch (sel)
             {
@@ -747,37 +776,37 @@ namespace shareDemo3
                                  where m.start_time.Value <= DateTime.Now && m.start_time.Value >= DateTime.Now.AddDays(-3)
                                  && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                                  && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                                 select m.start_time.Value; return Order1; 
+                                 select m; return Order1; 
                 case 1:
                     var Order2 = from m in dc.orderform
                                  where m.start_time.Value <= DateTime.Now && m.start_time.Value >= DateTime.Now.AddDays(-7)
                                  && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                                  && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                                 select m.start_time.Value; return Order2;
+                                 select m; return Order2;
                 case 2:
                     var Order3 = from m in dc.orderform
                                  where m.start_time.Value <= DateTime.Now && m.start_time.Value >= DateTime.Now.AddMonths(-3)
                                  && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                                  && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                                 select m.start_time.Value; return Order3;
+                                 select m; return Order3;
                 case 3:
                     var Order4 = from m in dc.orderform
                                  where m.start_time.Value.Day == DateTime.Now.AddYears(-1).Day
                                  &&m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
                                  && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                                  && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                                 select m.end_time.Value; return Order4;
+                                 select m; return Order4;
                 case 4:
                     var Order5 = from m in dc.orderform
                                  where m.start_time.Value.Month == DateTime.Now.AddYears(-1).Month
                                  && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
                                  && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                                  && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                                 select m.end_time.Value; return Order5;
+                                 select m; return Order5;
             }
             return null;
         }
-        public IQueryable<DateTime> Sel2(int sel)
+        public IQueryable<orderform> Sel2(int sel)
         {
             switch (sel)
             {
@@ -786,36 +815,262 @@ namespace shareDemo3
                                  where m.end_time.Value <= DateTime.Now && m.end_time.Value >= DateTime.Now.AddDays(-3)
                                  && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                                  && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m.end_time.Value; return Order1;
+                                 select m; return Order1;
                 case 1:
                     var Order2 = from m in dc.orderform
                                  where m.end_time.Value <= DateTime.Now && m.end_time.Value >= DateTime.Now.AddDays(-7)
                                  && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                                  && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m.end_time.Value; return Order2;
+                                 select m; return Order2;
                 case 2:
                     var Order3 = from m in dc.orderform
                                  where m.end_time.Value <= DateTime.Now && m.end_time.Value >= DateTime.Now.AddMonths(-3)
                                  && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                                  && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m.end_time.Value; return Order3;
+                                 select m; return Order3;
                 case 3:
                     var Order4 = from m in dc.orderform
                                  where m.end_time.Value.Day == DateTime.Now.AddYears(-1).Day
                                  && m.end_time.Value.Year == DateTime.Now.AddYears(-1).Year
                                  && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                                  && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m.end_time.Value; return Order4;
+                                 select m; return Order4;
                 case 4:
                     var Order5 = from m in dc.orderform
                                  where m.end_time.Value.Month == DateTime.Now.AddYears(-1).Month
                                  && m.end_time.Value.Year == DateTime.Now.AddYears(-1).Year
                                  && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                                  && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m.end_time.Value; return Order5;
+                                 select m; return Order5;
             }
             return null;
         }
+        public void Cratechart0()
+        {
+            ct.ChartAreas.Add(new ChartArea() { Name = "ca1" }); //背景框
+            ct.ChartAreas[0].Axes[0].MajorGrid.Enabled = false; //X轴上网格
+            ct.ChartAreas[0].Axes[1].MajorGrid.Enabled = false; //y轴上网格
+            ct.ChartAreas[0].Axes[0].MajorGrid.LineDashStyle = ChartDashStyle.Dash; //网格类型 短横线
+            ct.ChartAreas[0].Axes[0].MajorGrid.LineColor = Color.Gray;
+            ct.ChartAreas[0].Axes[0].MajorTickMark.Enabled = false; // x轴上突出的小点
+            ct.ChartAreas[0].Axes[1].MajorTickMark.Enabled = false; //
+            ct.ChartAreas[0].Axes[1].IsInterlaced = true; //显示交错带
+            ct.ChartAreas[0].Axes[1].MajorGrid.LineDashStyle = ChartDashStyle.Dash; //网格类型 短横线
+            ct.ChartAreas[0].Axes[1].MajorGrid.LineColor = Color.Blue;
+            ct.ChartAreas[0].Axes[1].MajorGrid.LineWidth = 3;
+            ct.ChartAreas[0].BackColor = System.Drawing.Color.Transparent; //设置区域内背景透明
+        }
+        
+        public void Cratechart1(int sel1, int sel2, IQueryable<orderform> order)
+        {
 
+            
+            List<string> xDate1 = new List<string>();
+            List<int> yDate1 = new List<int>();
+            switch (sel1)
+            {
+                case 0:
+                    for (int i = 0; i < 3; i++)
+                    {
+                        xDate1.Add(DateTime.Now.AddDays(i - 2).ToString("M"));
+                        yDate1.Add((from x in order
+                                    where x.start_time.Value.Day == DateTime.Now.AddDays(i - 2).Day
+                                    select x).Count());
+                    }
+                    break;
+                case 1:
+                    xDate1 = new List<string>() { "上上周", "上周", "这周" };
+                    int week = DateTime.Now.DayOfWeek - DayOfWeek.Monday;
+                    for (int i = 2; i >= 0; i--)
+                    {
+                        yDate1.Add((from x in order
+                                    where x.start_time.Value.Date >= DateTime.Now.AddDays(-week + (-i * 7)) &&
+                                    x.start_time.Value.Date <= DateTime.Now.AddDays(-i * 7)
+                                    select x).Count());
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < 3; i++)
+                    {
+                        xDate1.Add(DateTime.Now.AddMonths(i - 2).ToString("Y"));
+                        yDate1.Add((from x in order
+                                    where x.start_time.Value.Month == DateTime.Now.AddMonths(i - 2).Month
+                                    select x).Count());
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < 24; i++)
+                    {
+                        DateTime d1 = new System.DateTime(2022, 1, 1, 0, 0, 0);
+                        int temp2 = (from x in order
+                                     where x.start_time.Value.Hour == i
+                                     select x).Count();
+                        if (temp2 != 0 || i == 0 || i == 12 || i == 23)
+                        {
+                            xDate1.Add(d1.AddHours(i).ToString("t"));
+                            yDate1.Add(temp2);
+                        }
+
+                    }
+                    break;
+                case 4:
+                    int y = DateTime.Now.AddYears(-1).Year;
+                    int m = DateTime.Now.AddYears(-1).Month;
+                    DateTime d = new System.DateTime(y, m, 1);
+                    for (int i = 0; i < DateTime.DaysInMonth(y, m); i++)
+                    {
+                        int temp3 = (from x in order
+                                     where x.start_time.Value.Day == i + 1
+                                     select x).Count();
+                        if (temp3 != 0 || i == 0 || i == 14 || i == DateTime.DaysInMonth(y, m) - 1)
+                        {
+                            xDate1.Add(d.AddDays(i).ToString("M"));
+                            //ct.ChartAreas[0].Axes[0].LabelStyle.Format = "#日";
+                            yDate1.Add(temp3);
+                        }
+
+                    }
+                    break;
+            }
+            ct.Series.Add(new Series());
+            n_series++;
+            ct.Series[n_series].Label = "#VAL";                //设置显示X Y的值    
+            ct.Series[n_series].Name = "开始用车";
+            ct.Series[n_series].ChartArea = ct.ChartAreas[0].Name; //设置图表背景框ChartArea 
+            ct.Series[n_series].ChartType = SeriesChartType.Line; //图类型(折线)
+            ct.Series[n_series].Color = Color.Yellow; //线条颜色
+            ct.Series[n_series].BorderWidth = 3; //线条粗细
+            ct.Series[n_series].MarkerBorderColor = Color.Red; //标记点边框颜色
+            ct.Series[n_series].MarkerBorderWidth = 4; //标记点边框大小
+            ct.Series[n_series].MarkerColor = Color.Yellow; //标记点中心颜色
+            ct.Series[n_series].MarkerSize = 5; //标记点大小
+            ct.Series[n_series].MarkerStyle = MarkerStyle.Circle; //标记点类型
+            ct.Series[n_series].Points.DataBindXY(xDate1, yDate1);
+            return;
+        }
+        public void Cratechart2(int sel1, int sel2, IQueryable<orderform> order)
+        {
+            List<string> xDate1 = new List<string>();
+            List<int> yDate1 = new List<int>();
+            switch (sel1)
+            {
+                case 0:
+                    for (int i = 0; i < 3; i++)
+                    {
+                        xDate1.Add(DateTime.Now.AddDays(i - 2).ToString("M"));
+                        yDate1.Add((from x in order
+                                    where x.start_time.Value.Day == DateTime.Now.AddDays(i - 2).Day
+                                    select x).Count());
+                    }
+                    break;
+                case 1:
+                    xDate1 = new List<string>() { "上上周", "上周", "这周" };
+                    int week = DateTime.Now.DayOfWeek - DayOfWeek.Monday;
+                    for (int i = 2; i >= 0; i--)
+                    {
+                        yDate1.Add((from x in order
+                                    where x.start_time.Value.Date >= DateTime.Now.AddDays(-week + (-i * 7)) &&
+                                    x.start_time.Value.Date <= DateTime.Now.AddDays(-i * 7)
+                                    select x).Count());
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < 3; i++)
+                    {
+                        xDate1.Add(DateTime.Now.AddMonths(i - 2).ToString("Y"));
+                        yDate1.Add((from x in order
+                                    where x.start_time.Value.Month == DateTime.Now.AddMonths(i - 2).Month
+                                    select x).Count());
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < 24; i++)
+                    {
+                        DateTime d1 = new System.DateTime(2022, 1, 1, 0, 0, 0);
+                        int temp2 = (from x in order
+                                     where x.start_time.Value.Hour == i
+                                     select x).Count();
+                        if (temp2 != 0 || i == 0 || i == 12 || i == 23)
+                        {
+                            xDate1.Add(d1.AddHours(i).ToString("t"));
+                            yDate1.Add(temp2);
+                        }
+
+                    }
+                    break;
+                case 4:
+                    int y = DateTime.Now.AddYears(-1).Year;
+                    int m = DateTime.Now.AddYears(-1).Month;
+                    DateTime d = new System.DateTime(y, m, 1);
+                    for (int i = 0; i < DateTime.DaysInMonth(y, m); i++)
+                    {
+                        int temp3 = (from x in order
+                                     where x.start_time.Value.Day == i + 1
+                                     select x).Count();
+                        if (temp3 != 0 || i == 0 || i == 14 || i == DateTime.DaysInMonth(y, m) - 1)
+                        {
+                            xDate1.Add(d.AddDays(i).ToString("d"));
+                            yDate1.Add(temp3);
+                        }
+
+                    }
+                    break;
+            }
+
+            ct.Series.Add(new Series());
+            n_series++; ct.Series[n_series].Points.DataBindXY(xDate1, yDate1);
+            ct.Series[n_series].Label = "#VAL";                //设置显示X Y的值    
+            ct.Series[n_series].Name = "结束用车";
+            ct.Series[n_series].ChartArea = ct.ChartAreas[0].Name; //设置图表背景框ChartArea 
+            ct.Series[n_series].ChartType = SeriesChartType.Line; //图类型(折线)
+            ct.Series[n_series].Color = Color.YellowGreen; //线条颜色
+            ct.Series[n_series].BorderWidth = 2; //线条粗细
+            ct.Series[n_series].MarkerBorderColor = Color.Red; //标记点边框颜色
+            ct.Series[n_series].MarkerBorderWidth = 3; //标记点边框大小
+            ct.Series[n_series].MarkerColor = Color.YellowGreen; //标记点中心颜色
+            ct.Series[n_series].MarkerSize = 5; //标记点大小
+            ct.Series[n_series].MarkerStyle = MarkerStyle.Circle; //标记点类型
+            ct.Series[n_series].AxisLabel = "#辆";
+            return;
+        }
+        public void Dream_trendbike(IQueryable<orderform>orders,int sel2)
+        {
+            Trend = Graphics.FromImage(pictureBox6.Image);
+            try
+            {
+                switch (sel2)
+                {
+                    case 1:
+                        foreach (var q in orders)
+                        {
+                            Trend.FillEllipse(bike_stratBrush, (float)q.start_x - 8, (float)q.start_y - 8, 16, 16);
+                            trend_start++;
+                        }
+                        break;
+                    case 2:
+                        foreach (var q in orders)
+                        {
+                            Trend.FillEllipse(bike_endBrush, (float)q.end_x - 8, (float)q.end_y - 8, 16, 16);
+                            trend_end++;
+                        }
+                        break;
+                }
+                Trend.Flush();
+                pictureBox6.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+        private void RepaintMap()
+        {
+            pictureBox6.Image = shareDemo2.Properties.Resources.map1;
+            bikesDisplay();
+            pictureBox6.Refresh();
+        }
     }
+
+
 }

@@ -36,7 +36,13 @@ namespace shareDemo3
         
         bool isMouseDown = false;
         Rectangle myRect;
-        
+
+        Graphics Trend = null;
+        int n_series = -1;
+        int trend_start = 0;
+        int trend_end = 0;
+        SolidBrush bike_stratBrush = null;
+        SolidBrush bike_endBrush = null;
         #endregion
 
     }
