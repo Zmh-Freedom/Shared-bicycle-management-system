@@ -746,20 +746,34 @@ namespace shareDemo3
                     var Order1 = from m in dc.orderform
                                  where m.start_time.Value <= DateTime.Now && m.start_time.Value >= DateTime.Now.AddDays(-3)
                                  && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
-                                 && m.strat_y >= origin_SelectY && m.strat_y <= origin_SelectY + selectHeight
+                                 && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
                                  select m.start_time.Value; return Order1; 
                 case 1:
                     var Order2 = from m in dc.orderform
                                  where m.start_time.Value <= DateTime.Now && m.start_time.Value >= DateTime.Now.AddDays(-7)
                                  && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
-                                 && m.strat_y >= origin_SelectY && m.strat_y <= origin_SelectY + selectHeight
+                                 && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
                                  select m.start_time.Value; return Order2;
                 case 2:
                     var Order3 = from m in dc.orderform
                                  where m.start_time.Value <= DateTime.Now && m.start_time.Value >= DateTime.Now.AddMonths(-3)
                                  && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
-                                 && m.strat_y >= origin_SelectY && m.strat_y <= origin_SelectY + selectHeight
+                                 && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
                                  select m.start_time.Value; return Order3;
+                case 3:
+                    var Order4 = from m in dc.orderform
+                                 where m.start_time.Value.Day == DateTime.Now.AddYears(-1).Day
+                                 &&m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
+                                 && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
+                                 && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
+                                 select m.end_time.Value; return Order4;
+                case 4:
+                    var Order5 = from m in dc.orderform
+                                 where m.start_time.Value.Month == DateTime.Now.AddYears(-1).Month
+                                 && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
+                                 && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
+                                 && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
+                                 select m.end_time.Value; return Order5;
             }
             return null;
         }
@@ -788,12 +802,14 @@ namespace shareDemo3
                 case 3:
                     var Order4 = from m in dc.orderform
                                  where m.end_time.Value.Day == DateTime.Now.AddYears(-1).Day
+                                 && m.end_time.Value.Year == DateTime.Now.AddYears(-1).Year
                                  && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                                  && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
                                  select m.end_time.Value; return Order4;
                 case 4:
                     var Order5 = from m in dc.orderform
                                  where m.end_time.Value.Month == DateTime.Now.AddYears(-1).Month
+                                 && m.end_time.Value.Year == DateTime.Now.AddYears(-1).Year
                                  && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                                  && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
                                  select m.end_time.Value; return Order5;

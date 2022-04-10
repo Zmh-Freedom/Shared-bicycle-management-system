@@ -8,10 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Sunny.UI;
+
 namespace shareDemo2.Trend
 {
     public partial class Trend : Form
     {
+        
         public Trend()
         {
             InitializeComponent();
@@ -28,9 +31,11 @@ namespace shareDemo2.Trend
             ct.ChartAreas[0].Axes[1].MajorGrid.LineWidth = 3;
             ct.ChartAreas[0].BackColor = System.Drawing.Color.Transparent; //设置区域内背景透明
         }
+       
         int n_series = -1;
         public void Cratechart1(int sel1,int sel2,IQueryable<DateTime>order)
         {
+
             List<string> xDate1 = new List<string>();
             List<int> yDate1 = new List<int>();
             switch (sel1)
@@ -67,27 +72,39 @@ namespace shareDemo2.Trend
                 case 3:
                     for (int i = 0; i < 24; i++)
                     {
-                        xDate1.Add(DateTime.Now.AddHours(i).ToString("t"));
-                        yDate1.Add((from x in order
-                                    where x.Hour == i
-                                    select x).Count());
+                        DateTime d1 = new System.DateTime(2022, 1, 1, 0, 0, 0);
+                        int temp2 = (from x in order
+                                     where x.Hour == i
+                                     select x).Count();
+                        if(temp2!=0||i==0||i==12||i==23)
+                        {
+                            xDate1.Add(d1.AddHours(i).ToString("t"));
+                            yDate1.Add(temp2);
+                        }
+
                     }
                     break;
                 case 4:
                     int y = DateTime.Now.AddYears(-1).Year;
                     int m = DateTime.Now.AddYears(-1).Month;
-                    DateTime d = new System.DateTime(y, m, 0);
+                    DateTime d = new System.DateTime(y, m, 1);
                     for (int i = 0; i < DateTime.DaysInMonth(y, m); i++)
                     {
-                        xDate1.Add(d.AddDays(i).ToString("d"));
-                        yDate1.Add((from x in order
-                                    where x.Day == i
-                                    select x).Count());
+                        int temp3 = (from x in order
+                                     where x.Day == i + 1
+                                     select x).Count();
+                        if (temp3 != 0 || i == 0 || i == 14 || i == DateTime.DaysInMonth(y, m) - 1)
+                        {
+                            xDate1.Add(d.AddDays(i).ToString("M"));
+                            //ct.ChartAreas[0].Axes[0].LabelStyle.Format = "#日";
+                            yDate1.Add(temp3);
+                        }
+
                     }
                     break;
             }
             ct.Series.Add(new Series());
-            n_series++;ct.Series[n_series].Points.DataBindXY(xDate1, yDate1);
+            n_series++;
             ct.Series[n_series].Label = "#VAL";                //设置显示X Y的值    
             ct.Series[n_series].Name = "开始用车";
             ct.Series[n_series].ChartArea = ct.ChartAreas[0].Name; //设置图表背景框ChartArea 
@@ -99,6 +116,7 @@ namespace shareDemo2.Trend
             ct.Series[n_series].MarkerColor = Color.Red; //标记点中心颜色
             ct.Series[n_series].MarkerSize = 5; //标记点大小
             ct.Series[n_series].MarkerStyle = MarkerStyle.Circle; //标记点类型
+            ct.Series[n_series].Points.DataBindXY(xDate1, yDate1);
             
         }
         public void Cratechart2(int sel1, int sel2, IQueryable<DateTime> order)
@@ -139,25 +157,37 @@ namespace shareDemo2.Trend
                 case 3:
                     for (int i = 0; i < 24; i++)
                     {
-                        xDate1.Add(DateTime.Now.AddHours(i).ToString("t"));
-                        yDate1.Add((from x in order
-                                    where x.Hour == i
-                                    select x).Count());
+                        DateTime d1 = new System.DateTime(2022, 1, 1, 0, 0, 0);
+                        int temp2 = (from x in order
+                                     where x.Hour == i
+                                     select x).Count();
+                        if (temp2 != 0 || i == 0 || i == 12 || i == 23)
+                        {
+                            xDate1.Add(d1.AddHours(i).ToString("t"));
+                            yDate1.Add(temp2);
+                        }
+
                     }
                     break;
                 case 4:
                     int y = DateTime.Now.AddYears(-1).Year;
                     int m = DateTime.Now.AddYears(-1).Month;
-                    DateTime d = new System.DateTime(y, m, 0);
+                    DateTime d = new System.DateTime(y, m, 1);
                     for (int i = 0; i < DateTime.DaysInMonth(y, m); i++)
                     {
-                        xDate1.Add(d.AddDays(i).ToString("d"));
-                        yDate1.Add((from x in order
-                                    where x.Day == i
-                                    select x).Count());
+                        int temp3 = (from x in order
+                                     where x.Day == i+1
+                                     select x).Count();
+                        if(temp3!=0 || i == 0 || i == 14 || i == DateTime.DaysInMonth(y, m)-1)
+                        {
+                            xDate1.Add(d.AddDays(i).ToString("d"));
+                            yDate1.Add(temp3);
+                        }
+                        
                     }
                     break;
             }
+            
             ct.Series.Add(new Series());
             n_series++;ct.Series[n_series].Points.DataBindXY(xDate1, yDate1);
             ct.Series[n_series].Label = "#VAL";                //设置显示X Y的值    
@@ -171,7 +201,7 @@ namespace shareDemo2.Trend
             ct.Series[n_series].MarkerColor = Color.Blue; //标记点中心颜色
             ct.Series[n_series].MarkerSize = 5; //标记点大小
             ct.Series[n_series].MarkerStyle = MarkerStyle.Circle; //标记点类型
-            
+            ct.Series[n_series].AxisLabel = "#辆";
         }
          
     }

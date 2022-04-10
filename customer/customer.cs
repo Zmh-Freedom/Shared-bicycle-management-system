@@ -269,7 +269,7 @@ namespace shareDemo2
                 order.bid = the_bike.id;
                 order.cid = user_id;
                 order.start_x = now_x;
-                order.strat_y = now_y;
+                order.start_y = now_y;
                 startTime = DateTime.Now;
                 order.start_time = startTime;
                 order.flag = 1;

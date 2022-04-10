@@ -938,7 +938,7 @@ namespace shareDemo2
 		
 		private System.Nullable<int> _start_x;
 		
-		private System.Nullable<int> _strat_y;
+		private System.Nullable<int> _start_y;
 		
 		private System.Nullable<int> _end_x;
 		
@@ -968,8 +968,8 @@ namespace shareDemo2
     partial void OnflagChanged();
     partial void Onstart_xChanging(System.Nullable<int> value);
     partial void Onstart_xChanged();
-    partial void Onstrat_yChanging(System.Nullable<int> value);
-    partial void Onstrat_yChanged();
+    partial void Onstart_yChanging(System.Nullable<int> value);
+    partial void Onstart_yChanged();
     partial void Onend_xChanging(System.Nullable<int> value);
     partial void Onend_xChanged();
     partial void Onend_yChanging(System.Nullable<int> value);
@@ -1097,22 +1097,22 @@ namespace shareDemo2
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_strat_y", DbType="Int")]
-		public System.Nullable<int> strat_y
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_start_y", DbType="Int")]
+		public System.Nullable<int> start_y
 		{
 			get
 			{
-				return this._strat_y;
+				return this._start_y;
 			}
 			set
 			{
-				if ((this._strat_y != value))
+				if ((this._start_y != value))
 				{
-					this.Onstrat_yChanging(value);
+					this.Onstart_yChanging(value);
 					this.SendPropertyChanging();
-					this._strat_y = value;
-					this.SendPropertyChanged("strat_y");
-					this.Onstrat_yChanged();
+					this._start_y = value;
+					this.SendPropertyChanged("start_y");
+					this.Onstart_yChanged();
 				}
 			}
 		}
