@@ -18,11 +18,21 @@ namespace shareDemo2
             InitializeComponent();
             Cratechart0();
             ct.Series.Clear();
+            uiPanel3.Hide();
             if (sel2 == 1)
             {
                 Cratechart1(sel1, sel2, order);
+                uiLabel1.Text = "开锁总计";
+                uiLedLabel1.Text = string_digit(trend_start);
             }
-            else Cratechart2(sel1, sel2, order);
+            else
+            {
+                Cratechart2(sel1, sel2, order);
+                uiLabel1.Text = "关锁总计";
+                uiLedLabel1.Text = string_digit(trend_end);
+            }
+
+
         }
         public trend(int sel1, int sel2, IQueryable<orderform> order1, IQueryable<orderform> order2)
         {
@@ -30,6 +40,10 @@ namespace shareDemo2
             Cratechart0();
             Cratechart1(sel1, sel2, order1);
             Cratechart2(sel1, sel2, order2);
+            uiLabel1.Text = "开锁总计";
+            uiLedLabel1.Text = string_digit(trend_start);
+            uiLabel2.Text = "关锁总计";
+            uiLedLabel2.Text = string_digit(trend_end);
         }
         int n_series = -1;
         int trend_start = 0;
@@ -89,7 +103,7 @@ namespace shareDemo2
                         xDate1.Add(date.AddHours(i * 3).ToString("t"));
                         yDate1.Add((from x in order
                                     where x.start_time.Value.Hour >= date.AddHours(i * 3).Hour && x.start_time.Value.Hour <= date.AddHours((i + 1) * 3).Hour
-                                    select x).Count() / 3);
+                                    select x).Count() );
                         trend_start += yDate1[i];
                     }
                     ct.Series[n_series].Name = "开始用车/平均每日";
@@ -100,8 +114,9 @@ namespace shareDemo2
                         xDate1.Add(date.AddHours(i * 3).ToString("t"));
                         yDate1.Add((from x in order
                                     where x.start_time.Value.Hour >= date.AddHours(i * 3).Hour && x.start_time.Value.Hour <= date.AddHours((i + 1) * 3).Hour
-                                    select x).Count() / 3);
+                                    select x).Count() );
                         trend_start += yDate1[i];
+                        yDate1[i] /= 3;
                     }
                     ct.Series[n_series].Name = "开始用车/平均每周";
                     break;
@@ -111,8 +126,9 @@ namespace shareDemo2
                         xDate1.Add(date.AddHours(i * 3).ToString("t"));
                         yDate1.Add((from x in order
                                     where x.start_time.Value.Hour >= date.AddHours(i * 3).Hour && x.start_time.Value.Hour <= date.AddHours((i + 1) * 3).Hour
-                                    select x).Count() / 3);
+                                    select x).Count() );
                         trend_start += yDate1[i];
+                        yDate1[i] /= 3;
                     }
                     ct.Series[n_series].Name = "开始用车/平均每月";
                     break;
@@ -124,6 +140,7 @@ namespace shareDemo2
                                     where x.start_time.Value.Hour >= date.AddHours(i * 3).Hour && x.start_time.Value.Hour <= date.AddHours((i + 1) * 3).Hour
                                     select x).Count());
                         trend_start += yDate1[i];
+                        yDate1[i] /= 3;
                     }
                     ct.Series[n_series].Name = "开始用车/平均一日";
                     break;
@@ -156,8 +173,9 @@ namespace shareDemo2
                         xDate1.Add(date.AddHours(i * 3).ToString("t"));
                         yDate1.Add((from x in order
                                     where x.end_time.Value.Hour >= date.AddHours(i * 3).Hour && x.start_time.Value.Hour <= date.AddHours((i + 1) * 3).Hour
-                                    select x).Count() / 3);
+                                    select x).Count() );
                         trend_end += yDate1[i];
+                        yDate1[i] /= 3;
                     }
                     ct.Series[n_series].Name = "结束用车/平均每日";
                     break;
@@ -167,8 +185,9 @@ namespace shareDemo2
                         xDate1.Add(date.AddHours(i * 3).ToString("t"));
                         yDate1.Add((from x in order
                                     where x.end_time.Value.Hour >= date.AddHours(i * 3).Hour && x.start_time.Value.Hour <= date.AddHours((i + 1) * 3).Hour
-                                    select x).Count() / 3);
+                                    select x).Count() );
                         trend_end += yDate1[i];
+                        yDate1[i] /= 3;
                     }
                     ct.Series[n_series].Name = "结束用车/平均每周";
                     break;
@@ -178,8 +197,9 @@ namespace shareDemo2
                         xDate1.Add(date.AddHours(i * 3).ToString("t"));
                         yDate1.Add((from x in order
                                     where x.end_time.Value.Hour >= date.AddHours(i * 3).Hour && x.start_time.Value.Hour <= date.AddHours((i + 1) * 3).Hour
-                                    select x).Count() / 3);
+                                    select x).Count() );
                         trend_end += yDate1[i];
+                        yDate1[i] /= 3;
                     }
                     ct.Series[n_series].Name = "结束用车/平均每月";
                     break;
@@ -208,6 +228,30 @@ namespace shareDemo2
             }
             ct.Series[n_series].Points.DataBindXY(xDate1, yDate1);
             return;
+        }
+        public string string_digit(int a)
+        {
+            string s;
+            int []b=new int[100];
+            if (a == 0)
+            {
+                s = "0";
+                return s;
+            }
+            s = "";
+            int n = 0;
+            while(a>0)
+            {
+                int temp = a % 10;
+                b[n] = temp;
+                a/= 10;
+                n++;
+            }
+            for(int i=n-1;i>=0;i--)
+            {
+                s += b[i];
+            }
+            return s;
         }
     }
 }
