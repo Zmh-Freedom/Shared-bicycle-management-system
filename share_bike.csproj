@@ -101,10 +101,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="register\register_Form.Designer.cs" />
-    <Compile Include="Trend\trend.cs">
+    <Compile Include="trend.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Trend\trend.Designer.cs">
+    <Compile Include="trend.Designer.cs">
       <DependentUpon>trend.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="customer\customer.resx">
@@ -124,7 +124,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="register\register_Form.resx" />
-    <EmbeddedResource Include="Trend\trend.resx">
+    <EmbeddedResource Include="trend.resx">
       <DependentUpon>trend.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DB.dbml">
@@ -169,6 +169,9 @@
     <Content Include="Resources\me.png" />
     <Content Include="Resources\nowlocation.png" />
     <Content Include="Resources\yellow.jpg" />
+    <None Include="Resources\单车.png" />
+    <Content Include="Resources\叉.png" />
+    <Content Include="Resources\对.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

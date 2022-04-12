@@ -38,9 +38,7 @@ namespace shareDemo3
         Rectangle myRect;
 
         Graphics Trend = null;
-        int n_series = -1;
-        int trend_start = 0;
-        int trend_end = 0;
+
         SolidBrush bike_stratBrush = null;
         SolidBrush bike_endBrush = null;
         #endregion

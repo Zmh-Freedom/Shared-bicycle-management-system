@@ -6,7 +6,6 @@ C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.login.login_For
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.manager.manager.resources
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.Properties.Resources.resources
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.register.register_Form.resources
-C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.Trend.Trend.resources
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\share_bike.csproj.GenerateResource.cache
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\share_bike.csproj.CoreCompileInputs.cache
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.exe
@@ -17,3 +16,4 @@ C:\Users\Freedom\OneDrive\桌面\shareDemo2\bin\Debug\shareDemo2.pdb
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\bin\Debug\SunnyUI.Common.dll
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\bin\Debug\SunnyUI.dll
 C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\share_bike.csproj.CopyComplete
+C:\Users\Freedom\OneDrive\桌面\shareDemo2\obj\Debug\shareDemo2.trend.resources
