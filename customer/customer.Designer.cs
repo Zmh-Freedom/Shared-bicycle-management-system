@@ -30,9 +30,9 @@ namespace shareDemo2
 
         #region 逻辑代码成员变量
         bike now_bike;
-        orderform now_order;
-        string user_nickname = "xuhao";
-        string user_id = "12345678901";
+        orderform now_order=new orderform();
+        string user_nickname = "";
+        string user_id = "";
         bool freeMove = true;
         int now_x;
         int now_y;
@@ -79,7 +79,7 @@ namespace shareDemo2
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 35);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -95,8 +95,8 @@ namespace shareDemo2
             this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(939, 603);
-            this.splitContainer1.SplitterDistance = 874;
+            this.splitContainer1.Size = new System.Drawing.Size(939, 568);
+            this.splitContainer1.SplitterDistance = 827;
             this.splitContainer1.TabIndex = 0;
             // 
             // pictureBox1
@@ -155,7 +155,7 @@ namespace shareDemo2
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 18);
+            this.label2.Size = new System.Drawing.Size(110, 31);
             this.label2.TabIndex = 1;
             this.label2.Text = "骑行时间";
             // 
@@ -164,7 +164,7 @@ namespace shareDemo2
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 18);
+            this.label1.Size = new System.Drawing.Size(62, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "昵称";
             // 
@@ -178,13 +178,12 @@ namespace shareDemo2
             this.timer2.Interval = 2000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick_1);
             // 
-            // Form1
+            // CustomerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(939, 603);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
+            this.Name = "CustomerForm";
             this.Text = "普通用户界面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.splitContainer1.Panel1.ResumeLayout(false);

@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sunny.UI;
 
 namespace shareDemo2
 {
-    public partial class CustomerForm : Form
+    public partial class CustomerForm : UIForm
     {
         public CustomerForm()
         {

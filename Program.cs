@@ -18,7 +18,7 @@ namespace shareDemo2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new managerForm());
+            Application.Run(new login_Form());
         }
     }
 }

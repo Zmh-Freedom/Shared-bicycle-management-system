@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sunny.UI;
 
 namespace login_register_Form1
 {
-    public partial class register_Form : Form
+    public partial class register_Form : UIForm
     {
         public register_Form()
         {

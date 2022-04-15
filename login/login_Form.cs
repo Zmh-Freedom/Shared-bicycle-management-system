@@ -10,10 +10,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sunny.UI;
 
 namespace login_register_Form1
 {
-    public partial class login_Form : Form
+    public partial class login_Form : UIForm
     {
         public login_Form()
         {
@@ -119,7 +120,7 @@ namespace login_register_Form1
             this.button1.Location = new System.Drawing.Point(372, 248);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 38);
+            this.button1.Size = new System.Drawing.Size(142, 54);
             this.button1.TabIndex = 0;
             this.button1.Text = "登录";
             this.button1.UseVisualStyleBackColor = true;
@@ -129,9 +130,9 @@ namespace login_register_Form1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F);
-            this.label1.Location = new System.Drawing.Point(268, 28);
+            this.label1.Location = new System.Drawing.Point(275, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 52);
+            this.label1.Size = new System.Drawing.Size(219, 62);
             this.label1.TabIndex = 1;
             this.label1.Text = "用户登录";
             // 
@@ -141,7 +142,7 @@ namespace login_register_Form1
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 13F);
             this.label2.Location = new System.Drawing.Point(185, 151);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 30);
+            this.label2.Size = new System.Drawing.Size(93, 35);
             this.label2.TabIndex = 2;
             this.label2.Text = "账号：";
             // 
@@ -151,7 +152,7 @@ namespace login_register_Form1
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 13F);
             this.label3.Location = new System.Drawing.Point(185, 190);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 30);
+            this.label3.Size = new System.Drawing.Size(93, 35);
             this.label3.TabIndex = 3;
             this.label3.Text = "密码：";
             // 
@@ -160,7 +161,7 @@ namespace login_register_Form1
             this.tb_id.Location = new System.Drawing.Point(300, 153);
             this.tb_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_id.Name = "tb_id";
-            this.tb_id.Size = new System.Drawing.Size(215, 25);
+            this.tb_id.Size = new System.Drawing.Size(215, 39);
             this.tb_id.TabIndex = 4;
             // 
             // tb_password
@@ -168,7 +169,7 @@ namespace login_register_Form1
             this.tb_password.Location = new System.Drawing.Point(300, 194);
             this.tb_password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(215, 25);
+            this.tb_password.Size = new System.Drawing.Size(215, 39);
             this.tb_password.TabIndex = 4;
             // 
             // label4
@@ -177,22 +178,22 @@ namespace login_register_Form1
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 13F);
             this.label4.Location = new System.Drawing.Point(186, 109);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(123, 30);
+            this.label4.Size = new System.Drawing.Size(145, 35);
             this.label4.TabIndex = 5;
             this.label4.Text = "用户类型：";
             // 
             // lb_identity
             // 
             this.lb_identity.FormattingEnabled = true;
-            this.lb_identity.ItemHeight = 15;
+            this.lb_identity.ItemHeight = 31;
             this.lb_identity.Items.AddRange(new object[] {
             "顾客",
             "管理员",
             "调度员"});
-            this.lb_identity.Location = new System.Drawing.Point(335, 109);
+            this.lb_identity.Location = new System.Drawing.Point(325, 109);
             this.lb_identity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lb_identity.Name = "lb_identity";
-            this.lb_identity.Size = new System.Drawing.Size(134, 19);
+            this.lb_identity.Size = new System.Drawing.Size(189, 35);
             this.lb_identity.TabIndex = 6;
             // 
             // button2
@@ -201,7 +202,7 @@ namespace login_register_Form1
             this.button2.Location = new System.Drawing.Point(185, 248);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(142, 38);
+            this.button2.Size = new System.Drawing.Size(142, 54);
             this.button2.TabIndex = 0;
             this.button2.Text = "注册";
             this.button2.UseVisualStyleBackColor = true;
@@ -209,9 +210,8 @@ namespace login_register_Form1
             // 
             // login_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 338);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(724, 356);
             this.Controls.Add(this.lb_identity);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tb_password);
@@ -223,7 +223,7 @@ namespace login_register_Form1
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "login_Form";
-            this.Text = "login_Form";
+            this.Text = "";
             this.ResumeLayout(false);
             this.PerformLayout();
 
