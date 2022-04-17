@@ -33,7 +33,8 @@ namespace shareDemo3
         #endregion
 
         #region 逻辑代码成员变量
-        
+        private string myid;
+
         string manager_nickname = "xuhao";
         int numUsing = 0;
         int numAvailable = 0;

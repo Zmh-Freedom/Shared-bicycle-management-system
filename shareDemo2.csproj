@@ -67,25 +67,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB.dbml</DependentUpon>
     </Compile>
-    <Compile Include="DBmanager\DBmanager.cs" />
-    <Compile Include="dispatcher\dispatcher_Form.cs">
+    <Compile Include="dispatcher\dispatcherForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dispatcher\dispatcher_Form.Designer.cs" />
-    <Compile Include="login\login_Form.cs">
+    <Compile Include="dispatcher\dispatcherForm.Designer.cs" />
+    <Compile Include="login\loginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="login\login_Form.Designer.cs" />
+    <Compile Include="login\loginForm.Designer.cs" />
     <Compile Include="manager\manager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="manager\manager.Designer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="register\register_Form.cs">
+    <Compile Include="register\registerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="register\register_Form.Designer.cs" />
+    <Compile Include="register\registerForm.Designer.cs" />
     <Compile Include="manager\taskManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,8 +104,8 @@
     <EmbeddedResource Include="customer\customer.resx">
       <DependentUpon>customer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dispatcher\dispatcher_Form.resx" />
-    <EmbeddedResource Include="login\login_Form.resx" />
+    <EmbeddedResource Include="dispatcher\dispatcherForm.resx" />
+    <EmbeddedResource Include="login\loginForm.resx" />
     <EmbeddedResource Include="manager\manager.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -118,7 +117,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="register\register_Form.resx" />
+    <EmbeddedResource Include="register\registerForm.resx" />
     <EmbeddedResource Include="manager\taskManage.resx">
       <DependentUpon>taskManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,9 +133,8 @@
     <None Include="DB.dbml.layout">
       <DependentUpon>DB.dbml</DependentUpon>
     </None>
-    <None Include="DBmanager\DBmanager.csproj" />
-    <None Include="dispatcher\dispatcher_Form.csproj" />
-    <None Include="login\login_register_Form1.csproj" />
+    <None Include="dispatcher\dispatcherForm.csproj" />
+    <None Include="login\loginRegisterForm.csproj" />
     <None Include="manager\shareDemo3.csproj" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\task.datasource" />
@@ -160,8 +158,8 @@
     <None Include="Resources\map1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="login\login_register_Form1.csproj.user" />
-    <Content Include="manager\shareDemo3.sln" />
+    <Content Include="login\loginRegisterForm.csproj.user" />
+    <None Include="Resources\bg.jpeg" />
     <None Include="Resources\1-1.png" />
     <None Include="Resources\1-2.jpeg" />
     <Content Include="Resources\bike.png" />
@@ -171,8 +169,8 @@
     <Content Include="Resources\lightred.jpg" />
     <Content Include="Resources\me.png" />
     <Content Include="Resources\nowlocation.png" />
-    <None Include="Resources\user .png" />
-    <None Include="Resources\password.png" />
+    <Content Include="Resources\password.png" />
+    <Content Include="Resources\user .png" />
     <Content Include="Resources\yellow.jpg" />
     <Content Include="Resources\单车.png" />
   </ItemGroup>

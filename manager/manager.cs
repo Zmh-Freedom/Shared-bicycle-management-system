@@ -8,11 +8,11 @@ using System.Windows.Forms;
 using Sunny.UI;
 using System.Text.RegularExpressions;
 using System.Collections;
+
 namespace shareDemo3
 {
     public partial class managerForm : UIForm
     {
-        private string myid;
         public managerForm(string id)
         {
             InitializeComponent();
@@ -51,8 +51,9 @@ namespace shareDemo3
             Sel1(comboBox1.SelectedIndex);
             Sel2(comboBox1.SelectedIndex);
             //Bike_date();
-            #endregion
             myid = id;
+            #endregion
+
         }
         #region 地图快照页代码
         //更新快照页标签
@@ -226,6 +227,11 @@ namespace shareDemo3
         }
         private void button13_Click(object sender, EventArgs e)
         {
+            if (comboBox1.SelectedIndex == 0)
+            {
+                MessageBox.Show("不支持近三天的周趋势图查询");
+                return;
+            }
             Trendset(2);
         }
         #region 趋势图
@@ -248,7 +254,6 @@ namespace shareDemo3
                 case 1:
                     var Order1 = Sel1(sel1);
                     trend Trend1 = new shareDemo2.trend(sel1, sel2, Order1, tag);
-                    
                     Trend1.Show();
                     break;
                 case 2:
@@ -259,7 +264,7 @@ namespace shareDemo3
                 case 0:
                     var Order3 = Sel1(sel1);
                     var Order4 = Sel2(sel1);
-                    UIForm Trend3 = new shareDemo2.trend(sel1, sel2, Order3, Order4,tag);
+                    UIForm Trend3 = new shareDemo2.trend(sel1, sel2, Order3, Order4, tag);
                     Trend3.Show();
                     break;
             }
@@ -271,36 +276,36 @@ namespace shareDemo3
             {
                 case 0:
                     order1 = from m in dc.orderform
-                                 where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddDays(-3)
-                                 && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
-                                 && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                                 select m; break;
+                             where m.start_time.Value.Date <= DateTime.Now.Date && m.start_time.Value > DateTime.Now.AddDays(-3).Date
+                             && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
+                             && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
+                             select m; break;
                 case 1:
                     order1 = from m in dc.orderform
-                                 where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddDays(-7*3)
-                                 && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
-                                 && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                                 select m; break;
+                             where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddDays(-7 * 3)
+                             && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
+                             && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
+                             select m; break;
                 case 2:
                     order1 = from m in dc.orderform
-                                 where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddMonths(-3)
-                                 && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
-                                 && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                                 select m; break;
+                             where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddMonths(-3)
+                             && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
+                             && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
+                             select m; break;
                 case 3:
                     order1 = from m in dc.orderform
-                                 where m.start_time.Value.Day == DateTime.Now.AddYears(-1).Day
-                                 && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
-                                 && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
-                                 && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                                 select m; break;
+                             where m.start_time.Value.Day == DateTime.Now.AddYears(-1).Day
+                             && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
+                             && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
+                             && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
+                             select m; break;
                 case 4:
                     order1 = from m in dc.orderform
-                                 where m.start_time.Value.Month == DateTime.Now.AddYears(-1).Month
-                                 && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
-                                 && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
-                                 && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                                 select m; break;
+                             where m.start_time.Value.Month == DateTime.Now.AddYears(-1).Month
+                             && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
+                             && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
+                             && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
+                             select m; break;
             }
             return order1;
         }
@@ -311,37 +316,37 @@ namespace shareDemo3
             {
                 case 0:
                     order2 = from m in dc.orderform
-                                 where m.end_time.Value <= DateTime.Now && m.end_time.Value > DateTime.Now.AddDays(-3)
-                                 && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
-                                 && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m; break;
+                             where m.end_time.Value.Date <= DateTime.Now.Date && m.end_time.Value > DateTime.Now.AddDays(-3).Date
+                             && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
+                             && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
+                             select m; break;
                 case 1:
                     order2 = from m in dc.orderform
-                                 where m.end_time.Value <= DateTime.Now && m.end_time.Value > DateTime.Now.AddDays(-7*3)
-                                 && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
-                                 && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m; break;
+                             where m.end_time.Value <= DateTime.Now && m.end_time.Value > DateTime.Now.AddDays(-7 * 3)
+                             && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
+                             && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
+                             select m; break;
                 case 2:
                     order2 = from m in dc.orderform
-                                 where m.end_time.Value <= DateTime.Now && m.end_time.Value > DateTime.Now.AddMonths(-3)
-                                 && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
-                                 && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m; break;
+                             where m.end_time.Value <= DateTime.Now && m.end_time.Value > DateTime.Now.AddMonths(-3)
+                             && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
+                             && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
+                             select m; break;
                 case 3:
                     order2 = from m in dc.orderform
-                                 where m.end_time.Value.Day == DateTime.Now.AddYears(-1).Day
-                                 && m.start_time.Value.Month == DateTime.Now.AddYears(-1).Month
-                                 && m.end_time.Value.Year == DateTime.Now.AddYears(-1).Year
-                                 && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
-                                 && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m; break;
+                             where m.end_time.Value.Day == DateTime.Now.AddYears(-1).Day
+                             && m.start_time.Value.Month == DateTime.Now.AddYears(-1).Month
+                             && m.end_time.Value.Year == DateTime.Now.AddYears(-1).Year
+                             && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
+                             && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
+                             select m; break;
                 case 4:
                     order2 = from m in dc.orderform
-                                 where m.end_time.Value.Month == DateTime.Now.AddYears(-1).Month
-                                 && m.end_time.Value.Year == DateTime.Now.AddYears(-1).Year
-                                 && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
-                                 && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                                 select m; break;
+                             where m.end_time.Value.Month == DateTime.Now.AddYears(-1).Month
+                             && m.end_time.Value.Year == DateTime.Now.AddYears(-1).Year
+                             && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
+                             && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
+                             select m; break;
             }
             return order2;
         }
@@ -355,27 +360,27 @@ namespace shareDemo3
             {
                 case 0:
                     orderform1 = from m in dc.orderform
-                             where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddDays(-3)
-                             select m; break;
+                                 where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddDays(-3)
+                                 select m; break;
                 case 1:
                     orderform1 = from m in dc.orderform
-                             where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddDays(-7 * 3)
-                             select m; break;
+                                 where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddDays(-7 * 3)
+                                 select m; break;
                 case 2:
                     orderform1 = from m in dc.orderform
-                             where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddMonths(-3)
-                             select m; break;
+                                 where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddMonths(-3)
+                                 select m; break;
                 case 3:
                     orderform1 = from m in dc.orderform
-                             where m.start_time.Value.Day == DateTime.Now.AddYears(-1).Day
-                             &&m.start_time.Value.Month == DateTime.Now.AddYears(-1).Month
-                             && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
-                             select m; break;
+                                 where m.start_time.Value.Day == DateTime.Now.AddYears(-1).Day
+                                 && m.start_time.Value.Month == DateTime.Now.AddYears(-1).Month
+                                 && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
+                                 select m; break;
                 case 4:
                     orderform1 = from m in dc.orderform
-                             where m.start_time.Value.Month == DateTime.Now.AddYears(-1).Month
-                             && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
-                             select m; break;
+                                 where m.start_time.Value.Month == DateTime.Now.AddYears(-1).Month
+                                 && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
+                                 select m; break;
             }
             switch (sel1)
             {
@@ -422,14 +427,14 @@ namespace shareDemo3
                     case 0:
                         foreach (var q in orders)
                         {
-                            Trend.FillEllipse(bike_stratBrush, (float)q.start_x , (float)q.start_y - 8, 16, 16);
+                            Trend.FillEllipse(bike_stratBrush, (float)q.start_x, (float)q.start_y - 8, 16, 16);
                             //trend_start++;
                         }
                         break;
                     case 1:
                         foreach (var q in orders)
                         {
-                            Trend.FillEllipse(bike_endBrush, (float)q.end_x , (float)q.end_y - 8, 16, 16);
+                            Trend.FillEllipse(bike_endBrush, (float)q.end_x, (float)q.end_y - 8, 16, 16);
                             //trend_end++;
                         }
                         break;
@@ -775,6 +780,9 @@ namespace shareDemo3
                     f.score = 100;
                     dc.fence.InsertOnSubmit(f);
                     dc.SubmitChanges();
+                    //新建智能调度区视图
+                    createView(ai_SelectX, ai_SelectY, aiWidth, aiHeight, "day", 1, 7);//7天策略
+                    createView(ai_SelectX, ai_SelectY, aiWidth, aiHeight, "hour", 1, 24);//24小时策略
                 }
                 catch (Exception ex)
                 {
@@ -884,6 +892,8 @@ namespace shareDemo3
             {
                 try
                 {
+                    dropView(tempAIarea.id, "day", 7);//删除7天策略视图
+                    dropView(tempAIarea.id, "hour", 24);//删除24小时策略视图
                     dc.fence.DeleteOnSubmit(tempAIarea);
                     dc.SubmitChanges();
                     AIAreaDisplay();
@@ -912,11 +922,505 @@ namespace shareDemo3
         private Label label19;
         private CheckedListBox clb_user;
         private Label label20;
-        private ComboBox cb_user_type;
         private Button button13;
+        private Label label21;
+        private Timer timer2;
+        private ComboBox cb_user_type;
+
+        //创建智能调度时段-需求视图
+        //由于参数设置为getdate（），会自动更新
+        /*参数说明（地理范围（x,y,宽，高）；时间间隔（类型，长度)；时间长度）
+        *   
+        *   时间间隔类型interval_type：minute，hour，day，month，year
+        *   时间长度time_length = n：即n个interval_type
+        */
+        /*使用时机：
+         *      创建视图由围栏增、开的button调用；
+         *      关、删时drop视图
+         * 视图名："view"_fenceid_时间间隔类型_长度
+        */
+
+        private void createView(int x, int y, int width, int height, string interval_type, int interval_length, int time_length)
+        {
+            try
+            {
+                string command = "";
+                //生成sql命令
+
+                string time0;
+                time0 = "DATEADD(" + interval_type + ",-" + time_length.ToString() + ",GETDATE())";
+
+                string view_name = "";
+                //查fence_id
+                var fence_id = from p in dc.fence
+                               where p.origin_x == x && p.origin_y == y && p.width == width && p.height == height
+                               select p.id;
+                view_name = "view_" + fence_id.First().ToString() + "_" + interval_type + "_" + interval_length.ToString();
+
+                string startORend = "start";
+
+                string cycle;
+                if (interval_type == "year")
+                    cycle = "10000000";
+                else if (interval_type == "month")
+                    cycle = "12";
+                else if (interval_type == "day")
+                    cycle = "30";
+                else if (interval_type == "hour")
+                    cycle = "24";
+                else if (interval_type == "minute")
+                    cycle = "60";
+                else
+                    cycle = "60";
+
+                Console.WriteLine(cycle);
+
+                string period = "(DATEPART(" + interval_type + "," + startORend + "_time)-DATEPART(" + interval_type + "," + time0 + ")+" + cycle + ")%" + cycle + "/" + interval_length.ToString();
+
+                command = "create view " + view_name
+                    + "(period,need)as select  " + period + ",count(*) from shareBike.dbo.orderform where "
+                    + startORend + "_x between " + x.ToString() + " and " + (x + width).ToString() + " and "
+                    + startORend + "_y between " + y.ToString() + " and " + (y + height).ToString() + " and "
+                    + startORend + "_time between " + time0 + " and GETDATE()"
+                    + " group by " + period;
+                //若存在，先删除
+                dc.ExecuteCommand("drop view if exists " + view_name);
+                //创建视图
+                dc.ExecuteCommand(command);
+                // Console.WriteLine(command);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        //删除智能调度视图 interval_type小写英文
+        private void dropView(int fence_id, string interval_type, int interval_length)
+        {
+            try
+            {
+                string command = "drop view if exists view_" + fence_id.ToString() + "_" + interval_type + "_" + interval_length.ToString();
+                dc.ExecuteCommand(command);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        //显示累计生成任务量
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                IQueryable<task> taskFromAI = from p in dc.task
+                                              where p.source == 3
+                                              select p;
+                label21.Text = "累计生成任务 " + taskFromAI.Count().ToString() + "条";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         #endregion
 
         #region 人事管理页代码
+        //插入数据按钮
+        private void button12_Click(object sender, EventArgs e)
+        {
+            //如果输人内容为空
+            if (string.IsNullOrWhiteSpace(tb_name.Text.Trim()) || string.IsNullOrWhiteSpace(tb_password.Text.Trim())
+                || string.IsNullOrWhiteSpace(tb_id.Text.Trim()))
+            {
+                MessageBox.Show("请输入完整的信息."); return;
+            }
+            //用户信息入库
+            string password = tb_password.Text.Trim();//密码
+            string name = tb_name.Text.Trim();//昵称
+            string id = tb_id.Text.Trim();//id手机号
+                                          //检查格式
+            Regex regex = new Regex(@"^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$");
+            if (!regex.IsMatch(id))
+            {
+                MessageBox.Show("请输入手机号注册."); return;
+            }
+            if (password.Length > 10 || name.Length > 10)
+            {
+                MessageBox.Show("密码和昵称长度最多10个字符."); return;
+            }
+            bool isSingle = register(cb_user_type.SelectedIndex, id, name, password);//0顾客，1管理员，2调度员
+            if (!isSingle)
+            {
+                MessageBox.Show("账号重复，请检查后再试.");
+            }
+            //查询并显示
+            ArrayList array = searchUser(cb_user_type.SelectedIndex, "", "", "");
+            userDisplay(array);
+        }
+        //查询数据按钮
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            ArrayList array = searchUser(cb_user_type.SelectedIndex, tb_id.Text.Trim(), tb_password.Text.Trim(), tb_name.Text.Trim());
+            userDisplay(array);
+        }
+        //显示数据
+        private void userDisplay(ArrayList t_user)
+        {
+            //清空现有项
+            for (int i = 0; i < clb_user.Items.Count; i++)
+            {
+                clb_user.Items.Clear();
+            }
+            //清空下面三个输入框
+            tb_id.Clear();
+            tb_password.Clear();
+            tb_name.Clear();
+            //显示
+            for (int j = 0; j < t_user.Count / 3; j++)
+            {
+                string item = "";
+                for (int i = 0; i < 3; i++)
+                {
+                    item += t_user[3 * j + i].ToString() + "                                 ";
+                }
+                clb_user.Items.Add(item);
+            }
+
+        }
+        //修改数据按钮
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (clb_user.CheckedItems.Count != 1)
+            {
+                MessageBox.Show("请选中一条数据！"); return;
+            }
+            //如果输人内容为空
+            if (string.IsNullOrWhiteSpace(tb_name.Text.Trim()) || string.IsNullOrWhiteSpace(tb_password.Text.Trim())
+                || string.IsNullOrWhiteSpace(tb_id.Text.Trim()))
+            {
+                MessageBox.Show("请输入完整的信息."); return;
+            }
+            //检查格式
+            Regex regex = new Regex(@"^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$");
+            if (!regex.IsMatch(tb_id.Text.Trim()))
+            {
+                MessageBox.Show("请输入手机号注册."); return;
+            }
+            if (tb_password.Text.Trim().Length > 10 || tb_name.Text.Trim().Length > 10)
+            {
+                MessageBox.Show("密码和昵称长度最多10个字符."); return;
+            }
+            //修改
+            string str = clb_user.SelectedItem.ToString();
+            Match match = Regex.Match(str, @"\d+");//取第一串数字
+            str = match.Groups[0].Value;
+            //指定id修改用户数据(先删再注册)
+            ArrayList selected = new ArrayList();
+            selected.Add(str);
+            deleteUser(cb_user_type.SelectedIndex, selected);
+            register(cb_user_type.SelectedIndex, tb_id.Text.Trim(), tb_name.Text.Trim(), tb_password.Text.Trim());
+            //查询并显示
+            ArrayList array = searchUser(cb_user_type.SelectedIndex, "", "", "");
+            userDisplay(array);
+        }
+        //删除数据按钮
+        private void button10_Click(object sender, EventArgs e)
+        {
+            ArrayList selected = new ArrayList();
+            for (int i = 0; i < clb_user.Items.Count; i++)//取所有选中的数据
+            {
+                if (clb_user.GetItemChecked(i))
+                {
+                    string str = clb_user.SelectedItem.ToString();
+                    Match match = Regex.Match(str, @"\d+");//取第一串数字
+                    str = match.Groups[0].Value;
+                    if (cb_user_type.SelectedIndex == 1 && str == myid)
+                    {
+                        MessageBox.Show("不能删除自己的数据！  id:" + myid); return;
+                    }
+                    selected.Add(str);
+                }
+            }
+            //删
+            deleteUser(cb_user_type.SelectedIndex, selected);
+            //查询并显示
+            ArrayList array = searchUser(cb_user_type.SelectedIndex, "", "", "");
+            userDisplay(array);
+        }
+
+
+        //注册：将新顾客入库(成功返回true，失败返回false)//0顾客，1管理员，2调度员
+        private bool register(int user_type, string t_id, string t_name, string t_password)
+        {
+            try
+            {
+                if (user_type == 0)
+                {
+                    //查询id是否存在
+                    int idCount = (from p in dc.customer
+                                   where t_id == p.id
+                                   select p).Count();
+                    if (idCount > 0) return false;
+                    //生成新记录
+                    customer new_customer = new customer() { id = t_id.ToString().PadLeft(5, '0'), password = t_password, nickname = t_name };
+                    dc.customer.InsertOnSubmit(new_customer);
+                    dc.SubmitChanges();
+                }
+                else if (user_type == 1)
+                {
+
+                    //查询id是否存在
+                    int idCount = (from p in dc.manager
+                                   where t_id == p.id
+                                   select p).Count();
+                    if (idCount > 0) return false;
+                    //生成新记录
+                    manager new_manager = new manager() { id = t_id.ToString().PadLeft(5, '0'), password = t_password, nickname = t_name };
+                    dc.manager.InsertOnSubmit(new_manager);
+                    dc.SubmitChanges();
+                }
+                else if (user_type == 2)
+                {
+
+                    //查询id是否存在
+                    int idCount = (from p in dc.dispatcher
+                                   where t_id == p.id
+                                   select p).Count();
+                    if (idCount > 0) return false;
+                    //生成新记录
+                    Dispatcher new_dispatcher = new Dispatcher() { id = t_id.ToString().PadLeft(5, '0'), password = t_password, nickname = t_name };
+                    dc.dispatcher.InsertOnSubmit(new_dispatcher);
+                    dc.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return true;
+        }
+
+        //删除用户数据//0顾客，1管理员，2调度员
+        private void deleteUser(int user_type, ArrayList user_id)
+        {
+            try
+            {
+                foreach (string theID in user_id)
+                {
+                    if (user_type == 0)
+                    {
+                        var users = (from p in dc.customer
+                                     where theID == (p.id.ToString())
+                                     select p);
+                        //dc.customer.DeleteAllOnSubmit(users);
+                        dc.customer.DeleteOnSubmit(users.First());
+                    }
+                    else if (user_type == 1)
+                    {
+                        var users = (from p in dc.manager
+                                     where theID == (p.id.ToString())
+                                     select p);
+                        dc.manager.DeleteAllOnSubmit(users);
+                    }
+                    else if (user_type == 2)
+                    {
+                        var users = (from p in dc.dispatcher
+                                     where theID == (p.id.ToString())
+                                     select p);
+                        dc.dispatcher.DeleteAllOnSubmit(users);
+                    }
+                }
+                dc.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        //查询用户数据//0顾客，1管理员，2调度员
+        private ArrayList searchUser(int user_type, string user_id, string user_password, string user_name)
+        {
+            ArrayList result = new ArrayList();
+            try
+            {
+                if (user_type == 0)//顾客
+                {
+                    if (user_id.Length == 0 && user_password.Length == 0 && user_name.Length == 0)
+                    {
+                        var t_user = (from p in dc.customer
+                                      select p);
+                        if (t_user != null)
+                        {
+                            foreach (var t in t_user)
+                            {
+                                result.Add(t.id);
+                                result.Add(t.password);
+                                result.Add(t.nickname);
+                            }
+                        }
+                    }
+                    if (user_id.Length > 0)
+                    {
+                        var t_user = (from p in dc.customer
+                                      where p.id == user_id
+                                      select p);
+                        if (t_user != null)
+                        {
+                            foreach (var t in t_user)
+                            {
+                                result.Add(t.id);
+                                result.Add(t.password);
+                                result.Add(t.nickname);
+                            }
+                        }
+
+                    }
+                    else if (user_password.Length > 0)
+                    {
+                        var t_user = (from p in dc.customer
+                                      where p.password == user_password
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    else if (user_name.Length > 0)
+                    {
+                        var t_user = (from p in dc.customer
+                                      where p.nickname == user_name
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                }
+                else if (user_type == 1)//管理员
+                {
+                    if (user_id.Length == 0 && user_password.Length == 0 && user_name.Length == 0)
+                    {
+                        var t_user = (from p in dc.manager
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+                    if (user_id.Length > 0)
+                    {
+                        var t_user = (from p in dc.manager
+                                      where p.id == user_id
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    else if (user_password.Length > 0)
+                    {
+                        var t_user = (from p in dc.manager
+                                      where p.password == user_password
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    else if (user_name.Length > 0)
+                    {
+                        var t_user = (from p in dc.manager
+                                      where p.nickname == user_name
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                }
+                else if (user_type == 2)//调度员
+                {
+                    if (user_id.Length == 0 && user_password.Length == 0 && user_name.Length == 0)
+                    {
+                        var t_user = (from p in dc.dispatcher
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    if (user_id.Length > 0)
+                    {
+                        var t_user = (from p in dc.dispatcher
+                                      where p.id == user_id
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    else if (user_password.Length > 0)
+                    {
+                        var t_user = (from p in dc.dispatcher
+                                      where p.password == user_password
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    else if (user_name.Length > 0)
+                    {
+                        var t_user = (from p in dc.dispatcher
+                                      where p.nickname == user_name
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
+            return result;
+        }
 
         #endregion
 
@@ -1018,6 +1522,8 @@ namespace shareDemo3
             this.cb_user_type = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button13 = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -1060,7 +1566,7 @@ namespace shareDemo3
             this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage6.Size = new System.Drawing.Size(1217, 792);
+            this.tabPage6.Size = new System.Drawing.Size(914, 648);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "智能调度";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1080,12 +1586,13 @@ namespace shareDemo3
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.splitContainer4.Panel2.Controls.Add(this.label21);
             this.splitContainer4.Panel2.Controls.Add(this.button8);
             this.splitContainer4.Panel2.Controls.Add(this.button2);
             this.splitContainer4.Panel2.Controls.Add(this.button3);
             this.splitContainer4.Panel2.Controls.Add(this.label13);
-            this.splitContainer4.Size = new System.Drawing.Size(1211, 788);
-            this.splitContainer4.SplitterDistance = 1021;
+            this.splitContainer4.Size = new System.Drawing.Size(908, 644);
+            this.splitContainer4.SplitterDistance = 766;
             this.splitContainer4.TabIndex = 0;
             // 
             // pictureBox9
@@ -1106,7 +1613,7 @@ namespace shareDemo3
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(21, 258);
+            this.button8.Location = new System.Drawing.Point(19, 280);
             this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(119, 56);
@@ -1117,7 +1624,7 @@ namespace shareDemo3
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(21, 194);
+            this.button2.Location = new System.Drawing.Point(19, 216);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 56);
@@ -1128,7 +1635,7 @@ namespace shareDemo3
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(21, 320);
+            this.button3.Location = new System.Drawing.Point(19, 342);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(119, 59);
@@ -1153,7 +1660,7 @@ namespace shareDemo3
             this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage5.Size = new System.Drawing.Size(1217, 792);
+            this.tabPage5.Size = new System.Drawing.Size(914, 648);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "下达任务";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1181,8 +1688,8 @@ namespace shareDemo3
             this.splitContainer3.Panel2.Controls.Add(this.button6);
             this.splitContainer3.Panel2.Controls.Add(this.label9);
             this.splitContainer3.Panel2.Controls.Add(this.button5);
-            this.splitContainer3.Size = new System.Drawing.Size(1211, 788);
-            this.splitContainer3.SplitterDistance = 810;
+            this.splitContainer3.Size = new System.Drawing.Size(908, 644);
+            this.splitContainer3.SplitterDistance = 752;
             this.splitContainer3.TabIndex = 0;
             // 
             // pictureBox7
@@ -1291,7 +1798,7 @@ namespace shareDemo3
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1217, 792);
+            this.tabPage2.Size = new System.Drawing.Size(914, 648);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "用车热图";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1317,8 +1824,8 @@ namespace shareDemo3
             this.splitContainer2.Panel2.Controls.Add(this.comboBox2);
             this.splitContainer2.Panel2.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel2.Controls.Add(this.button1);
-            this.splitContainer2.Size = new System.Drawing.Size(1211, 757);
-            this.splitContainer2.SplitterDistance = 855;
+            this.splitContainer2.Size = new System.Drawing.Size(908, 613);
+            this.splitContainer2.SplitterDistance = 781;
             this.splitContainer2.TabIndex = 1;
             // 
             // pictureBox6
@@ -1389,7 +1896,7 @@ namespace shareDemo3
             this.button1.Location = new System.Drawing.Point(44, 314);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 47);
+            this.button1.Size = new System.Drawing.Size(118, 47);
             this.button1.TabIndex = 0;
             this.button1.Text = "小时趋势分析";
             this.button1.UseVisualStyleBackColor = true;
@@ -1400,9 +1907,9 @@ namespace shareDemo3
             this.statusStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel5});
-            this.statusStrip2.Location = new System.Drawing.Point(3, 759);
+            this.statusStrip2.Location = new System.Drawing.Point(3, 615);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(1211, 31);
+            this.statusStrip2.Size = new System.Drawing.Size(908, 31);
             this.statusStrip2.TabIndex = 0;
             // 
             // toolStripStatusLabel5
@@ -1421,7 +1928,7 @@ namespace shareDemo3
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1217, 792);
+            this.tabPage1.Size = new System.Drawing.Size(914, 648);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "地图快照";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1455,8 +1962,8 @@ namespace shareDemo3
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(1211, 757);
-            this.splitContainer1.SplitterDistance = 793;
+            this.splitContainer1.Size = new System.Drawing.Size(908, 613);
+            this.splitContainer1.SplitterDistance = 767;
             this.splitContainer1.TabIndex = 1;
             // 
             // pictureBox1
@@ -1619,9 +2126,9 @@ namespace shareDemo3
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(3, 759);
+            this.statusStrip1.Location = new System.Drawing.Point(3, 615);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1211, 31);
+            this.statusStrip1.Size = new System.Drawing.Size(908, 31);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "X";
             // 
@@ -1664,7 +2171,7 @@ namespace shareDemo3
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1225, 829);
+            this.tabControl1.Size = new System.Drawing.Size(922, 685);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage3
@@ -1689,7 +2196,7 @@ namespace shareDemo3
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Size = new System.Drawing.Size(1217, 792);
+            this.tabPage3.Size = new System.Drawing.Size(914, 648);
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "人事管理";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1856,18 +2363,34 @@ namespace shareDemo3
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(44, 376);
+            this.button13.Location = new System.Drawing.Point(44, 377);
+            this.button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(132, 46);
+            this.button13.Size = new System.Drawing.Size(118, 47);
             this.button13.TabIndex = 5;
             this.button13.Text = "周趋势分析";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(11, 151);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(136, 48);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "累计生成任务量\r\n10秒刷新一次";
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 10000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // managerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1223, 866);
+            this.ClientSize = new System.Drawing.Size(920, 722);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "managerForm";
@@ -1982,128 +2505,6 @@ namespace shareDemo3
         private Button button8;
 
         #endregion
-        //插入数据按钮
-        private void button12_Click(object sender, EventArgs e)
-        {
-            //如果输人内容为空
-            if (string.IsNullOrWhiteSpace(tb_name.Text.Trim()) || string.IsNullOrWhiteSpace(tb_password.Text.Trim())
-                || string.IsNullOrWhiteSpace(tb_id.Text.Trim()))
-            {
-                MessageBox.Show("请输入完整的信息."); return;
-            }
-            //用户信息入库
-            string password = tb_password.Text.Trim();//密码
-            string name = tb_name.Text.Trim();//昵称
-            string id = tb_id.Text.Trim();//id手机号
-                                          //检查格式
-            Regex regex = new Regex(@"^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$");
-            if (!regex.IsMatch(id))
-            {
-                MessageBox.Show("请输入手机号注册."); return;
-            }
-            if (password.Length > 10 || name.Length > 10)
-            {
-                MessageBox.Show("密码和昵称长度最多10个字符."); return;
-            }
-            bool isSingle = DBmanager.DBmanager.register(cb_user_type.SelectedIndex, id, name, password);//0顾客，1管理员，2调度员
-            if (!isSingle)
-            {
-                MessageBox.Show("账号重复，请检查后再试.");
-            }
-            //查询并显示
-            ArrayList array = DBmanager.DBmanager.search_user(cb_user_type.SelectedIndex, "", "", "");
-            user_display(array);
-        }
-        //查询数据按钮
-        private void button9_Click_1(object sender, EventArgs e)
-        {
-            ArrayList array = DBmanager.DBmanager.search_user(cb_user_type.SelectedIndex, tb_id.Text.Trim(), tb_password.Text.Trim(), tb_name.Text.Trim());
-            user_display(array);
-        }
-        //显示数据
-        private void user_display(ArrayList t_user)
-        {
-            //清空现有项
-            for (int i = 0; i < clb_user.Items.Count; i++)
-            {
-                clb_user.Items.Clear();
-            }
-            //清空下面三个输入框
-            tb_id.Clear();
-            tb_password.Clear();
-            tb_name.Clear();
-            //显示
-            for (int j = 0; j < t_user.Count / 3; j++)
-            {
-                string item = "";
-                for (int i = 0; i < 3; i++)
-                {
-                    item += t_user[3 * j + i].ToString() + "                                 ";
-                }
-                clb_user.Items.Add(item);
-            }
-
-        }
-        //修改数据按钮
-        private void button11_Click(object sender, EventArgs e)
-        {
-            if (clb_user.CheckedItems.Count != 1)
-            {
-                MessageBox.Show("请选中一条数据！"); return;
-            }
-            //如果输人内容为空
-            if (string.IsNullOrWhiteSpace(tb_name.Text.Trim()) || string.IsNullOrWhiteSpace(tb_password.Text.Trim())
-                || string.IsNullOrWhiteSpace(tb_id.Text.Trim()))
-            {
-                MessageBox.Show("请输入完整的信息."); return;
-            }
-            //检查格式
-            Regex regex = new Regex(@"^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$");
-            if (!regex.IsMatch(tb_id.Text.Trim()))
-            {
-                MessageBox.Show("请输入手机号注册."); return;
-            }
-            if (tb_password.Text.Trim().Length > 10 || tb_name.Text.Trim().Length > 10)
-            {
-                MessageBox.Show("密码和昵称长度最多10个字符."); return;
-            }
-            //修改
-            string str = clb_user.SelectedItem.ToString();
-            Match match = Regex.Match(str, @"\d+");//取第一串数字
-            str = match.Groups[0].Value;
-            //指定id修改用户数据(先删再注册)
-            ArrayList selected = new ArrayList();
-            selected.Add(str);
-            DBmanager.DBmanager.delete_user(cb_user_type.SelectedIndex, selected);
-            DBmanager.DBmanager.register(cb_user_type.SelectedIndex, tb_id.Text.Trim(), tb_name.Text.Trim(), tb_password.Text.Trim());
-            //查询并显示
-            ArrayList array = DBmanager.DBmanager.search_user(cb_user_type.SelectedIndex, "", "", "");
-            user_display(array);
-        }
-        //删除数据按钮
-        private void button10_Click(object sender, EventArgs e)
-        {
-            ArrayList selected = new ArrayList();
-            for (int i = 0; i < clb_user.Items.Count; i++)//取所有选中的数据
-            {
-                if (clb_user.GetItemChecked(i))
-                {
-                    string str = clb_user.SelectedItem.ToString();
-                    Match match = Regex.Match(str, @"\d+");//取第一串数字
-                    str = match.Groups[0].Value;
-                    if (cb_user_type.SelectedIndex == 1 && str == myid)
-                    {
-                        MessageBox.Show("不能删除自己的数据！  id:" + myid); return;
-                    }
-                    selected.Add(str);
-                }
-            }
-            //删
-            DBmanager.DBmanager.delete_user(cb_user_type.SelectedIndex, selected);
-            //查询并显示
-            ArrayList array = DBmanager.DBmanager.search_user(cb_user_type.SelectedIndex, "", "", "");
-            user_display(array);
-        }
 
         
     }
