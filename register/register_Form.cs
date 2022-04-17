@@ -5,10 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using shareDemo2;
 using Sunny.UI;
-
 namespace login_register_Form1
 {
     public partial class register_Form : UIForm
@@ -28,11 +29,21 @@ namespace login_register_Form1
                 {
                     MessageBox.Show("请输入完整的信息."); return;
                 }
-                //用户信息入库，并返回分配的新ID
+                //用户信息入库
                 string password = tb_password.Text.Trim();//密码
                 string name = tb_name.Text.Trim();//昵称
                 string id = tb_id.Text.Trim();//id手机号
-                bool isSingle = DBmanager.DBmanager.register(id,name, password);
+                //检查格式
+                Regex regex = new Regex(@"^(((13[0-9]{1})|(15[0-35-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$");
+                if (!regex.IsMatch(id))
+                {
+                    MessageBox.Show("请输入手机号注册."); return;
+                }
+                if (password.Length > 10 || name.Length > 10)
+                {
+                    MessageBox.Show("密码和昵称长度最多10个字符."); return;
+                }
+                bool isSingle = DBmanager.DBmanager.register(0, id, name, password);//0顾客，1管理员，2调度员
                 if (!isSingle)
                 {
                     MessageBox.Show("账号重复，请检查后再试."); return;
@@ -44,9 +55,9 @@ namespace login_register_Form1
             else if (button1.Text == "登录")
             {
                 //跳转到主界面
-                login_Form customForm = new login_Form();//待修改:新建主界面(传参用户类型)
+                CustomerForm new_form = new CustomerForm(tb_id.Text);
                 this.Hide();
-                customForm.ShowDialog();
+                new_form.ShowDialog();
                 Application.ExitThread();
             }
         }

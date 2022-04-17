@@ -29,11 +29,12 @@
   </Table>
   <Table Name="dbo.fence" Member="fence">
     <Type Name="fence">
-      <Column Name="tag" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="origin_x" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="origin_y" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="width" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="height" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tag" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="origin_x" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="origin_y" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="width" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="height" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="score" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
@@ -51,7 +52,7 @@
       <Column Name="bid" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="flag" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
       <Column Name="start_x" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="strat_y" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="start_y" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="end_x" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="end_y" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="start_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -67,8 +68,6 @@
       <Column Name="tag" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
       <Column Name="source" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
       <Column Name="flag" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="start_x" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="start_y" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="end_x" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="end_y" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="start_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />

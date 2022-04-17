@@ -36,9 +36,9 @@ namespace shareDemo2
     partial void Insertcustomer(customer instance);
     partial void Updatecustomer(customer instance);
     partial void Deletecustomer(customer instance);
-    partial void Insertdispatcher(dispatcher instance);
-    partial void Updatedispatcher(dispatcher instance);
-    partial void Deletedispatcher(dispatcher instance);
+    partial void Insertdispatcher(Dispatcher instance);
+    partial void Updatedispatcher(Dispatcher instance);
+    partial void Deletedispatcher(Dispatcher instance);
     partial void Insertfence(fence instance);
     partial void Updatefence(fence instance);
     partial void Deletefence(fence instance);
@@ -99,11 +99,11 @@ namespace shareDemo2
 			}
 		}
 		
-		public System.Data.Linq.Table<dispatcher> dispatcher
+		public System.Data.Linq.Table<Dispatcher> dispatcher
 		{
 			get
 			{
-				return this.GetTable<dispatcher>();
+				return this.GetTable<Dispatcher>();
 			}
 		}
 		
@@ -493,7 +493,7 @@ namespace shareDemo2
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.dispatcher")]
-	public partial class dispatcher : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Dispatcher : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -518,7 +518,7 @@ namespace shareDemo2
     partial void OnnicknameChanged();
     #endregion
 		
-		public dispatcher()
+		public Dispatcher()
 		{
 			this._task = new EntitySet<task>(new Action<task>(this.attach_task), new Action<task>(this.detach_task));
 			OnCreated();
@@ -636,15 +636,17 @@ namespace shareDemo2
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private byte _tag;
+		private int _id;
 		
-		private int _origin_x;
+		private System.Nullable<byte> _tag;
 		
-		private int _origin_y;
+		private System.Nullable<int> _origin_x;
 		
-		private int _width;
+		private System.Nullable<int> _origin_y;
 		
-		private int _height;
+		private System.Nullable<int> _width;
+		
+		private System.Nullable<int> _height;
 		
 		private System.Nullable<int> _score;
 		
@@ -652,15 +654,17 @@ namespace shareDemo2
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OntagChanging(byte value);
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OntagChanging(System.Nullable<byte> value);
     partial void OntagChanged();
-    partial void Onorigin_xChanging(int value);
+    partial void Onorigin_xChanging(System.Nullable<int> value);
     partial void Onorigin_xChanged();
-    partial void Onorigin_yChanging(int value);
+    partial void Onorigin_yChanging(System.Nullable<int> value);
     partial void Onorigin_yChanged();
-    partial void OnwidthChanging(int value);
+    partial void OnwidthChanging(System.Nullable<int> value);
     partial void OnwidthChanged();
-    partial void OnheightChanging(int value);
+    partial void OnheightChanging(System.Nullable<int> value);
     partial void OnheightChanged();
     partial void OnscoreChanging(System.Nullable<int> value);
     partial void OnscoreChanged();
@@ -671,8 +675,28 @@ namespace shareDemo2
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tag", DbType="TinyInt NOT NULL", IsPrimaryKey=true)]
-		public byte tag
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tag", DbType="TinyInt")]
+		public System.Nullable<byte> tag
 		{
 			get
 			{
@@ -691,8 +715,8 @@ namespace shareDemo2
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_origin_x", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int origin_x
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_origin_x", DbType="Int")]
+		public System.Nullable<int> origin_x
 		{
 			get
 			{
@@ -711,8 +735,8 @@ namespace shareDemo2
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_origin_y", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int origin_y
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_origin_y", DbType="Int")]
+		public System.Nullable<int> origin_y
 		{
 			get
 			{
@@ -731,8 +755,8 @@ namespace shareDemo2
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_width", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int width
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_width", DbType="Int")]
+		public System.Nullable<int> width
 		{
 			get
 			{
@@ -751,8 +775,8 @@ namespace shareDemo2
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_height", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int height
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_height", DbType="Int")]
+		public System.Nullable<int> height
 		{
 			get
 			{
@@ -1320,10 +1344,6 @@ namespace shareDemo2
 		
 		private System.Nullable<byte> _flag;
 		
-		private System.Nullable<int> _start_x;
-		
-		private System.Nullable<int> _start_y;
-		
 		private System.Nullable<int> _end_x;
 		
 		private System.Nullable<int> _end_y;
@@ -1338,7 +1358,7 @@ namespace shareDemo2
 		
 		private EntityRef<bike> _bike;
 		
-		private EntityRef<dispatcher> _dispatcher;
+		private EntityRef<Dispatcher> _dispatcher;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -1352,10 +1372,6 @@ namespace shareDemo2
     partial void OnsourceChanged();
     partial void OnflagChanging(System.Nullable<byte> value);
     partial void OnflagChanged();
-    partial void Onstart_xChanging(System.Nullable<int> value);
-    partial void Onstart_xChanged();
-    partial void Onstart_yChanging(System.Nullable<int> value);
-    partial void Onstart_yChanged();
     partial void Onend_xChanging(System.Nullable<int> value);
     partial void Onend_xChanged();
     partial void Onend_yChanging(System.Nullable<int> value);
@@ -1373,7 +1389,7 @@ namespace shareDemo2
 		public task()
 		{
 			this._bike = default(EntityRef<bike>);
-			this._dispatcher = default(EntityRef<dispatcher>);
+			this._dispatcher = default(EntityRef<Dispatcher>);
 			OnCreated();
 		}
 		
@@ -1453,46 +1469,6 @@ namespace shareDemo2
 					this._flag = value;
 					this.SendPropertyChanged("flag");
 					this.OnflagChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_start_x", DbType="Int")]
-		public System.Nullable<int> start_x
-		{
-			get
-			{
-				return this._start_x;
-			}
-			set
-			{
-				if ((this._start_x != value))
-				{
-					this.Onstart_xChanging(value);
-					this.SendPropertyChanging();
-					this._start_x = value;
-					this.SendPropertyChanged("start_x");
-					this.Onstart_xChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_start_y", DbType="Int")]
-		public System.Nullable<int> start_y
-		{
-			get
-			{
-				return this._start_y;
-			}
-			set
-			{
-				if ((this._start_y != value))
-				{
-					this.Onstart_yChanging(value);
-					this.SendPropertyChanging();
-					this._start_y = value;
-					this.SendPropertyChanged("start_y");
-					this.Onstart_yChanged();
 				}
 			}
 		}
@@ -1660,7 +1636,7 @@ namespace shareDemo2
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="dispatcher_task", Storage="_dispatcher", ThisKey="handler", OtherKey="id", IsForeignKey=true)]
-		public dispatcher dispatcher
+		public Dispatcher dispatcher
 		{
 			get
 			{
@@ -1668,7 +1644,7 @@ namespace shareDemo2
 			}
 			set
 			{
-				dispatcher previousValue = this._dispatcher.Entity;
+				Dispatcher previousValue = this._dispatcher.Entity;
 				if (((previousValue != value) 
 							|| (this._dispatcher.HasLoadedOrAssignedValue == false)))
 				{

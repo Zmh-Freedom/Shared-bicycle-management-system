@@ -1,11 +1,8 @@
 ﻿using login_register_Form1;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using shareDemo2;
 using shareDemo3;
+using System;
+using System.Windows.Forms;
+
 namespace shareDemo2
 {
     static class Program
@@ -18,6 +15,7 @@ namespace shareDemo2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // Application.Run(new CustomerForm());
             Application.Run(new login_Form());
         }
     }

@@ -10,11 +10,374 @@ namespace DBmanager
 {
     public class DBmanager
     {
+        
+        //创建智能调度时段-需求视图
+        //由于参数设置为getdate（），会自动更新
+        /*参数说明（地理范围（x,y,宽，高）；时间间隔（类型，长度)；时间长度）
+        *   
+        *   时间间隔类型interval_type：minute，hour，day，month，year
+        *   时间长度time_length = n：即n个interval_type
+        */
+        /*使用时机：
+         *      创建视图由围栏增、开的button调用；
+         *      关、删时drop视图
+         * 视图名："view"_fenceid_时间间隔类型_长度
+        */
+
+        public static void create_period_need_view(int x, int y, int width, int height, string interval_type, int interval_length, int time_length)
+        {
+            try
+            {
+                string conString = "Data Source=localhost;Initial Catalog=shareBike;Integrated Security=True";
+
+                using (DBDataContext dc = new DBDataContext(conString))
+                {
+                    string command = "";
+                    //生成sql命令
+
+                    string time0;
+                    time0 = "DATEADD(" + interval_type + ",-" + time_length.ToString() + ",GETDATE())";
+
+                    string view_name = "";
+                    //查fence_id
+                    var fence_id = from p in dc.fence
+                                   where p.origin_x == x && p.origin_y == y && p.width == width && p.height == height
+                                   select p.id;
+                    view_name = "view_" + fence_id.First().ToString() + "_" + interval_type + "_" + interval_length.ToString();
+
+                    string startORend = "start";
+
+                    string cycle;
+                    if (interval_type == "year")
+                        cycle = "10000000";
+                    else if (interval_type == "month")
+                        cycle = "12";
+                    else if (interval_type == "day")
+                        cycle = "30";
+                    else if (interval_type == "hour")
+                        cycle = "24";
+                    else if (interval_type == "minute")
+                        cycle = "60";
+                    else
+                        cycle = "60";
+
+                    Console.WriteLine(cycle);
+
+                    string period = "(DATEPART(" + interval_type + "," + startORend + "_time)-DATEPART(" + interval_type + "," + time0 + ")+" + cycle + ")%" + cycle + "/" + interval_length.ToString();
+
+                    command = "create view " + view_name
+                        + "(period,need)as select  " + period + ",count(*) from shareBike.dbo.orderform where "
+                        + startORend + "_x between " + x.ToString() + " and " + (x + width).ToString() + " and "
+                        + startORend + "_y between " + y.ToString() + " and " + (y + height).ToString() + " and "
+                        + startORend + "_time between " + time0 + " and GETDATE()"
+                        + " group by " + period;
+                    //若存在，先删除
+                    dc.ExecuteCommand("drop view if exists " + view_name);
+                    //创建视图
+                    dc.ExecuteCommand(command);
+                    // Console.WriteLine(command);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        //删除智能调度视图 interval_type小写英文
+        public static void drop_period_need_view(int fence_id, string interval_type, int interval_length)
+        {
+            string conString = "Data Source=localhost;Initial Catalog=shareBike;Integrated Security=True";
+
+            using (DBDataContext dc = new DBDataContext(conString))
+            {
+                string command = "drop view if exists view_" + fence_id.ToString() + "_" + interval_type + "_" + interval_length.ToString();
+                dc.ExecuteCommand(command);
+            }
+        }
+        //注册：将新顾客入库(成功返回true，失败返回false)//0顾客，1管理员，2调度员
+        public static bool register(int user_type, string t_id, string t_name, string t_password)
+        {
+            try
+            {
+                DBDataContext dc = new DBDataContext();//创建数据库对象
+                if (user_type == 0)
+                {
+                    //查询id是否存在
+                    int idCount = (from p in dc.customer
+                                   where t_id == p.id
+                                   select p).Count();
+                    if (idCount > 0) return false;
+                    //生成新记录
+                    customer new_customer = new customer() { id = t_id.ToString().PadLeft(5, '0'), password = t_password, nickname = t_name };
+                    dc.customer.InsertOnSubmit(new_customer);
+                    dc.SubmitChanges();
+                }
+                else if (user_type == 1)
+                {
+
+                    //查询id是否存在
+                    int idCount = (from p in dc.manager
+                                   where t_id == p.id
+                                   select p).Count();
+                    if (idCount > 0) return false;
+                    //生成新记录
+                    manager new_manager = new manager() { id = t_id.ToString().PadLeft(5, '0'), password = t_password, nickname = t_name };
+                    dc.manager.InsertOnSubmit(new_manager);
+                    dc.SubmitChanges();
+                }
+                else if (user_type == 2)
+                {
+
+                    //查询id是否存在
+                    int idCount = (from p in dc.dispatcher
+                                   where t_id == p.id
+                                   select p).Count();
+                    if (idCount > 0) return false;
+                    //生成新记录
+                    Dispatcher new_dispatcher = new Dispatcher() { id = t_id.ToString().PadLeft(5, '0'), password = t_password, nickname = t_name };
+                    dc.dispatcher.InsertOnSubmit(new_dispatcher);
+                    dc.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return true;
+        }
+
+        //删除用户数据//0顾客，1管理员，2调度员
+        public static void delete_user(int user_type, ArrayList user_id)
+        {
+            try
+            {
+                DBDataContext dc = new DBDataContext();//创建数据库对象
+                foreach (string theID in user_id)
+                {
+                    if (user_type == 0)
+                    {
+                        var users = (from p in dc.customer
+                                     where theID == (p.id.ToString())
+                                     select p);
+                        //dc.customer.DeleteAllOnSubmit(users);
+                        dc.customer.DeleteOnSubmit(users.First());
+                        dc.SubmitChanges();
+                    }
+                    else if (user_type == 1)
+                    {
+                        var users = (from p in dc.manager
+                                     where theID == (p.id.ToString())
+                                     select p);
+                        dc.manager.DeleteAllOnSubmit(users);
+                        dc.SubmitChanges();
+                    }
+                    else if (user_type == 2)
+                    {
+                        var users = (from p in dc.dispatcher
+                                     where theID == (p.id.ToString())
+                                     select p);
+                        dc.dispatcher.DeleteAllOnSubmit(users);
+                        dc.SubmitChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        //查询用户数据//0顾客，1管理员，2调度员
+        public static ArrayList search_user(int user_type, string user_id, string user_password, string user_name)
+        {
+            ArrayList result = new ArrayList();
+            try
+            {
+                DBDataContext dc = new DBDataContext();//创建数据库对象
+                if (user_type == 0)//顾客
+                {
+                    if (user_id.Length == 0 && user_password.Length == 0 && user_name.Length == 0)
+                    {
+                        var t_user = (from p in dc.customer
+                                      select p);
+                        if (t_user != null)
+                        {
+                            foreach (var t in t_user)
+                            {
+                                result.Add(t.id);
+                                result.Add(t.password);
+                                result.Add(t.nickname);
+                            }
+                        }
+                    }
+                    if (user_id.Length > 0)
+                    {
+                        var t_user = (from p in dc.customer
+                                      where p.id == user_id
+                                      select p);
+                        if (t_user != null)
+                        {
+                            foreach (var t in t_user)
+                            {
+                                result.Add(t.id);
+                                result.Add(t.password);
+                                result.Add(t.nickname);
+                            }
+                        }
+
+                    }
+                    else if (user_password.Length > 0)
+                    {
+                        var t_user = (from p in dc.customer
+                                      where p.password == user_password
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    else if (user_name.Length > 0)
+                    {
+                        var t_user = (from p in dc.customer
+                                      where p.nickname == user_name
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                }
+                else if (user_type == 1)//管理员
+                {
+                    if (user_id.Length == 0 && user_password.Length == 0 && user_name.Length == 0)
+                    {
+                        var t_user = (from p in dc.manager
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+                    if (user_id.Length > 0)
+                    {
+                        var t_user = (from p in dc.manager
+                                      where p.id == user_id
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    else if (user_password.Length > 0)
+                    {
+                        var t_user = (from p in dc.manager
+                                      where p.password == user_password
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    else if (user_name.Length > 0)
+                    {
+                        var t_user = (from p in dc.manager
+                                      where p.nickname == user_name
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                }
+                else if (user_type == 2)//调度员
+                {
+                    if (user_id.Length == 0 && user_password.Length == 0 && user_name.Length == 0)
+                    {
+                        var t_user = (from p in dc.dispatcher
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    if (user_id.Length > 0)
+                    {
+                        var t_user = (from p in dc.dispatcher
+                                      where p.id == user_id
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    else if (user_password.Length > 0)
+                    {
+                        var t_user = (from p in dc.dispatcher
+                                      where p.password == user_password
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                    else if (user_name.Length > 0)
+                    {
+                        var t_user = (from p in dc.dispatcher
+                                      where p.nickname == user_name
+                                      select p);
+                        foreach (var t in t_user)
+                        {
+                            result.Add(t.id);
+                            result.Add(t.password);
+                            result.Add(t.nickname);
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
+            return result;
+        }
+
         //调度员操作
-         /* 未处理的taskid和bike.id在参数中的序号  (待处理的..，         检查条件，   bike.flag改成，.time.，坐标， task.flag, 结束时间, 调度员)
-         * 负数表示不用改，坐标0改(0,0)，1改task.loc
-         * Noflag==4,要检查任务类型
-         * */
+        /* 未处理的taskid和bike.id在参数中的序号  (待处理的..，         检查条件，   bike.flag改成，.time.，坐标， task.flag, 结束时间, 调度员)
+        * 负数表示不用改，坐标0改(0,0)，1改task.loc
+        * Noflag==4,要检查任务类型
+        * */
         public static ArrayList dispatcher_Work(ArrayList tasks_bike_id,  int bFlagTo, int bTimeTo, int bLocTo, int tFlagTo, DateTime tEndtimeTo, string tHandlerTo)
         {
             int Noflag = 3;
@@ -44,7 +407,10 @@ namespace DBmanager
                     }
                     //开始处理
                     //bike
-                    t_bike.First().flag = (byte?)bFlagTo;//bike.flag
+                    if (t_task.First().flag == 3)
+                        t_bike.First().flag = 4;
+                    else
+                        t_bike.First().flag = (byte?)bFlagTo;//bike.flag
                     if(bTimeTo>=0) t_bike.First().total_time = bTimeTo;//bike.total_time
                     if (bLocTo == 0) t_bike.First().current_x = t_bike.First().current_y= 0;//bike位置
                     else if(bLocTo == 1)
@@ -285,8 +651,6 @@ namespace DBmanager
             else if (t.source == 3) r += "    系统  ";
             //单车
             r+= String.Format(format_id, t.bid);
-            //起点
-            r += String.Format(format_point, t.start_x, t.start_y);
             //终点
             r += String.Format(format_point, t.end_x, t.end_y);
             //起始时间

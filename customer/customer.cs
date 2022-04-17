@@ -4,20 +4,26 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
-
 namespace shareDemo2
 {
     public partial class CustomerForm : UIForm
     {
-        public CustomerForm()
+        public CustomerForm(string ID)
         {
             InitializeComponent();
             #region 数据库初始化
             dc = new DBDataContext();
+            user_id = ID;
+            foreach(var x in dc.customer)
+            {
+                if(x.id== user_id)
+                {
+                    user_nickname= x.nickname;
+                    break;
+                }
+            }
             #endregion
 
             #region 绘图初始化
@@ -49,7 +55,8 @@ namespace shareDemo2
         {
             pbox.Image = Properties.Resources.me;
             pbox.Size = new Size(30, 50);//设置PictureBox控件大小
-            freeMove = false;
+
+            //freeMove = false;
             bias_x = 15;
             bias_y = 45;
         }
@@ -92,7 +99,7 @@ namespace shareDemo2
                                             select p;
                 foreach (var q in qfences)
                 {
-                    g.FillRectangle(mysbrush2, new Rectangle(q.origin_x, q.origin_y, q.width, q.height));
+                    g.FillRectangle(mysbrush2, (float)q.origin_x, (float)q.origin_y, (float)q.width, (float)q.height);
                 }
                 g.Flush();
             }
@@ -157,10 +164,10 @@ namespace shareDemo2
             {
                 fence f = new fence();
                 f.tag = 3;
-                f.origin_x = x - 150;
-                f.origin_y = y - 150;
-                f.height = 300;
-                f.width = 300;
+                f.origin_x = x - 100;
+                f.origin_y = y - 100;
+                f.height = 200;
+                f.width = 200;
                 f.score = 1;
                 dc.fence.InsertOnSubmit(f);
                 dc.SubmitChanges();
@@ -271,7 +278,8 @@ namespace shareDemo2
                 order.cid = user_id;
                 order.start_x = now_x;
                 order.start_y = now_y;
-                startTime = DateTime.Now;
+                //startTime = DateTime.Now;
+                startTime = dateTimePicker1.Value;
                 order.start_time = startTime;
                 order.flag = 1;
                 dc.orderform.InsertOnSubmit(order);
@@ -299,7 +307,8 @@ namespace shareDemo2
             now_bike.current_x = now_x;
             now_bike.current_y = now_y;
 
-            int last = (int)(DateTime.Now - startTime).TotalSeconds;
+            //int last = (int)(DateTime.Now - startTime).TotalSeconds;
+            int last = Convert.ToInt32(textBox1.Text);
             now_bike.total_time += last;
 
             now_order.end_time = startTime.AddMinutes(last);
@@ -342,6 +351,14 @@ namespace shareDemo2
                 return false;
             }
         }
+        //返回一个智能调度区内的位置
+        private Point GetNewLocation()
+        {
+            fence q = (from p in dc.fence
+                      where p.tag == 2
+                      select p).First();
+            return new Point((int)q.origin_x, (int)q.origin_y);
+        }
 
         //创建因非法停车导致的调度任务
         private void CreateDispatchTask()
@@ -352,9 +369,10 @@ namespace shareDemo2
                 t.tag = 2;
                 t.source = 1;
                 t.flag = 0;
-                t.start_x = now_x;
-                t.start_y = now_y;
                 t.start_time = DateTime.Now;
+                Point NewLocation = GetNewLocation();
+                t.end_x = NewLocation.X;
+                t.end_y = NewLocation.Y;
                 t.bid = now_bike.id;
                 dc.task.InsertOnSubmit(t);
                 dc.SubmitChanges();
@@ -439,7 +457,7 @@ namespace shareDemo2
                     bias_y = 40;
                     pbox.Location = new Point(now_x - bias_x, now_y - bias_y);
                     RepaintMap();
-                    freeMove = true;
+                    //freeMove = true;
                     timer1.Enabled = false;
                     timer2.Enabled = false;
                     label2.ResetText();
@@ -473,8 +491,6 @@ namespace shareDemo2
                 bike the_bike = qbikes.First();//就近返回第一辆单车
                 the_bike.flag = 1;//标记为待检查
                 task t = new task();
-                t.start_x = now_x;
-                t.start_y = now_y;
                 t.tag = 1;
                 t.source = 1;
                 t.flag = 0;
@@ -521,7 +537,7 @@ namespace shareDemo2
                 bias_y = 40;
                 pbox.Location = new Point(now_x - bias_x, now_y - bias_y);
                 RepaintMap();
-                freeMove = false;
+                freeMove = true;
                 timer1.Enabled = false;
                 timer2.Enabled = false;
                 label2.ResetText();
