@@ -269,9 +269,9 @@ namespace shareDemo3
                     break;
             }
         }
-        public IQueryable<orderform> Sel1(int sel)
+        public IQueryable<DateTime> Sel1(int sel)
         {
-            IQueryable<orderform> order1 = null;
+            IQueryable<DateTime> order1 = null;
             switch (sel)
             {
                 case 0:
@@ -279,39 +279,39 @@ namespace shareDemo3
                              where m.start_time.Value.Date <= DateTime.Now.Date && m.start_time.Value > DateTime.Now.AddDays(-3).Date
                              && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                              && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                             select m; break;
+                             select m.start_time.Value; break;
                 case 1:
                     order1 = from m in dc.orderform
                              where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddDays(-7 * 3)
                              && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                              && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                             select m; break;
+                             select m.start_time.Value; break;
                 case 2:
                     order1 = from m in dc.orderform
                              where m.start_time.Value <= DateTime.Now && m.start_time.Value > DateTime.Now.AddMonths(-3)
                              && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                              && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                             select m; break;
+                             select m.start_time.Value; break;
                 case 3:
                     order1 = from m in dc.orderform
                              where m.start_time.Value.Day == DateTime.Now.AddYears(-1).Day
                              && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
                              && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                              && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                             select m; break;
+                             select m.start_time.Value; break;
                 case 4:
                     order1 = from m in dc.orderform
                              where m.start_time.Value.Month == DateTime.Now.AddYears(-1).Month
                              && m.start_time.Value.Year == DateTime.Now.AddYears(-1).Year
                              && m.start_x >= origin_SelectX && m.start_x <= origin_SelectX + selectWidth
                              && m.start_y >= origin_SelectY && m.start_y <= origin_SelectY + selectHeight
-                             select m; break;
+                             select m.start_time.Value; break;
             }
             return order1;
         }
-        public IQueryable<orderform> Sel2(int sel)
+        public IQueryable<DateTime> Sel2(int sel)
         {
-            IQueryable<orderform> order2 = null;
+            IQueryable<DateTime> order2 = null;
             switch (sel)
             {
                 case 0:
@@ -319,19 +319,19 @@ namespace shareDemo3
                              where m.end_time.Value.Date <= DateTime.Now.Date && m.end_time.Value > DateTime.Now.AddDays(-3).Date
                              && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                              && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                             select m; break;
+                             select m.end_time.Value; break;
                 case 1:
                     order2 = from m in dc.orderform
                              where m.end_time.Value <= DateTime.Now && m.end_time.Value > DateTime.Now.AddDays(-7 * 3)
                              && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                              && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                             select m; break;
+                             select m.end_time.Value; break;
                 case 2:
                     order2 = from m in dc.orderform
                              where m.end_time.Value <= DateTime.Now && m.end_time.Value > DateTime.Now.AddMonths(-3)
                              && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                              && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                             select m; break;
+                             select m.end_time.Value; break;
                 case 3:
                     order2 = from m in dc.orderform
                              where m.end_time.Value.Day == DateTime.Now.AddYears(-1).Day
@@ -339,14 +339,14 @@ namespace shareDemo3
                              && m.end_time.Value.Year == DateTime.Now.AddYears(-1).Year
                              && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                              && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                             select m; break;
+                             select m.end_time.Value; break;
                 case 4:
                     order2 = from m in dc.orderform
                              where m.end_time.Value.Month == DateTime.Now.AddYears(-1).Month
                              && m.end_time.Value.Year == DateTime.Now.AddYears(-1).Year
                              && m.end_x >= origin_SelectX && m.end_x <= origin_SelectX + selectWidth
                              && m.end_y >= origin_SelectY && m.end_y <= origin_SelectY + selectHeight
-                             select m; break;
+                             select m.end_time.Value; break;
             }
             return order2;
         }
@@ -408,16 +408,16 @@ namespace shareDemo3
                                  && m.end_time.Value.Year == DateTime.Now.AddYears(-1).Year
                                  select m; break;
             }
-            if (sel2 == 1) Dream_trendbike(orderform1, 0);
+            if (sel2 == 1) Draw_trendbike(orderform1, 0);
             else if (sel2 == 2)
-                Dream_trendbike(orderform2, 1);
+                Draw_trendbike(orderform2, 1);
             else
             {
-                Dream_trendbike(orderform1, 0);
-                Dream_trendbike(orderform2, 1);
+                Draw_trendbike(orderform1, 0);
+                Draw_trendbike(orderform2, 1);
             }
         }
-        private void Dream_trendbike(IQueryable<orderform> orders, int sel2)
+        private void Draw_trendbike(IQueryable<orderform> orders, int sel2)
         {
             Trend = Graphics.FromImage(pictureBox6.Image);
             try
@@ -781,8 +781,8 @@ namespace shareDemo3
                     dc.fence.InsertOnSubmit(f);
                     dc.SubmitChanges();
                     //新建智能调度区视图
-                    createView(ai_SelectX, ai_SelectY, aiWidth, aiHeight, "day", 1, 7);//7天策略
-                    createView(ai_SelectX, ai_SelectY, aiWidth, aiHeight, "hour", 1, 24);//24小时策略
+                    createView(ai_SelectX, ai_SelectY, aiWidth, aiHeight, "weekday", 1, 3 * 7);//7天策略
+                    createView(ai_SelectX, ai_SelectY, aiWidth, aiHeight, "hour", 1, 7 * 24);//24小时策略
                 }
                 catch (Exception ex)
                 {
@@ -892,8 +892,8 @@ namespace shareDemo3
             {
                 try
                 {
-                    dropView(tempAIarea.id, "day", 7);//删除7天策略视图
-                    dropView(tempAIarea.id, "hour", 24);//删除24小时策略视图
+                    dropView(tempAIarea.id, "weekday", 1);//删除7天策略视图
+                    dropView(tempAIarea.id, "hour", 1);//删除24小时策略视图
                     dc.fence.DeleteOnSubmit(tempAIarea);
                     dc.SubmitChanges();
                     AIAreaDisplay();
@@ -925,6 +925,11 @@ namespace shareDemo3
         private Button button13;
         private Label label21;
         private Timer timer2;
+        private UILabel uiLabel2;
+        private PictureBox pictureBox11;
+        private UILabel uiLabel1;
+        private PictureBox pictureBox10;
+        private UILabel uiLabel3;
         private ComboBox cb_user_type;
 
         //创建智能调度时段-需求视图
@@ -940,7 +945,7 @@ namespace shareDemo3
          * 视图名："view"_fenceid_时间间隔类型_长度
         */
 
-        private void createView(int x, int y, int width, int height, string interval_type, int interval_length, int time_length)
+        public void createView(int x, int y, int width, int height, string interval_type, int interval_length, int time_length)
         {
             try
             {
@@ -964,6 +969,8 @@ namespace shareDemo3
                     cycle = "10000000";
                 else if (interval_type == "month")
                     cycle = "12";
+                else if (interval_type == "weekday")
+                    cycle = "7";
                 else if (interval_type == "day")
                     cycle = "30";
                 else if (interval_type == "hour")
@@ -1111,13 +1118,21 @@ namespace shareDemo3
             {
                 MessageBox.Show("密码和昵称长度最多10个字符."); return;
             }
-            //修改
-            string str = clb_user.SelectedItem.ToString();
-            Match match = Regex.Match(str, @"\d+");//取第一串数字
-            str = match.Groups[0].Value;
+            //检查唯一性
+            string oldID = clb_user.SelectedItem.ToString();
+            Match match = Regex.Match(oldID, @"\d+");//取第一串数字
+            oldID = match.Groups[0].Value;
+            if (oldID != tb_id.Text.Trim())
+            {
+                ArrayList searched = searchUser(cb_user_type.SelectedIndex, tb_id.Text.Trim(), "", "");//查新id
+                if(searched.Count > 0)
+                {
+                    MessageBox.Show("新id重复，请检查后再试."); return;
+                }
+            }
             //指定id修改用户数据(先删再注册)
             ArrayList selected = new ArrayList();
-            selected.Add(str);
+            selected.Add(oldID);
             deleteUser(cb_user_type.SelectedIndex, selected);
             register(cb_user_type.SelectedIndex, tb_id.Text.Trim(), tb_name.Text.Trim(), tb_password.Text.Trim());
             //查询并显示
@@ -1455,6 +1470,7 @@ namespace shareDemo3
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -1473,6 +1489,7 @@ namespace shareDemo3
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.button13 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -1521,9 +1538,12 @@ namespace shareDemo3
             this.label20 = new System.Windows.Forms.Label();
             this.cb_user_type = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button13 = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.uiLabel3 = new Sunny.UI.UILabel();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -1557,6 +1577,8 @@ namespace shareDemo3
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage6
@@ -1566,7 +1588,7 @@ namespace shareDemo3
             this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage6.Size = new System.Drawing.Size(914, 648);
+            this.tabPage6.Size = new System.Drawing.Size(1594, 826);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "智能调度";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1591,8 +1613,8 @@ namespace shareDemo3
             this.splitContainer4.Panel2.Controls.Add(this.button2);
             this.splitContainer4.Panel2.Controls.Add(this.button3);
             this.splitContainer4.Panel2.Controls.Add(this.label13);
-            this.splitContainer4.Size = new System.Drawing.Size(908, 644);
-            this.splitContainer4.SplitterDistance = 766;
+            this.splitContainer4.Size = new System.Drawing.Size(1588, 822);
+            this.splitContainer4.SplitterDistance = 1339;
             this.splitContainer4.TabIndex = 0;
             // 
             // pictureBox9
@@ -1610,6 +1632,15 @@ namespace shareDemo3
             this.pictureBox9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox9_MouseDown);
             this.pictureBox9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox9_MouseMove);
             this.pictureBox9.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox9_MouseUp);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(11, 151);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(136, 48);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "累计生成任务量\r\n10秒刷新一次";
             // 
             // button8
             // 
@@ -1660,7 +1691,7 @@ namespace shareDemo3
             this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage5.Size = new System.Drawing.Size(914, 648);
+            this.tabPage5.Size = new System.Drawing.Size(1594, 826);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "下达任务";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1688,8 +1719,8 @@ namespace shareDemo3
             this.splitContainer3.Panel2.Controls.Add(this.button6);
             this.splitContainer3.Panel2.Controls.Add(this.label9);
             this.splitContainer3.Panel2.Controls.Add(this.button5);
-            this.splitContainer3.Size = new System.Drawing.Size(908, 644);
-            this.splitContainer3.SplitterDistance = 752;
+            this.splitContainer3.Size = new System.Drawing.Size(1588, 822);
+            this.splitContainer3.SplitterDistance = 1315;
             this.splitContainer3.TabIndex = 0;
             // 
             // pictureBox7
@@ -1709,7 +1740,7 @@ namespace shareDemo3
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(56, 65);
+            this.button7.Location = new System.Drawing.Point(74, 70);
             this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(111, 54);
@@ -1721,7 +1752,7 @@ namespace shareDemo3
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(42, 252);
+            this.label12.Location = new System.Drawing.Point(60, 257);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(136, 24);
             this.label12.TabIndex = 9;
@@ -1731,7 +1762,7 @@ namespace shareDemo3
             // 
             this.dateTimePicker1.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(3, 288);
+            this.dateTimePicker1.Location = new System.Drawing.Point(21, 293);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(241, 31);
@@ -1740,7 +1771,7 @@ namespace shareDemo3
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(42, 152);
+            this.label10.Location = new System.Drawing.Point(60, 157);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 24);
             this.label10.TabIndex = 7;
@@ -1753,7 +1784,7 @@ namespace shareDemo3
             "投放",
             "回收",
             "调度"});
-            this.comboBox3.Location = new System.Drawing.Point(46, 191);
+            this.comboBox3.Location = new System.Drawing.Point(64, 196);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 32);
@@ -1761,7 +1792,7 @@ namespace shareDemo3
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(56, 420);
+            this.button6.Location = new System.Drawing.Point(74, 425);
             this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(111, 62);
@@ -1773,7 +1804,7 @@ namespace shareDemo3
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(42, 25);
+            this.label9.Location = new System.Drawing.Point(60, 30);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(136, 24);
             this.label9.TabIndex = 4;
@@ -1781,7 +1812,7 @@ namespace shareDemo3
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(56, 350);
+            this.button5.Location = new System.Drawing.Point(74, 355);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(111, 62);
@@ -1798,7 +1829,7 @@ namespace shareDemo3
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(914, 648);
+            this.tabPage2.Size = new System.Drawing.Size(1594, 826);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "用车热图";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1817,15 +1848,20 @@ namespace shareDemo3
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.PapayaWhip;
+            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.SeaShell;
+            this.splitContainer2.Panel2.Controls.Add(this.uiLabel3);
+            this.splitContainer2.Panel2.Controls.Add(this.uiLabel2);
+            this.splitContainer2.Panel2.Controls.Add(this.pictureBox11);
+            this.splitContainer2.Panel2.Controls.Add(this.uiLabel1);
+            this.splitContainer2.Panel2.Controls.Add(this.pictureBox10);
             this.splitContainer2.Panel2.Controls.Add(this.button13);
             this.splitContainer2.Panel2.Controls.Add(this.label8);
             this.splitContainer2.Panel2.Controls.Add(this.label7);
             this.splitContainer2.Panel2.Controls.Add(this.comboBox2);
             this.splitContainer2.Panel2.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel2.Controls.Add(this.button1);
-            this.splitContainer2.Size = new System.Drawing.Size(908, 613);
-            this.splitContainer2.SplitterDistance = 781;
+            this.splitContainer2.Size = new System.Drawing.Size(1588, 791);
+            this.splitContainer2.SplitterDistance = 1375;
             this.splitContainer2.TabIndex = 1;
             // 
             // pictureBox6
@@ -1843,10 +1879,21 @@ namespace shareDemo3
             this.pictureBox6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseMove);
             this.pictureBox6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseUp);
             // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(47, 598);
+            this.button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(118, 47);
+            this.button13.TabIndex = 5;
+            this.button13.Text = "周趋势分析";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(40, 128);
+            this.label8.Location = new System.Drawing.Point(43, 349);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 24);
             this.label8.TabIndex = 4;
@@ -1855,7 +1902,7 @@ namespace shareDemo3
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(39, 31);
+            this.label7.Location = new System.Drawing.Point(42, 252);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(118, 24);
             this.label7.TabIndex = 3;
@@ -1868,7 +1915,7 @@ namespace shareDemo3
             "全部显示",
             "显示解锁",
             "显示还车"});
-            this.comboBox2.Location = new System.Drawing.Point(40, 164);
+            this.comboBox2.Location = new System.Drawing.Point(43, 385);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 32);
@@ -1884,7 +1931,7 @@ namespace shareDemo3
             "过去3个月",
             "去年同日",
             "去年同月"});
-            this.comboBox1.Location = new System.Drawing.Point(40, 68);
+            this.comboBox1.Location = new System.Drawing.Point(43, 289);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 32);
@@ -1893,7 +1940,7 @@ namespace shareDemo3
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(44, 314);
+            this.button1.Location = new System.Drawing.Point(47, 535);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 47);
@@ -1907,9 +1954,9 @@ namespace shareDemo3
             this.statusStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel5});
-            this.statusStrip2.Location = new System.Drawing.Point(3, 615);
+            this.statusStrip2.Location = new System.Drawing.Point(3, 793);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(908, 31);
+            this.statusStrip2.Size = new System.Drawing.Size(1588, 31);
             this.statusStrip2.TabIndex = 0;
             // 
             // toolStripStatusLabel5
@@ -1928,7 +1975,7 @@ namespace shareDemo3
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(914, 648);
+            this.tabPage1.Size = new System.Drawing.Size(1594, 826);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "地图快照";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1962,8 +2009,8 @@ namespace shareDemo3
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(908, 613);
-            this.splitContainer1.SplitterDistance = 767;
+            this.splitContainer1.Size = new System.Drawing.Size(1588, 791);
+            this.splitContainer1.SplitterDistance = 1349;
             this.splitContainer1.TabIndex = 1;
             // 
             // pictureBox1
@@ -1980,7 +2027,7 @@ namespace shareDemo3
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 298);
+            this.textBox1.Location = new System.Drawing.Point(18, 298);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -1990,7 +2037,7 @@ namespace shareDemo3
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(7, 500);
+            this.button4.Location = new System.Drawing.Point(22, 500);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(116, 49);
@@ -2002,7 +2049,7 @@ namespace shareDemo3
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(34, 259);
+            this.label11.Location = new System.Drawing.Point(49, 259);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(118, 24);
             this.label11.TabIndex = 11;
@@ -2011,7 +2058,7 @@ namespace shareDemo3
             // pictureBox8
             // 
             this.pictureBox8.Image = global::shareDemo2.Properties.Resources.lightred;
-            this.pictureBox8.Location = new System.Drawing.Point(7, 263);
+            this.pictureBox8.Location = new System.Drawing.Point(22, 263);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(15, 15);
@@ -2022,7 +2069,7 @@ namespace shareDemo3
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 55);
+            this.label6.Location = new System.Drawing.Point(21, 55);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 24);
             this.label6.TabIndex = 9;
@@ -2031,7 +2078,7 @@ namespace shareDemo3
             // pictureBox5
             // 
             this.pictureBox5.Image = global::shareDemo2.Properties.Resources.gray;
-            this.pictureBox5.Location = new System.Drawing.Point(7, 224);
+            this.pictureBox5.Location = new System.Drawing.Point(22, 224);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(15, 15);
@@ -2042,7 +2089,7 @@ namespace shareDemo3
             // pictureBox4
             // 
             this.pictureBox4.Image = global::shareDemo2.Properties.Resources.yellow;
-            this.pictureBox4.Location = new System.Drawing.Point(7, 184);
+            this.pictureBox4.Location = new System.Drawing.Point(22, 184);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(15, 15);
@@ -2053,7 +2100,7 @@ namespace shareDemo3
             // pictureBox3
             // 
             this.pictureBox3.Image = global::shareDemo2.Properties.Resources.green;
-            this.pictureBox3.Location = new System.Drawing.Point(7, 146);
+            this.pictureBox3.Location = new System.Drawing.Point(22, 146);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(15, 15);
@@ -2064,7 +2111,7 @@ namespace shareDemo3
             // pictureBox2
             // 
             this.pictureBox2.Image = global::shareDemo2.Properties.Resources.blue;
-            this.pictureBox2.Location = new System.Drawing.Point(7, 106);
+            this.pictureBox2.Location = new System.Drawing.Point(22, 106);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(15, 15);
@@ -2075,7 +2122,7 @@ namespace shareDemo3
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(30, 222);
+            this.label5.Location = new System.Drawing.Point(45, 222);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 24);
             this.label5.TabIndex = 4;
@@ -2084,7 +2131,7 @@ namespace shareDemo3
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 181);
+            this.label4.Location = new System.Drawing.Point(45, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 24);
             this.label4.TabIndex = 3;
@@ -2093,7 +2140,7 @@ namespace shareDemo3
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 140);
+            this.label3.Location = new System.Drawing.Point(45, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 24);
             this.label3.TabIndex = 2;
@@ -2102,7 +2149,7 @@ namespace shareDemo3
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 101);
+            this.label2.Location = new System.Drawing.Point(45, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 24);
             this.label2.TabIndex = 1;
@@ -2112,7 +2159,7 @@ namespace shareDemo3
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(18, 18);
+            this.label1.Location = new System.Drawing.Point(33, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 24);
             this.label1.TabIndex = 0;
@@ -2126,9 +2173,9 @@ namespace shareDemo3
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(3, 615);
+            this.statusStrip1.Location = new System.Drawing.Point(3, 793);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(908, 31);
+            this.statusStrip1.Size = new System.Drawing.Size(1588, 31);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "X";
             // 
@@ -2171,7 +2218,7 @@ namespace shareDemo3
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(922, 685);
+            this.tabControl1.Size = new System.Drawing.Size(1602, 863);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage3
@@ -2196,14 +2243,14 @@ namespace shareDemo3
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Size = new System.Drawing.Size(914, 648);
+            this.tabPage3.Size = new System.Drawing.Size(1594, 826);
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "人事管理";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(737, 518);
+            this.button9.Location = new System.Drawing.Point(1031, 593);
             this.button9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(108, 47);
@@ -2214,7 +2261,7 @@ namespace shareDemo3
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(516, 518);
+            this.button10.Location = new System.Drawing.Point(810, 593);
             this.button10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(108, 47);
@@ -2225,7 +2272,7 @@ namespace shareDemo3
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(284, 518);
+            this.button11.Location = new System.Drawing.Point(578, 593);
             this.button11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(108, 47);
@@ -2236,7 +2283,7 @@ namespace shareDemo3
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(48, 518);
+            this.button12.Location = new System.Drawing.Point(342, 593);
             this.button12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(108, 47);
@@ -2247,7 +2294,7 @@ namespace shareDemo3
             // 
             // tb_name
             // 
-            this.tb_name.Location = new System.Drawing.Point(683, 596);
+            this.tb_name.Location = new System.Drawing.Point(977, 671);
             this.tb_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(178, 31);
@@ -2255,7 +2302,7 @@ namespace shareDemo3
             // 
             // tb_password
             // 
-            this.tb_password.Location = new System.Drawing.Point(393, 596);
+            this.tb_password.Location = new System.Drawing.Point(687, 671);
             this.tb_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_password.Name = "tb_password";
             this.tb_password.Size = new System.Drawing.Size(178, 31);
@@ -2263,7 +2310,7 @@ namespace shareDemo3
             // 
             // tb_id
             // 
-            this.tb_id.Location = new System.Drawing.Point(102, 596);
+            this.tb_id.Location = new System.Drawing.Point(396, 671);
             this.tb_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_id.Name = "tb_id";
             this.tb_id.Size = new System.Drawing.Size(178, 31);
@@ -2272,7 +2319,7 @@ namespace shareDemo3
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(623, 599);
+            this.label15.Location = new System.Drawing.Point(917, 674);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(46, 24);
             this.label15.TabIndex = 15;
@@ -2281,7 +2328,7 @@ namespace shareDemo3
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(628, 47);
+            this.label14.Location = new System.Drawing.Point(922, 122);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(46, 24);
             this.label14.TabIndex = 16;
@@ -2290,7 +2337,7 @@ namespace shareDemo3
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(330, 604);
+            this.label16.Location = new System.Drawing.Point(624, 679);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(46, 24);
             this.label16.TabIndex = 13;
@@ -2299,7 +2346,7 @@ namespace shareDemo3
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(373, 47);
+            this.label17.Location = new System.Drawing.Point(667, 122);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(46, 24);
             this.label17.TabIndex = 14;
@@ -2308,7 +2355,7 @@ namespace shareDemo3
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(57, 604);
+            this.label18.Location = new System.Drawing.Point(351, 679);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(27, 24);
             this.label18.TabIndex = 11;
@@ -2317,7 +2364,7 @@ namespace shareDemo3
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(157, 47);
+            this.label19.Location = new System.Drawing.Point(451, 122);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(27, 24);
             this.label19.TabIndex = 12;
@@ -2326,7 +2373,7 @@ namespace shareDemo3
             // clb_user
             // 
             this.clb_user.FormattingEnabled = true;
-            this.clb_user.Location = new System.Drawing.Point(29, 75);
+            this.clb_user.Location = new System.Drawing.Point(323, 150);
             this.clb_user.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.clb_user.Name = "clb_user";
             this.clb_user.Size = new System.Drawing.Size(861, 396);
@@ -2335,7 +2382,7 @@ namespace shareDemo3
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(25, 20);
+            this.label20.Location = new System.Drawing.Point(319, 95);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(100, 24);
             this.label20.TabIndex = 9;
@@ -2348,7 +2395,7 @@ namespace shareDemo3
             "顾客",
             "管理员",
             "调度员"});
-            this.cb_user_type.Location = new System.Drawing.Point(144, 11);
+            this.cb_user_type.Location = new System.Drawing.Point(438, 86);
             this.cb_user_type.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cb_user_type.Name = "cb_user_type";
             this.cb_user_type.Size = new System.Drawing.Size(136, 32);
@@ -2361,36 +2408,69 @@ namespace shareDemo3
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(44, 377);
-            this.button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(118, 47);
-            this.button13.TabIndex = 5;
-            this.button13.Text = "周趋势分析";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(11, 151);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(136, 48);
-            this.label21.TabIndex = 5;
-            this.label21.Text = "累计生成任务量\r\n10秒刷新一次";
-            // 
             // timer2
             // 
             this.timer2.Enabled = true;
             this.timer2.Interval = 10000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.DarkOrange;
+            this.pictureBox10.Location = new System.Drawing.Point(108, 459);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(53, 10);
+            this.pictureBox10.TabIndex = 6;
+            this.pictureBox10.TabStop = false;
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel1.Location = new System.Drawing.Point(55, 451);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(51, 25);
+            this.uiLabel1.TabIndex = 7;
+            this.uiLabel1.Text = "开锁";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel2.Location = new System.Drawing.Point(55, 473);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(51, 25);
+            this.uiLabel2.TabIndex = 9;
+            this.uiLabel2.Text = "关锁";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.LightGreen;
+            this.pictureBox11.Location = new System.Drawing.Point(108, 481);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(53, 10);
+            this.pictureBox11.TabIndex = 8;
+            this.pictureBox11.TabStop = false;
+            // 
+            // uiLabel3
+            // 
+            this.uiLabel3.BackColor = System.Drawing.Color.Snow;
+            this.uiLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel3.Location = new System.Drawing.Point(30, 130);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(155, 40);
+            this.uiLabel3.Style = Sunny.UI.UIStyle.LayuiGreen;
+            this.uiLabel3.TabIndex = 10;
+            this.uiLabel3.Text = "用车热图分析";
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // managerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(920, 722);
+            this.ClientSize = new System.Drawing.Size(1600, 900);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "managerForm";
@@ -2442,6 +2522,8 @@ namespace shareDemo3
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             this.ResumeLayout(false);
 
         }

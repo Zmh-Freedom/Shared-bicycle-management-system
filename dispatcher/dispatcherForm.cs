@@ -420,10 +420,10 @@ namespace dispatcher_Form
             this.diapatch_page.Controls.Add(this.uiDataGridView2);
             this.diapatch_page.Controls.Add(this.button2);
             this.diapatch_page.Controls.Add(this.button1);
-            this.diapatch_page.Location = new System.Drawing.Point(4, 36);
+            this.diapatch_page.Location = new System.Drawing.Point(4, 40);
             this.diapatch_page.Name = "diapatch_page";
             this.diapatch_page.Padding = new System.Windows.Forms.Padding(3);
-            this.diapatch_page.Size = new System.Drawing.Size(1377, 567);
+            this.diapatch_page.Size = new System.Drawing.Size(1377, 563);
             this.diapatch_page.TabIndex = 1;
             this.diapatch_page.Text = "调度任务页";
             // 
@@ -443,7 +443,7 @@ namespace dispatcher_Form
             this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(1321, 76);
+            this.uiPanel1.Size = new System.Drawing.Size(1321, 72);
             this.uiPanel1.TabIndex = 20;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -458,7 +458,7 @@ namespace dispatcher_Form
             this.label5.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.Location = new System.Drawing.Point(20, 20);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(134, 31);
+            this.label5.Size = new System.Drawing.Size(155, 36);
             this.label5.TabIndex = 13;
             this.label5.Text = "任务类型：";
             // 
@@ -472,7 +472,7 @@ namespace dispatcher_Form
             this.cb_recycle.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cb_recycle.Location = new System.Drawing.Point(583, 28);
             this.cb_recycle.Name = "cb_recycle";
-            this.cb_recycle.Size = new System.Drawing.Size(71, 24);
+            this.cb_recycle.Size = new System.Drawing.Size(84, 28);
             this.cb_recycle.TabIndex = 7;
             this.cb_recycle.Text = "回收";
             this.cb_recycle.UseVisualStyleBackColor = false;
@@ -488,7 +488,7 @@ namespace dispatcher_Form
             this.cb_putin.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cb_putin.Location = new System.Drawing.Point(401, 28);
             this.cb_putin.Name = "cb_putin";
-            this.cb_putin.Size = new System.Drawing.Size(71, 24);
+            this.cb_putin.Size = new System.Drawing.Size(84, 28);
             this.cb_putin.TabIndex = 8;
             this.cb_putin.Text = "投放";
             this.cb_putin.UseVisualStyleBackColor = false;
@@ -504,7 +504,7 @@ namespace dispatcher_Form
             this.cb_dispatch.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cb_dispatch.Location = new System.Drawing.Point(233, 28);
             this.cb_dispatch.Name = "cb_dispatch";
-            this.cb_dispatch.Size = new System.Drawing.Size(71, 24);
+            this.cb_dispatch.Size = new System.Drawing.Size(84, 28);
             this.cb_dispatch.TabIndex = 9;
             this.cb_dispatch.Text = "调度";
             this.cb_dispatch.UseVisualStyleBackColor = false;
@@ -519,7 +519,7 @@ namespace dispatcher_Form
             this.l_datetime2.BackColor = System.Drawing.Color.Transparent;
             this.l_datetime2.Location = new System.Drawing.Point(1064, 33);
             this.l_datetime2.Name = "l_datetime2";
-            this.l_datetime2.Size = new System.Drawing.Size(69, 27);
+            this.l_datetime2.Size = new System.Drawing.Size(82, 31);
             this.l_datetime2.TabIndex = 12;
             this.l_datetime2.Text = "label2";
             // 
@@ -532,7 +532,7 @@ namespace dispatcher_Form
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(1051, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 27);
+            this.label1.Size = new System.Drawing.Size(134, 31);
             this.label1.TabIndex = 11;
             this.label1.Text = "时间日期：";
             // 
@@ -594,7 +594,7 @@ namespace dispatcher_Form
             this.uiDataGridView2.RowTemplate.Height = 30;
             this.uiDataGridView2.SelectedIndex = -1;
             this.uiDataGridView2.ShowGridLine = true;
-            this.uiDataGridView2.Size = new System.Drawing.Size(1321, 345);
+            this.uiDataGridView2.Size = new System.Drawing.Size(1321, 341);
             this.uiDataGridView2.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.uiDataGridView2.TabIndex = 19;
             this.uiDataGridView2.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.uiDataGridView1_RowsAdded);
@@ -674,7 +674,7 @@ namespace dispatcher_Form
             this.button2.Font = new System.Drawing.Font("宋体", 15F);
             this.button2.Location = new System.Drawing.Point(901, 466);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(148, 59);
+            this.button2.Size = new System.Drawing.Size(148, 55);
             this.button2.TabIndex = 17;
             this.button2.Text = "处理完成";
             this.button2.UseVisualStyleBackColor = true;
@@ -688,7 +688,7 @@ namespace dispatcher_Form
             this.button1.Font = new System.Drawing.Font("宋体", 15F);
             this.button1.Location = new System.Drawing.Point(252, 466);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 59);
+            this.button1.Size = new System.Drawing.Size(148, 55);
             this.button1.TabIndex = 18;
             this.button1.Text = "开始处理";
             this.button1.UseVisualStyleBackColor = true;
@@ -701,10 +701,10 @@ namespace dispatcher_Form
             this.fix_page.Controls.Add(this.uiDataGridView1);
             this.fix_page.Controls.Add(this.button3);
             this.fix_page.Controls.Add(this.button4);
-            this.fix_page.Location = new System.Drawing.Point(4, 36);
+            this.fix_page.Location = new System.Drawing.Point(4, 40);
             this.fix_page.Name = "fix_page";
             this.fix_page.Padding = new System.Windows.Forms.Padding(3);
-            this.fix_page.Size = new System.Drawing.Size(1377, 567);
+            this.fix_page.Size = new System.Drawing.Size(1377, 563);
             this.fix_page.TabIndex = 0;
             this.fix_page.Text = "检修任务页";
             // 
@@ -730,7 +730,7 @@ namespace dispatcher_Form
             this.label6.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.Location = new System.Drawing.Point(32, 18);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 31);
+            this.label6.Size = new System.Drawing.Size(155, 36);
             this.label6.TabIndex = 11;
             this.label6.Text = "任务信息：";
             // 
@@ -740,7 +740,7 @@ namespace dispatcher_Form
             this.l_datetime1.BackColor = System.Drawing.Color.Transparent;
             this.l_datetime1.Location = new System.Drawing.Point(893, 22);
             this.l_datetime1.Name = "l_datetime1";
-            this.l_datetime1.Size = new System.Drawing.Size(69, 27);
+            this.l_datetime1.Size = new System.Drawing.Size(82, 31);
             this.l_datetime1.TabIndex = 16;
             this.l_datetime1.Text = "label2";
             // 
@@ -750,7 +750,7 @@ namespace dispatcher_Form
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Location = new System.Drawing.Point(781, 22);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(112, 27);
+            this.label8.Size = new System.Drawing.Size(134, 31);
             this.label8.TabIndex = 15;
             this.label8.Text = "时间日期：";
             // 
@@ -907,12 +907,12 @@ namespace dispatcher_Form
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // dispatcher_Form
+            // dispatcherForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1388, 642);
             this.Controls.Add(this.tabControl1);
-            this.Name = "dispatcher_Form";
+            this.Name = "dispatcherForm";
             this.Text = "调度员界面";
             this.tabControl1.ResumeLayout(false);
             this.diapatch_page.ResumeLayout(false);

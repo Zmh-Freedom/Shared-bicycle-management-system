@@ -13,69 +13,81 @@ namespace shareDemo2
 {
     public partial class trend : UIForm
     {
-        public trend(int sel1, int sel2, IQueryable<orderform> order, int tag)
+        public trend(int sel1, int sel2, IQueryable<DateTime> order, int tag)
         {//重载1：只有一个要显示的折线图
             InitializeComponent();
             Cratechart0();
+            Order = order;
             ct.Series.Clear();
             uiPanel3.Hide();
             if (sel2 == 1)
             {
-                if (tag == 1)
-                    Cratechart1(sel1, sel2, order);//绘制折线图
-                else
-                    Cratechart2(sel1, sel2, order);
+                Series_set(1);
+                ct.Series[n_series].Name = "开锁";
                 uiLabel1.Text = "开锁总计";
-                uiLabel4.Text = string_digit(trend_start);
             }
+
             else
             {
-                if (tag == 1)
-                    Cratechart2(sel1, sel2, order);//绘制折线图
-                else
-                    Cratechart3(sel1, sel2, order);
+                Series_set(2);
+                ct.Series[n_series].Name = "关锁";
                 uiLabel1.Text = "关锁总计";
-                uiLabel5.Text = string_digit(trend_end);
             }
+            if (tag == 1)
+                Cratechart1(sel1, sel2);//绘制折线图
+            else
+                Cratechart1(sel1, sel2);
+
+            uiLabel4.Text = trendNumber.ToString();
             //添加折线图的Labe
-            switch (sel1)
-            {
-                case 0:
-                    uiLabel3.Text = "过去三天";
-                    break;
-                case 1:
-                    uiLabel3.Text = "过去三周";
-                    break;
-                case 2:
-                    uiLabel3.Text = "过去3个月";
-                    break;
-                case 3:
-                    uiLabel3.Text = "去年同日";
-                    break;
-                case 4:
-                    uiLabel3.Text = "去年同月";
-                    break;
-            }
+            setLabe(sel1);
         }
-        public trend(int sel1, int sel2, IQueryable<orderform> order1, IQueryable<orderform> order2, int tag)
+        public trend(int sel1, int sel2, IQueryable<DateTime> order1, IQueryable<DateTime> order2, int tag)
         {//重载2：有两个要显示的折线图
             InitializeComponent();
             Cratechart0();//初始化chart的显示格式
             if (tag == 1)
             {
-                Cratechart1(sel1, sel2, order1);
-                Cratechart2(sel1, sel2, order2);
+                Series_set(1);
+                Order = order1;
+                Cratechart1(sel1, sel2);
+                ct.Series[n_series].Name = "开锁";
+                uiLabel4.Text = Convert.ToString(trendNumber);
+                Series_set(2);
+                Order = order2;
+                Cratechart1(sel1, sel2);
+                ct.Series[n_series].Name = "关锁";
+                uiLabel5.Text = Convert.ToString(trendNumber);
             }
             else
             {
-                Cratechart3(sel1, sel2, order1);
-                Cratechart4(sel1, sel2, order2);
+                Series_set(1);
+                Order = order1;
+                Cratechart2(sel1, sel2);
+                ct.Series[n_series].Name = "开锁";
+                uiLabel4.Text = Convert.ToString(trendNumber);
+                Series_set(2);
+                Order = order2;
+                Cratechart2(sel1, sel2);
+                ct.Series[n_series].Name = "关锁";
+                uiLabel5.Text = Convert.ToString(trendNumber);
             }
             uiLabel1.Text = "开锁总计";
-            uiLabel4.Text = Convert.ToString(trend_start);
             uiLabel2.Text = "关锁总计";
-            uiLabel5.Text = Convert.ToString(trend_end);
             //添加折线图的Labe
+            setLabe(sel1);
+        }
+        #region 全局变量
+        int n_series = -1;
+        int trendNumber = 0;
+        private UILabel uiLabel3;
+        private UILabel uiLabel5;
+        private UILabel uiLabel4;
+        IQueryable<DateTime> Order = null;
+        #endregion
+
+        private void setLabe(int sel1)
+        {
             switch (sel1)
             {
                 case 0:
@@ -95,14 +107,6 @@ namespace shareDemo2
                     break;
             }
         }
-        #region 全局变量
-        int n_series = -1;
-        int trend_start = 0;
-        private UILabel uiLabel3;
-        private UILabel uiLabel5;
-        private UILabel uiLabel4;
-        int trend_end = 0;
-        #endregion
         private void Cratechart0()
         {
             //设计chart图的网格
@@ -146,163 +150,50 @@ namespace shareDemo2
             ct.Series[n_series].MarkerSize = 5; //标记点大小
             ct.Series[n_series].MarkerStyle = MarkerStyle.Circle; //标记点类型
         }
-        public void Cratechart1(int sel1, int sel2, IQueryable<orderform> order)
+        public void Cratechart1(int sel1, int sel2)
         {
-            //绘制开锁的折线
-            Series_set(1);
+            //绘制开锁/关锁的小时折线
             List<string> xDate1 = new List<string>();
             List<int> yDate1 = new List<int>();
             DateTime date = DateTime.Today;
-            trend_start = 0;
-            int temp = 0;
-            //设置除数
-            switch (sel1)
-            {
-                case 0: temp = 3; break;
-                case 1: temp = 3 * 14; break;
-                case 2: temp = DateTime.Now.DaysInMonth() + DateTime.Now.AddMonths(-1).DaysInMonth() + DateTime.Now.AddMonths(-2).DaysInMonth(); break;
-                case 3: temp = 1; break;
-                case 4: temp = DateTime.Now.AddYears(-1).DaysInMonth(); break;
-            }
+            trendNumber = 0;
             for (int i = 0; i < 24; i++)
             {
                 int s_hour = date.AddHours(i).Hour;
                 int e_hour = date.AddHours(i + 1).Hour;
-                //if (i == 7) e_hour = 24;
                 xDate1.Add(date.AddHours(i).ToString("HH") + "点");
-                yDate1.Add((from x in order
-                            where x.start_time.Value.Hour == s_hour
+                yDate1.Add((from x in Order
+                            where x.Hour == s_hour
                             select x).Count());
-                trend_start += yDate1[i];
-                //yDate1[i] /= temp;
+                trendNumber += yDate1[i];
             }
-            ct.Series[n_series].Name = "解锁单车";
+            //ct.Series[n_series].Name = "解锁单车";
             ct.Series[n_series].Points.DataBindXY(xDate1, yDate1);//添加数据来源
             ct.Series[n_series].ToolTip = "#VALX点\r#VAL辆";
         }
 
-        public void Cratechart2(int sel1, int sel2, IQueryable<orderform> order)
+
+        public void Cratechart2(int sel1, int sel2)
         {
-            //绘制关锁的折线
-            Series_set(2);
-            List<string> xDate1 = new List<string>();
-            List<int> yDate1 = new List<int>();
-            DateTime date = DateTime.Today;
-            int temp = 0;
-            //设置除数
-            switch (sel1)
-            {
-                case 0: temp = 3; break;
-                case 1: temp = 3 * 14; break;
-                case 2: temp = DateTime.Now.DaysInMonth() + DateTime.Now.AddMonths(-1).DaysInMonth() + DateTime.Now.AddMonths(-2).DaysInMonth(); break;
-                case 3: temp = 1; break;
-                case 4: temp = DateTime.Now.AddYears(-1).DaysInMonth(); break;
-            }
-            for (int i = 0; i < 24; i++)
-            {
-                int s_hour = date.AddHours(i).Hour;
-                int e_hour = date.AddHours(i).Hour;
-                //if (i == 7) e_hour = 24;
-                xDate1.Add(date.AddHours(i).ToString("HH") + "点");
-                yDate1.Add((from x in order
-                            where x.end_time.Value.Hour == s_hour
-                            select x).Count());
-                trend_end += yDate1[i];
-                //yDate1[i] /= temp;
-            }
-            ct.Series[n_series].Name = "还车";
-            ct.Series[n_series].Points.DataBindXY(xDate1, yDate1);//添加数据来源
-            ct.Series[n_series].ToolTip = "#VALX点\r#VAL辆";
-        }
-        public void Cratechart3(int sel1, int sel2, IQueryable<orderform> order)
-        {
-            //绘制开锁的折线
-            Series_set(1);
+            //绘制开锁/关锁的周折线
             List<string> xDate1 = new List<string>() { "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", " 星期日" };
             List<int> yDate1 = new List<int>();
             DateTime date = DateTime.Today;
-            trend_start = 0;
-            int temp = 0;
+            trendNumber = 0;
             //设置除数
-            switch (sel1)
-            {
-                case 0: temp = 1; break;
-                case 1: temp = 3; break;
-                case 2: temp = DateTime.Now.DaysInMonth() + DateTime.Now.AddMonths(-1).DaysInMonth() + DateTime.Now.AddMonths(-2).DaysInMonth(); break;
-                case 3: temp = 1; break;
-                case 4: temp = DateTime.Now.AddYears(-1).DaysInMonth(); break;
-            }
             for (int i = 0; i < 7; i++)
             {
                 int set = i;
                 if (i == 6) set = -1;
-                yDate1.Add((from x in order
-                            where x.start_time.Value.DayOfWeek - DayOfWeek.Monday == set
+                yDate1.Add((from x in Order
+                            where x.DayOfWeek - DayOfWeek.Monday == set
                             select x).Count());
-                trend_start += yDate1[i];
-                //yDate1[i] /= temp;
+                trendNumber += yDate1[i];
             }
-            ct.Series[n_series].Name = "解锁单车";
+            // ct.Series[n_series].Name = "解锁单车";
             ct.Series[n_series].Points.DataBindXY(xDate1, yDate1);//添加数据来源
             ct.Series[n_series].ToolTip = "#VALX\r#VAL辆";
         }
-
-        public void Cratechart4(int sel1, int sel2, IQueryable<orderform> order)
-        {
-            //绘制关锁的折线
-            Series_set(2);
-            List<string> xDate1 = new List<string>() { "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", " 星期日" };
-            List<int> yDate1 = new List<int>();
-            DateTime date = DateTime.Today;
-            int temp = 0;
-            //设置除数
-            switch (sel1)
-            {
-                case 0: temp = 3; break;
-                case 1: temp = 3 * 14; break;
-                case 2: temp = DateTime.Now.DaysInMonth() + DateTime.Now.AddMonths(-1).DaysInMonth() + DateTime.Now.AddMonths(-2).DaysInMonth(); break;
-                case 3: temp = 1; break;
-                case 4: temp = DateTime.Now.AddYears(-1).DaysInMonth(); break;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                int set = i;
-                if (i == 6) set = -1;
-                yDate1.Add((from x in order
-                            where x.end_time.Value.DayOfWeek - DayOfWeek.Monday == set
-                            select x).Count());
-                trend_end += yDate1[i];
-                //yDate1[i] /= temp;
-            }
-            ct.Series[n_series].Name = "还车";
-            ct.Series[n_series].Points.DataBindXY(xDate1, yDate1);//添加数据来源
-            ct.Series[n_series].ToolTip = "#VALX\r#VAL辆";
-        }
-        public string string_digit(int a)
-        {
-            string s;
-            int []b=new int[100];
-            if (a == 0)
-            {
-                s = "0";
-                return s;
-            }
-            s = "";
-            int n = 0;
-            while(a>0)
-            {
-                int temp = a % 10;
-                b[n] = temp;
-                a/= 10;
-                n++;
-            }
-            for(int i=n-1;i>=0;i--)
-            {
-                s += b[i];
-            }
-            return s;
-        }
-
         #region 窗口
         /// <summary>
         /// Required designer variable.
@@ -353,8 +244,8 @@ namespace shareDemo2
             // 
             // uiPanel1
             // 
-            this.uiPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.uiPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.uiPanel1.Controls.Add(this.uiLabel3);
             this.uiPanel1.Controls.Add(this.uiPanel3);
@@ -462,8 +353,8 @@ namespace shareDemo2
             // 
             // ct
             // 
-            this.ct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
             chartArea1.Name = "ChartArea1";
@@ -523,6 +414,7 @@ namespace shareDemo2
         private Sunny.UI.UIPanel uiPanel3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Sunny.UI.UILabel uiLabel2;
+
         #endregion
     }
 }

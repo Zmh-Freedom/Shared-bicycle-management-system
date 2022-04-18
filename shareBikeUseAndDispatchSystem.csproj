@@ -95,10 +95,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="trend\trend.Designer.cs" />
-    <Compile Include="Warehouse.cs">
+    <Compile Include="manager\Warehouse.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Warehouse.Designer.cs">
+    <Compile Include="manager\Warehouse.Designer.cs">
       <DependentUpon>Warehouse.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="customer\customer.resx">
@@ -122,7 +122,7 @@
       <DependentUpon>taskManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="trend\trend.resx" />
-    <EmbeddedResource Include="Warehouse.resx">
+    <EmbeddedResource Include="manager\Warehouse.resx">
       <DependentUpon>Warehouse.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DB.dbml">
