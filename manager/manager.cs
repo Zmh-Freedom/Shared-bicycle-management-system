@@ -930,6 +930,7 @@ namespace shareDemo3
         private UILabel uiLabel1;
         private PictureBox pictureBox10;
         private UILabel uiLabel3;
+        private UIPanel uiPanel1;
         private ComboBox cb_user_type;
 
         //创建智能调度时段-需求视图
@@ -1469,7 +1470,6 @@ namespace shareDemo3
             this.components = new System.ComponentModel.Container();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -1477,7 +1477,6 @@ namespace shareDemo3
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.button7 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -1488,7 +1487,9 @@ namespace shareDemo3
             this.button5 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.uiLabel1 = new Sunny.UI.UILabel();
             this.button13 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -1499,16 +1500,10 @@ namespace shareDemo3
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -1520,65 +1515,73 @@ namespace shareDemo3
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.tb_name = new System.Windows.Forms.TextBox();
-            this.tb_password = new System.Windows.Forms.TextBox();
-            this.tb_id = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.clb_user = new System.Windows.Forms.CheckedListBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.cb_user_type = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.uiLabel1 = new Sunny.UI.UILabel();
-            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.uiPanel1 = new Sunny.UI.UIPanel();
+            this.clb_user = new System.Windows.Forms.CheckedListBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.cb_user_type = new System.Windows.Forms.ComboBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tb_name = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tb_password = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tb_id = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.statusStrip2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.statusStrip1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.uiPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage6
@@ -1616,22 +1619,6 @@ namespace shareDemo3
             this.splitContainer4.Size = new System.Drawing.Size(1588, 822);
             this.splitContainer4.SplitterDistance = 1339;
             this.splitContainer4.TabIndex = 0;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = global::shareDemo2.Properties.Resources.map1;
-            this.pictureBox9.Location = new System.Drawing.Point(-7, -6);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(1844, 884);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox9.TabIndex = 0;
-            this.pictureBox9.TabStop = false;
-            this.pictureBox9.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox9_Paint);
-            this.pictureBox9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox9_MouseClick);
-            this.pictureBox9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox9_MouseDown);
-            this.pictureBox9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox9_MouseMove);
-            this.pictureBox9.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox9_MouseUp);
             // 
             // label21
             // 
@@ -1722,21 +1709,6 @@ namespace shareDemo3
             this.splitContainer3.Size = new System.Drawing.Size(1588, 822);
             this.splitContainer3.SplitterDistance = 1315;
             this.splitContainer3.TabIndex = 0;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::shareDemo2.Properties.Resources.map1;
-            this.pictureBox7.Location = new System.Drawing.Point(-7, -6);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(1844, 884);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox7.TabIndex = 0;
-            this.pictureBox7.TabStop = false;
-            this.pictureBox7.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox7_Paint);
-            this.pictureBox7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox7_MouseDown);
-            this.pictureBox7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox7_MouseMove);
-            this.pictureBox7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox7_MouseUp);
             // 
             // button7
             // 
@@ -1864,20 +1836,40 @@ namespace shareDemo3
             this.splitContainer2.SplitterDistance = 1375;
             this.splitContainer2.TabIndex = 1;
             // 
-            // pictureBox6
+            // uiLabel3
             // 
-            this.pictureBox6.Image = global::shareDemo2.Properties.Resources.map1;
-            this.pictureBox6.Location = new System.Drawing.Point(-7, -6);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(1844, 884);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBox6_Paint);
-            this.pictureBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseDown);
-            this.pictureBox6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseMove);
-            this.pictureBox6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseUp);
+            this.uiLabel3.BackColor = System.Drawing.Color.Snow;
+            this.uiLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel3.Location = new System.Drawing.Point(30, 130);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(155, 98);
+            this.uiLabel3.Style = Sunny.UI.UIStyle.LayuiGreen;
+            this.uiLabel3.TabIndex = 10;
+            this.uiLabel3.Text = "用车热图分析";
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel2.Location = new System.Drawing.Point(55, 473);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(51, 25);
+            this.uiLabel2.TabIndex = 9;
+            this.uiLabel2.Text = "关锁";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel1.Location = new System.Drawing.Point(55, 451);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(51, 25);
+            this.uiLabel1.TabIndex = 7;
+            this.uiLabel1.Text = "开锁";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button13
             // 
@@ -2013,18 +2005,6 @@ namespace shareDemo3
             this.splitContainer1.SplitterDistance = 1349;
             this.splitContainer1.TabIndex = 1;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::shareDemo2.Properties.Resources.map1;
-            this.pictureBox1.Location = new System.Drawing.Point(-7, -6);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1844, 884);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(18, 298);
@@ -2055,17 +2035,6 @@ namespace shareDemo3
             this.label11.TabIndex = 11;
             this.label11.Text = "车辆即将到达";
             // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::shareDemo2.Properties.Resources.lightred;
-            this.pictureBox8.Location = new System.Drawing.Point(22, 263);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox8.TabIndex = 10;
-            this.pictureBox8.TabStop = false;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -2074,50 +2043,6 @@ namespace shareDemo3
             this.label6.Size = new System.Drawing.Size(82, 24);
             this.label6.TabIndex = 9;
             this.label6.Text = "当前时间";
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::shareDemo2.Properties.Resources.gray;
-            this.pictureBox5.Location = new System.Drawing.Point(22, 224);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox5.TabIndex = 8;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::shareDemo2.Properties.Resources.yellow;
-            this.pictureBox4.Location = new System.Drawing.Point(22, 184);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox4.TabIndex = 7;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::shareDemo2.Properties.Resources.green;
-            this.pictureBox3.Location = new System.Drawing.Point(22, 146);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::shareDemo2.Properties.Resources.blue;
-            this.pictureBox2.Location = new System.Drawing.Point(22, 106);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
             // 
             // label5
             // 
@@ -2221,187 +2146,6 @@ namespace shareDemo3
             this.tabControl1.Size = new System.Drawing.Size(1602, 863);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.button9);
-            this.tabPage3.Controls.Add(this.button10);
-            this.tabPage3.Controls.Add(this.button11);
-            this.tabPage3.Controls.Add(this.button12);
-            this.tabPage3.Controls.Add(this.tb_name);
-            this.tabPage3.Controls.Add(this.tb_password);
-            this.tabPage3.Controls.Add(this.tb_id);
-            this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.label16);
-            this.tabPage3.Controls.Add(this.label17);
-            this.tabPage3.Controls.Add(this.label18);
-            this.tabPage3.Controls.Add(this.label19);
-            this.tabPage3.Controls.Add(this.clb_user);
-            this.tabPage3.Controls.Add(this.label20);
-            this.tabPage3.Controls.Add(this.cb_user_type);
-            this.tabPage3.Location = new System.Drawing.Point(4, 33);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Size = new System.Drawing.Size(1594, 826);
-            this.tabPage3.TabIndex = 6;
-            this.tabPage3.Text = "人事管理";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(1031, 593);
-            this.button9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(108, 47);
-            this.button9.TabIndex = 20;
-            this.button9.Text = "查询数据";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click_1);
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(810, 593);
-            this.button10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(108, 47);
-            this.button10.TabIndex = 21;
-            this.button10.Text = "删除数据";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(578, 593);
-            this.button11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(108, 47);
-            this.button11.TabIndex = 22;
-            this.button11.Text = "修改数据";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(342, 593);
-            this.button12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(108, 47);
-            this.button12.TabIndex = 23;
-            this.button12.Text = "插入数据";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // tb_name
-            // 
-            this.tb_name.Location = new System.Drawing.Point(977, 671);
-            this.tb_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(178, 31);
-            this.tb_name.TabIndex = 17;
-            // 
-            // tb_password
-            // 
-            this.tb_password.Location = new System.Drawing.Point(687, 671);
-            this.tb_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(178, 31);
-            this.tb_password.TabIndex = 18;
-            // 
-            // tb_id
-            // 
-            this.tb_id.Location = new System.Drawing.Point(396, 671);
-            this.tb_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tb_id.Name = "tb_id";
-            this.tb_id.Size = new System.Drawing.Size(178, 31);
-            this.tb_id.TabIndex = 19;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(917, 674);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(46, 24);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "昵称";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(922, 122);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 24);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "昵称";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(624, 679);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(46, 24);
-            this.label16.TabIndex = 13;
-            this.label16.Text = "密码";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(667, 122);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(46, 24);
-            this.label17.TabIndex = 14;
-            this.label17.Text = "密码";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(351, 679);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(27, 24);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "id";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(451, 122);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(27, 24);
-            this.label19.TabIndex = 12;
-            this.label19.Text = "id";
-            // 
-            // clb_user
-            // 
-            this.clb_user.FormattingEnabled = true;
-            this.clb_user.Location = new System.Drawing.Point(323, 150);
-            this.clb_user.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.clb_user.Name = "clb_user";
-            this.clb_user.Size = new System.Drawing.Size(861, 396);
-            this.clb_user.TabIndex = 10;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(319, 95);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(100, 24);
-            this.label20.TabIndex = 9;
-            this.label20.Text = "用户类型：";
-            // 
-            // cb_user_type
-            // 
-            this.cb_user_type.FormattingEnabled = true;
-            this.cb_user_type.Items.AddRange(new object[] {
-            "顾客",
-            "管理员",
-            "调度员"});
-            this.cb_user_type.Location = new System.Drawing.Point(438, 86);
-            this.cb_user_type.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cb_user_type.Name = "cb_user_type";
-            this.cb_user_type.Size = new System.Drawing.Size(136, 32);
-            this.cb_user_type.TabIndex = 8;
-            this.cb_user_type.Text = "顾客";
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -2414,36 +2158,87 @@ namespace shareDemo3
             this.timer2.Interval = 10000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // pictureBox10
+            // pictureBox1
             // 
-            this.pictureBox10.BackColor = System.Drawing.Color.DarkOrange;
-            this.pictureBox10.Location = new System.Drawing.Point(108, 459);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(53, 10);
-            this.pictureBox10.TabIndex = 6;
-            this.pictureBox10.TabStop = false;
+            this.pictureBox1.Image = global::shareDemo2.Properties.Resources.map1;
+            this.pictureBox1.Location = new System.Drawing.Point(-7, -6);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1844, 884);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             // 
-            // uiLabel1
+            // pictureBox8
             // 
-            this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel1.Location = new System.Drawing.Point(55, 451);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(51, 25);
-            this.uiLabel1.TabIndex = 7;
-            this.uiLabel1.Text = "开锁";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBox8.Image = global::shareDemo2.Properties.Resources.lightred;
+            this.pictureBox8.Location = new System.Drawing.Point(22, 263);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox8.TabIndex = 10;
+            this.pictureBox8.TabStop = false;
             // 
-            // uiLabel2
+            // pictureBox5
             // 
-            this.uiLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel2.Location = new System.Drawing.Point(55, 473);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(51, 25);
-            this.uiLabel2.TabIndex = 9;
-            this.uiLabel2.Text = "关锁";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBox5.Image = global::shareDemo2.Properties.Resources.gray;
+            this.pictureBox5.Location = new System.Drawing.Point(22, 224);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox5.TabIndex = 8;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::shareDemo2.Properties.Resources.yellow;
+            this.pictureBox4.Location = new System.Drawing.Point(22, 184);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox4.TabIndex = 7;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::shareDemo2.Properties.Resources.green;
+            this.pictureBox3.Location = new System.Drawing.Point(22, 146);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.TabIndex = 6;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::shareDemo2.Properties.Resources.blue;
+            this.pictureBox2.Location = new System.Drawing.Point(22, 106);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::shareDemo2.Properties.Resources.map1;
+            this.pictureBox6.Location = new System.Drawing.Point(-7, -6);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(1844, 884);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBox6_Paint);
+            this.pictureBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseDown);
+            this.pictureBox6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseMove);
+            this.pictureBox6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseUp);
             // 
             // pictureBox11
             // 
@@ -2454,18 +2249,251 @@ namespace shareDemo3
             this.pictureBox11.TabIndex = 8;
             this.pictureBox11.TabStop = false;
             // 
-            // uiLabel3
+            // pictureBox10
             // 
-            this.uiLabel3.BackColor = System.Drawing.Color.Snow;
-            this.uiLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel3.Location = new System.Drawing.Point(30, 130);
-            this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(155, 40);
-            this.uiLabel3.Style = Sunny.UI.UIStyle.LayuiGreen;
-            this.uiLabel3.TabIndex = 10;
-            this.uiLabel3.Text = "用车热图分析";
-            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBox10.BackColor = System.Drawing.Color.DarkOrange;
+            this.pictureBox10.Location = new System.Drawing.Point(108, 459);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(53, 10);
+            this.pictureBox10.TabIndex = 6;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::shareDemo2.Properties.Resources.map1;
+            this.pictureBox7.Location = new System.Drawing.Point(-7, -6);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(1844, 884);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox7.TabIndex = 0;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox7_Paint);
+            this.pictureBox7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox7_MouseDown);
+            this.pictureBox7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox7_MouseMove);
+            this.pictureBox7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox7_MouseUp);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::shareDemo2.Properties.Resources.map1;
+            this.pictureBox9.Location = new System.Drawing.Point(-7, -6);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(1844, 884);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox9.TabIndex = 0;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox9_Paint);
+            this.pictureBox9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox9_MouseClick);
+            this.pictureBox9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox9_MouseDown);
+            this.pictureBox9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox9_MouseMove);
+            this.pictureBox9.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox9_MouseUp);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.Snow;
+            this.tabPage3.BackgroundImage = global::shareDemo2.Properties.Resources._2_1;
+            this.tabPage3.Controls.Add(this.uiPanel1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 33);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage3.Size = new System.Drawing.Size(1594, 826);
+            this.tabPage3.TabIndex = 6;
+            this.tabPage3.Text = "人事管理";
+            // 
+            // uiPanel1
+            // 
+            this.uiPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.uiPanel1.Controls.Add(this.clb_user);
+            this.uiPanel1.Controls.Add(this.button9);
+            this.uiPanel1.Controls.Add(this.cb_user_type);
+            this.uiPanel1.Controls.Add(this.button10);
+            this.uiPanel1.Controls.Add(this.label20);
+            this.uiPanel1.Controls.Add(this.button11);
+            this.uiPanel1.Controls.Add(this.label19);
+            this.uiPanel1.Controls.Add(this.button12);
+            this.uiPanel1.Controls.Add(this.label18);
+            this.uiPanel1.Controls.Add(this.tb_name);
+            this.uiPanel1.Controls.Add(this.label17);
+            this.uiPanel1.Controls.Add(this.tb_password);
+            this.uiPanel1.Controls.Add(this.label16);
+            this.uiPanel1.Controls.Add(this.tb_id);
+            this.uiPanel1.Controls.Add(this.label14);
+            this.uiPanel1.Controls.Add(this.label15);
+            this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiPanel1.Location = new System.Drawing.Point(252, 0);
+            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanel1.Name = "uiPanel1";
+            this.uiPanel1.Size = new System.Drawing.Size(1080, 830);
+            this.uiPanel1.TabIndex = 24;
+            this.uiPanel1.Text = null;
+            this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // clb_user
+            // 
+            this.clb_user.FormattingEnabled = true;
+            this.clb_user.Location = new System.Drawing.Point(130, 150);
+            this.clb_user.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.clb_user.Name = "clb_user";
+            this.clb_user.Size = new System.Drawing.Size(861, 364);
+            this.clb_user.TabIndex = 10;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(838, 593);
+            this.button9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(108, 47);
+            this.button9.TabIndex = 20;
+            this.button9.Text = "查询数据";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click_1);
+            // 
+            // cb_user_type
+            // 
+            this.cb_user_type.FormattingEnabled = true;
+            this.cb_user_type.Items.AddRange(new object[] {
+            "顾客",
+            "管理员",
+            "调度员"});
+            this.cb_user_type.Location = new System.Drawing.Point(266, 79);
+            this.cb_user_type.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cb_user_type.Name = "cb_user_type";
+            this.cb_user_type.Size = new System.Drawing.Size(136, 39);
+            this.cb_user_type.TabIndex = 8;
+            this.cb_user_type.Text = "顾客";
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(617, 593);
+            this.button10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(108, 47);
+            this.button10.TabIndex = 21;
+            this.button10.Text = "删除数据";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Location = new System.Drawing.Point(126, 87);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(134, 31);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "用户类型：";
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(385, 593);
+            this.button11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(108, 47);
+            this.button11.TabIndex = 22;
+            this.button11.Text = "修改数据";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Location = new System.Drawing.Point(197, 115);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(35, 31);
+            this.label19.TabIndex = 12;
+            this.label19.Text = "id";
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(149, 593);
+            this.button12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(108, 47);
+            this.button12.TabIndex = 23;
+            this.button12.Text = "插入数据";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Location = new System.Drawing.Point(158, 679);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 31);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "id";
+            // 
+            // tb_name
+            // 
+            this.tb_name.Location = new System.Drawing.Point(792, 671);
+            this.tb_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(178, 39);
+            this.tb_name.TabIndex = 17;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Location = new System.Drawing.Point(408, 115);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(62, 31);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "密码";
+            // 
+            // tb_password
+            // 
+            this.tb_password.Location = new System.Drawing.Point(494, 671);
+            this.tb_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tb_password.Name = "tb_password";
+            this.tb_password.Size = new System.Drawing.Size(178, 39);
+            this.tb_password.TabIndex = 18;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Location = new System.Drawing.Point(431, 679);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(62, 31);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "密码";
+            // 
+            // tb_id
+            // 
+            this.tb_id.Location = new System.Drawing.Point(203, 671);
+            this.tb_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tb_id.Name = "tb_id";
+            this.tb_id.Size = new System.Drawing.Size(178, 39);
+            this.tb_id.TabIndex = 19;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Location = new System.Drawing.Point(630, 115);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(62, 31);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "昵称";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Location = new System.Drawing.Point(724, 679);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(62, 31);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "昵称";
             // 
             // managerForm
             // 
@@ -2475,7 +2503,6 @@ namespace shareDemo3
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "managerForm";
             this.Text = "管理员";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabPage6.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel1.PerformLayout();
@@ -2483,7 +2510,6 @@ namespace shareDemo3
             this.splitContainer4.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
@@ -2491,7 +2517,6 @@ namespace shareDemo3
             this.splitContainer3.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -2500,7 +2525,6 @@ namespace shareDemo3
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -2511,19 +2535,23 @@ namespace shareDemo3
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.uiPanel1.ResumeLayout(false);
+            this.uiPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

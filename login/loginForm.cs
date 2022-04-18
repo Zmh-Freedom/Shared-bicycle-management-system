@@ -148,7 +148,7 @@ namespace login_register_Form1
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button1.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(372, 530);
+            this.button1.Location = new System.Drawing.Point(413, 561);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 52);
@@ -207,7 +207,7 @@ namespace login_register_Form1
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(118, 28);
+            this.label4.Location = new System.Drawing.Point(67, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(150, 35);
             this.label4.TabIndex = 5;
@@ -217,7 +217,7 @@ namespace login_register_Form1
             // 
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(132, 530);
+            this.button2.Location = new System.Drawing.Point(173, 561);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(142, 52);
@@ -231,7 +231,7 @@ namespace login_register_Form1
             this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
             this.uiLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel1.Location = new System.Drawing.Point(133, 128);
+            this.uiLabel1.Location = new System.Drawing.Point(174, 159);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(396, 70);
             this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
@@ -254,7 +254,7 @@ namespace login_register_Form1
             this.uiComboBox1.Name = "uiComboBox1";
             this.uiComboBox1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.uiComboBox1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
-            this.uiComboBox1.Size = new System.Drawing.Size(83, 24);
+            this.uiComboBox1.Size = new System.Drawing.Size(142, 35);
             this.uiComboBox1.Style = Sunny.UI.UIStyle.Custom;
             this.uiComboBox1.TabIndex = 13;
             this.uiComboBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -291,7 +291,7 @@ namespace login_register_Form1
             this.panel1.Controls.Add(this.tb_id);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(97, 219);
+            this.panel1.Location = new System.Drawing.Point(138, 250);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(455, 290);
             this.panel1.TabIndex = 15;
@@ -301,7 +301,7 @@ namespace login_register_Form1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::shareDemo2.Properties.Resources._1_2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(640, 642);
+            this.ClientSize = new System.Drawing.Size(722, 739);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.button2);
