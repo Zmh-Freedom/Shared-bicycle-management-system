@@ -15,9 +15,7 @@ namespace shareDemo2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new CustomerForm());
             Application.Run(new loginForm());
-            //Application.Run(new managerForm("12345678910"));
         }
     }
 }

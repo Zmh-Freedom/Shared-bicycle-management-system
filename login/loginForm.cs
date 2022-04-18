@@ -231,18 +231,19 @@ namespace login_register_Form1
             this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
             this.uiLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel1.Location = new System.Drawing.Point(174, 159);
+            this.uiLabel1.Location = new System.Drawing.Point(108, 160);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(396, 70);
-            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel1.Size = new System.Drawing.Size(518, 70);
             this.uiLabel1.TabIndex = 14;
             this.uiLabel1.Text = "共享单车使用和调度系统";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiComboBox1
             // 
             this.uiComboBox1.DataSource = null;
             this.uiComboBox1.FillColor = System.Drawing.Color.White;
+            this.uiComboBox1.FilterMaxCount = 50;
             this.uiComboBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiComboBox1.Items.AddRange(new object[] {
             "顾客",
@@ -255,17 +256,17 @@ namespace login_register_Form1
             this.uiComboBox1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.uiComboBox1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
             this.uiComboBox1.Size = new System.Drawing.Size(142, 35);
-            this.uiComboBox1.Style = Sunny.UI.UIStyle.Custom;
             this.uiComboBox1.TabIndex = 13;
             this.uiComboBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiComboBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::shareDemo2.Properties.Resources.password;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(35, 175);
+            this.pictureBox2.Location = new System.Drawing.Point(53, 189);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(62, 62);
+            this.pictureBox2.Size = new System.Drawing.Size(45, 45);
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
             // 
@@ -274,9 +275,10 @@ namespace login_register_Form1
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::shareDemo2.Properties.Resources.user;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(35, 82);
+            this.pictureBox1.Location = new System.Drawing.Point(53, 96);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(62, 62);
+            this.pictureBox1.Size = new System.Drawing.Size(45, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
@@ -312,6 +314,7 @@ namespace login_register_Form1
             this.Style = Sunny.UI.UIStyle.Custom;
             this.Text = "";
             this.TitleColor = System.Drawing.Color.Transparent;
+            this.ZoomScaleRect = new System.Drawing.Rectangle(22, 22, 722, 739);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);

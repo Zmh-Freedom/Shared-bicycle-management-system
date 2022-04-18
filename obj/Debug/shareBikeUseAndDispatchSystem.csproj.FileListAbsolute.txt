@@ -19,3 +19,5 @@ C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\obj\Debug\shareBikeUs
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\obj\Debug\shareBikeUseAndDispatchSystem.csproj.CopyComplete
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\obj\Debug\shareDemo2.exe
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\obj\Debug\shareDemo2.pdb
+C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\GMap.NET.Core.dll
+C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\GMap.NET.WindowsForms.dll
