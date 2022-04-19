@@ -32,9 +32,13 @@ namespace shareDemo2
         }
         private void add_bike()
         {
-            bike Bike = new bike() { flag = 5, total_time = 0 };
-            father.dc.bike.InsertOnSubmit(Bike);
-            father.dc.SubmitChanges();
+            int n = (int)uiDoubleUpDown1.Value;
+            for(int i=0; i < n; i++)
+            {
+                bike Bike = new bike() { flag = 5, total_time = 0 };
+                father.dc.bike.InsertOnSubmit(Bike);
+                father.dc.SubmitChanges();
+            }
         }
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

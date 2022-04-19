@@ -74,7 +74,7 @@ namespace shareDemo2
         //重绘地图
         private void RepaintMap()
         {
-            pictureBox1.Image = Properties.Resources.map1;
+            pictureBox1.Image = Properties.Resources.map11;
             bikesDisplay();
             pictureBox1.Refresh();
         }

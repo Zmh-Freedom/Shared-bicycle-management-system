@@ -99,17 +99,17 @@ namespace shareDemo2
             this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(939, 598);
-            this.splitContainer1.SplitterDistance = 765;
+            this.splitContainer1.Size = new System.Drawing.Size(983, 598);
+            this.splitContainer1.SplitterDistance = 776;
             this.splitContainer1.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::shareDemo2.Properties.Resources.map1;
+            this.pictureBox1.Image = global::shareDemo2.Properties.Resources.map11;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1844, 884);
+            this.pictureBox1.Size = new System.Drawing.Size(8960, 3328);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -208,11 +208,12 @@ namespace shareDemo2
             // CustomerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(939, 633);
+            this.ClientSize = new System.Drawing.Size(983, 633);
             this.Controls.Add(this.splitContainer1);
             this.Name = "CustomerForm";
             this.Text = "普通用户界面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.ZoomScaleRect = new System.Drawing.Rectangle(22, 22, 939, 633);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

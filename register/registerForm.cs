@@ -111,10 +111,10 @@ namespace login_register_Form1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.button1.Location = new System.Drawing.Point(304, 350);
+            this.button1.Location = new System.Drawing.Point(283, 390);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 38);
+            this.button1.Size = new System.Drawing.Size(167, 38);
             this.button1.TabIndex = 0;
             this.button1.Text = "注册";
             this.button1.UseVisualStyleBackColor = false;
@@ -124,9 +124,9 @@ namespace login_register_Form1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 23F);
-            this.label1.Location = new System.Drawing.Point(276, 49);
+            this.label1.Location = new System.Drawing.Point(255, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 51);
+            this.label1.Size = new System.Drawing.Size(209, 59);
             this.label1.TabIndex = 1;
             this.label1.Text = "用户注册";
             // 
@@ -134,9 +134,9 @@ namespace login_register_Form1
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.label2.Location = new System.Drawing.Point(190, 197);
+            this.label2.Location = new System.Drawing.Point(169, 237);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 27);
+            this.label2.Size = new System.Drawing.Size(134, 31);
             this.label2.TabIndex = 2;
             this.label2.Text = "设置昵称：";
             // 
@@ -144,9 +144,9 @@ namespace login_register_Form1
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.label3.Location = new System.Drawing.Point(190, 254);
+            this.label3.Location = new System.Drawing.Point(169, 294);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 27);
+            this.label3.Size = new System.Drawing.Size(134, 31);
             this.label3.TabIndex = 3;
             this.label3.Text = "设置密码：";
             // 
@@ -154,19 +154,19 @@ namespace login_register_Form1
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.label4.Location = new System.Drawing.Point(210, 141);
+            this.label4.Location = new System.Drawing.Point(189, 181);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 27);
+            this.label4.Size = new System.Drawing.Size(110, 31);
             this.label4.TabIndex = 4;
             this.label4.Text = "手机号：";
             // 
             // tb_name
             // 
             this.tb_name.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_name.Location = new System.Drawing.Point(346, 190);
+            this.tb_name.Location = new System.Drawing.Point(325, 230);
             this.tb_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(208, 34);
+            this.tb_name.Size = new System.Drawing.Size(279, 39);
             this.tb_name.TabIndex = 6;
             this.tb_name.Text = "10位以内字符数字组合";
             this.tb_name.Enter += new System.EventHandler(this.tb_name_Enter);
@@ -175,10 +175,10 @@ namespace login_register_Form1
             // tb_password
             // 
             this.tb_password.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_password.Location = new System.Drawing.Point(346, 251);
+            this.tb_password.Location = new System.Drawing.Point(325, 291);
             this.tb_password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(208, 34);
+            this.tb_password.Size = new System.Drawing.Size(279, 39);
             this.tb_password.TabIndex = 6;
             this.tb_password.Text = "10位以内字符数字组合";
             this.tb_password.Enter += new System.EventHandler(this.tb_password_Enter);
@@ -187,10 +187,10 @@ namespace login_register_Form1
             // tb_id
             // 
             this.tb_id.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_id.Location = new System.Drawing.Point(346, 134);
+            this.tb_id.Location = new System.Drawing.Point(325, 174);
             this.tb_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_id.Name = "tb_id";
-            this.tb_id.Size = new System.Drawing.Size(208, 34);
+            this.tb_id.Size = new System.Drawing.Size(279, 39);
             this.tb_id.TabIndex = 6;
             this.tb_id.Text = "请输入手机号";
             this.tb_id.Enter += new System.EventHandler(this.tb_id_Enter);
@@ -213,6 +213,7 @@ namespace login_register_Form1
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "registerForm";
             this.Text = "register_Form";
+            this.ZoomScaleRect = new System.Drawing.Rectangle(22, 22, 738, 466);
             this.ResumeLayout(false);
             this.PerformLayout();
 
