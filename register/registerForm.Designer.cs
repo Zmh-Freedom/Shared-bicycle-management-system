@@ -1,6 +1,5 @@
-﻿using shareDemo2;
-using System.Windows.Forms;
-
+﻿using System.Windows.Forms;
+using shareBike;
 namespace login_register_Form1
 {
     partial class registerForm

@@ -1,5 +1,4 @@
-﻿using shareDemo2;
-using shareDemo3;
+﻿using shareBike;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -265,7 +264,7 @@ namespace login_register_Form1
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackgroundImage = global::shareDemo2.Properties.Resources.password;
+            this.pictureBox2.BackgroundImage = global::shareBike.Properties.Resources.password;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Location = new System.Drawing.Point(53, 189);
             this.pictureBox2.Name = "pictureBox2";
@@ -276,7 +275,7 @@ namespace login_register_Form1
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::shareDemo2.Properties.Resources.user;
+            this.pictureBox1.BackgroundImage = global::shareBike.Properties.Resources.user;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(53, 96);
             this.pictureBox1.Name = "pictureBox1";
@@ -304,7 +303,7 @@ namespace login_register_Form1
             // loginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackgroundImage = global::shareDemo2.Properties.Resources._1_2;
+            this.BackgroundImage = global::shareBike.Properties.Resources._1_2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(722, 739);
             this.Controls.Add(this.panel1);

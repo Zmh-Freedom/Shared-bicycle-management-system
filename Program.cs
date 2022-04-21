@@ -1,9 +1,8 @@
 ﻿using login_register_Form1;
-using shareDemo3;
 using System;
 using System.Windows.Forms;
 
-namespace shareDemo2
+namespace shareBike
 {
     static class Program
     {

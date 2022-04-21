@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace shareDemo2
+namespace shareBike
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -36,9 +36,9 @@ namespace shareDemo2
     partial void Insertcustomer(customer instance);
     partial void Updatecustomer(customer instance);
     partial void Deletecustomer(customer instance);
-    partial void Insertdispatcher(Dispatcher instance);
-    partial void Updatedispatcher(Dispatcher instance);
-    partial void Deletedispatcher(Dispatcher instance);
+    partial void Insertdispatcher(dispatcher instance);
+    partial void Updatedispatcher(dispatcher instance);
+    partial void Deletedispatcher(dispatcher instance);
     partial void Insertfence(fence instance);
     partial void Updatefence(fence instance);
     partial void Deletefence(fence instance);
@@ -54,7 +54,7 @@ namespace shareDemo2
     #endregion
 		
 		public DBDataContext() : 
-				base(global::shareDemo2.Properties.Settings.Default.shareBikeConnectionString, mappingSource)
+				base(global::shareBike.Properties.Settings.Default.shareBikeConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -99,11 +99,11 @@ namespace shareDemo2
 			}
 		}
 		
-		public System.Data.Linq.Table<Dispatcher> dispatcher
+		public System.Data.Linq.Table<dispatcher> dispatcher
 		{
 			get
 			{
-				return this.GetTable<Dispatcher>();
+				return this.GetTable<dispatcher>();
 			}
 		}
 		
@@ -493,7 +493,7 @@ namespace shareDemo2
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.dispatcher")]
-	public partial class Dispatcher : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class dispatcher : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -518,7 +518,7 @@ namespace shareDemo2
     partial void OnnicknameChanged();
     #endregion
 		
-		public Dispatcher()
+		public dispatcher()
 		{
 			this._task = new EntitySet<task>(new Action<task>(this.attach_task), new Action<task>(this.detach_task));
 			OnCreated();
@@ -1358,7 +1358,7 @@ namespace shareDemo2
 		
 		private EntityRef<bike> _bike;
 		
-		private EntityRef<Dispatcher> _dispatcher;
+		private EntityRef<dispatcher> _dispatcher;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -1389,7 +1389,7 @@ namespace shareDemo2
 		public task()
 		{
 			this._bike = default(EntityRef<bike>);
-			this._dispatcher = default(EntityRef<Dispatcher>);
+			this._dispatcher = default(EntityRef<dispatcher>);
 			OnCreated();
 		}
 		
@@ -1636,7 +1636,7 @@ namespace shareDemo2
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="dispatcher_task", Storage="_dispatcher", ThisKey="handler", OtherKey="id", IsForeignKey=true)]
-		public Dispatcher dispatcher
+		public dispatcher dispatcher
 		{
 			get
 			{
@@ -1644,7 +1644,7 @@ namespace shareDemo2
 			}
 			set
 			{
-				Dispatcher previousValue = this._dispatcher.Entity;
+				dispatcher previousValue = this._dispatcher.Entity;
 				if (((previousValue != value) 
 							|| (this._dispatcher.HasLoadedOrAssignedValue == false)))
 				{

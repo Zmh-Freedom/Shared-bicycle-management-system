@@ -1,5 +1,5 @@
 ﻿
-namespace shareDemo2
+namespace shareBike
 {
     partial class taskManage
     {
@@ -74,7 +74,7 @@ namespace shareDemo2
             // 
             // taskBindingSource
             // 
-            this.taskBindingSource.DataSource = typeof(shareDemo2.task);
+            this.taskBindingSource.DataSource = typeof(shareBike.task);
             // 
             // ColumnID
             // 

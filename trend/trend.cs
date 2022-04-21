@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
 using System.Windows.Forms.DataVisualization.Charting;
-namespace shareDemo2
+namespace shareBike
 {
     public partial class trend : UIForm
     {
@@ -365,7 +365,7 @@ namespace shareDemo2
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::shareDemo2.Properties.Resources.bike2;
+            this.pictureBox1.BackgroundImage = global::shareBike.Properties.Resources.bike2;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox1.Location = new System.Drawing.Point(152, 26);
@@ -378,7 +378,7 @@ namespace shareDemo2
             // 
             this.pictureBoxTrend.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBoxTrend.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxTrend.BackgroundImage = global::shareDemo2.Properties.Resources.bike2;
+            this.pictureBoxTrend.BackgroundImage = global::shareBike.Properties.Resources.bike2;
             this.pictureBoxTrend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxTrend.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBoxTrend.Location = new System.Drawing.Point(142, 26);

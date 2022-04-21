@@ -1,4 +1,4 @@
-﻿using shareDemo2;
+﻿using shareBike;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +9,7 @@ using Sunny.UI;
 using System.Text.RegularExpressions;
 using System.Collections;
 
-namespace shareDemo3
+namespace shareBike
 {
     public partial class managerForm : UIForm
     {
@@ -180,7 +180,7 @@ namespace shareDemo3
         //响应地图快照页"刷新"按钮
         private void button4_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = shareDemo2.Properties.Resources.map11;
+            pictureBox1.Image = shareBike.Properties.Resources.map11;
             bikesDisplay(pictureBox1.Image);
             pictureBox1.Refresh();
             UpDateCapturePageLabel();
@@ -261,18 +261,18 @@ namespace shareDemo3
             {
                 case 1:
                     var Order1 = Sel1(sel1);
-                    trend Trend1 = new shareDemo2.trend(sel1, sel2, Order1, tag);
+                    trend Trend1 = new shareBike.trend(sel1, sel2, Order1, tag);
                     Trend1.Show();
                     break;
                 case 2:
                     var Order2 = Sel2(sel1);
-                    UIForm Trend2 = new shareDemo2.trend(sel1, sel2, Order2, tag);
+                    UIForm Trend2 = new shareBike.trend(sel1, sel2, Order2, tag);
                     Trend2.Show();
                     break;
                 case 0:
                     var Order3 = Sel1(sel1);
                     var Order4 = Sel2(sel1);
-                    UIForm Trend3 = new shareDemo2.trend(sel1, sel2, Order3, Order4, tag);
+                    UIForm Trend3 = new shareBike.trend(sel1, sel2, Order3, Order4, tag);
                     Trend3.Show();
                     break;
             }
@@ -458,7 +458,7 @@ namespace shareDemo3
         }
         private void repaintHotPageMap()
         {
-            pictureBox6.Image = shareDemo2.Properties.Resources.map11;
+            pictureBox6.Image = shareBike.Properties.Resources.map11;
             pictureBox6.Refresh();
         }
         #endregion
@@ -717,7 +717,7 @@ namespace shareDemo3
         //重绘下达任务页地图
         public void repaintTaskDonwnMap()
         {
-            pictureBox7.Image = shareDemo2.Properties.Resources.map11;
+            pictureBox7.Image = shareBike.Properties.Resources.map11;
             bikesDisplay(pictureBox7.Image);
             pictureBox7.Refresh();
         }
@@ -740,7 +740,7 @@ namespace shareDemo3
         //绘制支持智能调度的阴影区域
         private void AIAreaDisplay()
         {
-            pictureBox9.Image = shareDemo2.Properties.Resources.map11;
+            pictureBox9.Image = shareBike.Properties.Resources.map11;
             g = Graphics.FromImage(pictureBox9.Image);
             try
             {
@@ -1214,7 +1214,7 @@ namespace shareDemo3
                                    select p).Count();
                     if (idCount > 0) return false;
                     //生成新记录
-                    Dispatcher new_dispatcher = new Dispatcher() { id = t_id.ToString().PadLeft(5, '0'), password = t_password, nickname = t_name };
+                    dispatcher new_dispatcher = new dispatcher() { id = t_id.ToString().PadLeft(5, '0'), password = t_password, nickname = t_name };
                     dc.dispatcher.InsertOnSubmit(new_dispatcher);
                     dc.SubmitChanges();
                 }
@@ -1632,7 +1632,7 @@ namespace shareDemo3
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::shareDemo2.Properties.Resources.map11;
+            this.pictureBox9.Image = global::shareBike.Properties.Resources.map11;
             this.pictureBox9.Location = new System.Drawing.Point(-7, -6);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox9.Name = "pictureBox9";
@@ -1738,7 +1738,7 @@ namespace shareDemo3
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::shareDemo2.Properties.Resources.map11;
+            this.pictureBox7.Image = global::shareBike.Properties.Resources.map11;
             this.pictureBox7.Location = new System.Drawing.Point(-7, -6);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox7.Name = "pictureBox7";
@@ -1879,7 +1879,7 @@ namespace shareDemo3
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::shareDemo2.Properties.Resources.map11;
+            this.pictureBox6.Image = global::shareBike.Properties.Resources.map11;
             this.pictureBox6.Location = new System.Drawing.Point(-7, -6);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox6.Name = "pictureBox6";
@@ -2084,7 +2084,7 @@ namespace shareDemo3
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::shareDemo2.Properties.Resources.map11;
+            this.pictureBox1.Image = global::shareBike.Properties.Resources.map11;
             this.pictureBox1.Location = new System.Drawing.Point(-7, -6);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
@@ -2126,7 +2126,7 @@ namespace shareDemo3
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::shareDemo2.Properties.Resources.lightred;
+            this.pictureBox8.Image = global::shareBike.Properties.Resources.lightred;
             this.pictureBox8.Location = new System.Drawing.Point(22, 263);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox8.Name = "pictureBox8";
@@ -2146,7 +2146,7 @@ namespace shareDemo3
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::shareDemo2.Properties.Resources.gray;
+            this.pictureBox5.Image = global::shareBike.Properties.Resources.gray;
             this.pictureBox5.Location = new System.Drawing.Point(22, 224);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
@@ -2157,7 +2157,7 @@ namespace shareDemo3
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::shareDemo2.Properties.Resources.yellow;
+            this.pictureBox4.Image = global::shareBike.Properties.Resources.yellow;
             this.pictureBox4.Location = new System.Drawing.Point(22, 184);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
@@ -2168,7 +2168,7 @@ namespace shareDemo3
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::shareDemo2.Properties.Resources.green;
+            this.pictureBox3.Image = global::shareBike.Properties.Resources.green;
             this.pictureBox3.Location = new System.Drawing.Point(22, 146);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
@@ -2179,7 +2179,7 @@ namespace shareDemo3
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::shareDemo2.Properties.Resources.blue;
+            this.pictureBox2.Image = global::shareBike.Properties.Resources.blue;
             this.pictureBox2.Location = new System.Drawing.Point(22, 106);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
@@ -2293,7 +2293,7 @@ namespace shareDemo3
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.Snow;
-            this.tabPage3.BackgroundImage = global::shareDemo2.Properties.Resources._2_1;
+            this.tabPage3.BackgroundImage = global::shareBike.Properties.Resources._2_1;
             this.tabPage3.Controls.Add(this.uiPanel1);
             this.tabPage3.Location = new System.Drawing.Point(4, 33);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

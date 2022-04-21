@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
-namespace shareDemo2
+namespace shareBike
 {
     public partial class Warehouse : UIForm
     {
-        private shareDemo3.managerForm father;
-        public Warehouse(shareDemo3.managerForm myfather)
+        private shareBike.managerForm father;
+        public Warehouse(shareBike.managerForm myfather)
         {
             InitializeComponent();
             father = myfather;

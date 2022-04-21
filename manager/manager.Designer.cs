@@ -1,10 +1,10 @@
-﻿using shareDemo2;
+﻿using shareBike;
 using System.Collections;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace shareDemo3
+namespace shareBike
 {
     partial class managerForm
     {

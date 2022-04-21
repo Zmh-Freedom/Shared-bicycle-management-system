@@ -1,5 +1,5 @@
 ﻿
-namespace shareDemo2
+namespace shareBike
 {
     partial class Warehouse
     {
@@ -125,7 +125,7 @@ namespace shareDemo2
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::shareDemo2.Properties.Resources.bike2;
+            this.pictureBox8.Image = global::shareBike.Properties.Resources.bike2;
             this.pictureBox8.Location = new System.Drawing.Point(74, 20);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(101, 103);

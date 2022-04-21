@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using shareDemo2;
+using shareBike;
 using Sunny.UI;
 namespace login_register_Form1
 {
@@ -25,13 +25,26 @@ namespace login_register_Form1
         private TextBox tb_name;
         private TextBox tb_password;
         private TextBox tb_id;
+        private Panel panel1;
+        private UIAvatar uiAvatar1;
         private System.ComponentModel.IContainer components = null;
         #endregion
         public registerForm()
         {
             InitializeComponent();
             dc=new DBDataContext();
+            panel1.BackColor = Color.FromArgb(100, Color.White);
         }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+
         #region 用户注册代码
         private void button1_Click(object sender, EventArgs e)
         {
@@ -100,6 +113,7 @@ namespace login_register_Form1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(registerForm));
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -108,13 +122,16 @@ namespace login_register_Form1
             this.tb_name = new System.Windows.Forms.TextBox();
             this.tb_password = new System.Windows.Forms.TextBox();
             this.tb_id = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.uiAvatar1 = new Sunny.UI.UIAvatar();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.button1.Location = new System.Drawing.Point(283, 390);
+            this.button1.Location = new System.Drawing.Point(195, 389);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(167, 38);
@@ -126,18 +143,21 @@ namespace login_register_Form1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 23F);
-            this.label1.Location = new System.Drawing.Point(255, 89);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 23F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(216, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 59);
+            this.label1.Size = new System.Drawing.Size(209, 60);
             this.label1.TabIndex = 1;
             this.label1.Text = "用户注册";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.label2.Location = new System.Drawing.Point(169, 237);
+            this.label2.Location = new System.Drawing.Point(39, 237);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 31);
             this.label2.TabIndex = 2;
@@ -146,8 +166,9 @@ namespace login_register_Form1
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.label3.Location = new System.Drawing.Point(169, 294);
+            this.label3.Location = new System.Drawing.Point(39, 294);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(134, 31);
             this.label3.TabIndex = 3;
@@ -156,8 +177,9 @@ namespace login_register_Form1
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.label4.Location = new System.Drawing.Point(189, 181);
+            this.label4.Location = new System.Drawing.Point(59, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 31);
             this.label4.TabIndex = 4;
@@ -166,7 +188,7 @@ namespace login_register_Form1
             // tb_name
             // 
             this.tb_name.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_name.Location = new System.Drawing.Point(325, 230);
+            this.tb_name.Location = new System.Drawing.Point(195, 230);
             this.tb_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(279, 39);
@@ -178,7 +200,7 @@ namespace login_register_Form1
             // tb_password
             // 
             this.tb_password.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_password.Location = new System.Drawing.Point(325, 291);
+            this.tb_password.Location = new System.Drawing.Point(195, 291);
             this.tb_password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_password.Name = "tb_password";
             this.tb_password.Size = new System.Drawing.Size(279, 39);
@@ -190,7 +212,7 @@ namespace login_register_Form1
             // tb_id
             // 
             this.tb_id.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_id.Location = new System.Drawing.Point(325, 174);
+            this.tb_id.Location = new System.Drawing.Point(195, 174);
             this.tb_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_id.Name = "tb_id";
             this.tb_id.Size = new System.Drawing.Size(279, 39);
@@ -199,26 +221,49 @@ namespace login_register_Form1
             this.tb_id.Enter += new System.EventHandler(this.tb_id_Enter);
             this.tb_id.Leave += new System.EventHandler(this.tb_id_Leave);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.uiAvatar1);
+            this.panel1.Controls.Add(this.tb_id);
+            this.panel1.Controls.Add(this.tb_password);
+            this.panel1.Controls.Add(this.tb_name);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Location = new System.Drawing.Point(71, 118);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(561, 470);
+            this.panel1.TabIndex = 7;
+            // 
+            // uiAvatar1
+            // 
+            this.uiAvatar1.BackColor = System.Drawing.Color.Transparent;
+            this.uiAvatar1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiAvatar1.Location = new System.Drawing.Point(111, 17);
+            this.uiAvatar1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiAvatar1.Name = "uiAvatar1";
+            this.uiAvatar1.Size = new System.Drawing.Size(76, 74);
+            this.uiAvatar1.TabIndex = 7;
+            this.uiAvatar1.Text = "uiAvatar1";
+            this.uiAvatar1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // registerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackgroundImage = global::shareDemo2.Properties.Resources.bg;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(738, 466);
-            this.Controls.Add(this.tb_id);
-            this.Controls.Add(this.tb_password);
-            this.Controls.Add(this.tb_name);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(706, 679);
+            this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "registerForm";
-            this.Text = "register_Form";
+            this.Text = "";
             this.ZoomScaleRect = new System.Drawing.Rectangle(22, 22, 738, 466);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -326,7 +371,7 @@ namespace login_register_Form1
                                    select p).Count();
                     if (idCount > 0) return false;
                     //生成新记录
-                    Dispatcher new_dispatcher = new Dispatcher() { id = t_id.ToString().PadLeft(5, '0'), password = t_password, nickname = t_name };
+                    dispatcher new_dispatcher = new dispatcher() { id = t_id.ToString().PadLeft(5, '0'), password = t_password, nickname = t_name };
                     dc.dispatcher.InsertOnSubmit(new_dispatcher);
                     dc.SubmitChanges();
                 }

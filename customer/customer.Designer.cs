@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 
-namespace shareDemo2
+namespace shareBike
 {
     partial class CustomerForm
     {
@@ -105,7 +105,7 @@ namespace shareDemo2
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::shareDemo2.Properties.Resources.map11;
+            this.pictureBox1.Image = global::shareBike.Properties.Resources.map11;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";

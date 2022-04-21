@@ -3,12 +3,12 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace shareDemo2
+namespace shareBike
 {
     public partial class taskManage : Form
     {
-        private shareDemo3.managerForm father;
-        public taskManage(shareDemo3.managerForm myfather)
+        private shareBike.managerForm father;
+        public taskManage(shareBike.managerForm myfather)
         {
             InitializeComponent();
             father = myfather;

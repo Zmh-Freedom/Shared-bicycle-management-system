@@ -1,4 +1,4 @@
-﻿namespace shareDemo2
+﻿namespace shareBike
 {
     partial class trend
     {

@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FC3B81FF-753B-467C-849E-D8D7BA5BFED7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>shareDemo2</RootNamespace>
-    <AssemblyName>shareDemo2</AssemblyName>
+    <RootNamespace>shareBike</RootNamespace>
+    <AssemblyName>shareBikeUseAndDispatchSystem</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -16,7 +16,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Freedom\OneDrive\桌面\</PublishUrl>
+    <PublishUrl>E:\勿忘study\大二下\数据库课设\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -26,7 +26,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -181,6 +181,9 @@
     <Compile Include="customer\customer.Designer.cs">
       <DependentUpon>customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="DB.cs">
+      <DependentUpon>DB.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -255,7 +258,7 @@
     </None>
     <None Include="dispatcher\dispatcherForm.csproj" />
     <None Include="login\loginRegisterForm.csproj" />
-    <None Include="manager\shareDemo3.csproj" />
+    <None Include="manager\shareBike.csproj" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\task.datasource" />
     <None Include="Properties\Settings.settings">
@@ -283,6 +286,8 @@
     <None Include="Resources\1-1.png" />
     <None Include="Resources\1-2.jpeg" />
     <None Include="Resources\2-1.jpeg" />
+    <None Include="Resources\background2.jpeg" />
+    <None Include="Resources\background1.jpeg" />
     <Content Include="Resources\bike.png" />
     <Content Include="Resources\blue.jpg" />
     <Content Include="Resources\gray.jpg" />
