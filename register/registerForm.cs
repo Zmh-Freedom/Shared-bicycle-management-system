@@ -61,17 +61,20 @@ namespace login_register_Form1
                 {
                     MessageBox.Show("账号重复，请检查后再试."); return;
                 }
-                button1.Text = "登录"; return;
+                //button1.Text = "登录";
+                MessageBox.Show("注册成功");
+                this.Close();
+                return;
             }
 
             //登录
             else if (button1.Text == "登录")
             {
                 //跳转到主界面
-                CustomerForm new_form = new CustomerForm(tb_id.Text);
-                this.Hide();
-                new_form.ShowDialog();
-                Application.ExitThread();
+                //CustomerForm new_form = new CustomerForm(tb_id.Text);
+                this.Close();
+                //new_form.ShowDialog();
+                //Application.ExitThread();
             }
         }
         #endregion

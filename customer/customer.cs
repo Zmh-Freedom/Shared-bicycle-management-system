@@ -27,7 +27,7 @@ namespace shareDemo2
             #endregion
 
             #region 绘图初始化
-            mysbrush1 = new SolidBrush(Color.Blue);
+            mysbrush1 = new SolidBrush(Color.FromArgb(150,Color.Blue));
             mysbrush2 = new SolidBrush(Color.FromArgb(50, Color.SteelBlue));
             bikesDisplay();
             pbox = new PictureBox();

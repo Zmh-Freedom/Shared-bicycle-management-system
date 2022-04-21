@@ -72,24 +72,26 @@ namespace login_register_Form1
                 //跳转到主界面
                 if(user_type == 0)
                 {
+                    this.Hide();
                     CustomerForm new_form = new CustomerForm(tb_id.Text);
                     new_form.ShowDialog();
-                    this.Hide();
-                    Application.ExitThread();
+                    this.Show();
+
                 }
                 else if (user_type == 1)//管理员
                 {
+                    this.Hide();
                     managerForm new_form = new managerForm(id);
                     new_form.ShowDialog();
-                    this.Hide();
-                    Application.ExitThread();
+                    this.Show();
+                    
                 }
                 else if(user_type == 2)//调度员
                 {
+                    this.Hide();
                     dispatcher_Form.dispatcherForm new_form = new dispatcher_Form.dispatcherForm(id);
                     new_form.ShowDialog();
-                    this.Hide();
-                    Application.ExitThread();
+                    this.Show();
                 }
             }
             else
@@ -103,10 +105,11 @@ namespace login_register_Form1
         //注册
         private void button2_Click(object sender, EventArgs e)
         {
-            registerForm register = new registerForm();
             this.Hide();
+            registerForm register = new registerForm();
             register.ShowDialog();
-            Application.ExitThread();
+            this.Show();
+            //Application.ExitThread();
         }
         #endregion
         

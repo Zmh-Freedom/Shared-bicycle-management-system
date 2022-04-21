@@ -19,9 +19,6 @@ C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\obj\Debug\shareBikeUs
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\obj\Debug\shareBikeUseAndDispatchSystem.csproj.CopyComplete
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\obj\Debug\shareDemo2.exe
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\obj\Debug\shareDemo2.pdb
-C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\MetroFramework.Design.dll
-C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\MetroFramework.dll
-C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\MetroFramework.Fonts.dll
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\Microsoft.AspNetCore.Hosting.Abstractions.dll
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\Microsoft.AspNetCore.Http.Abstractions.dll
@@ -78,3 +75,7 @@ C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\System.Text
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\System.Text.Json.xml
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\System.ValueTuple.xml
+C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\shareDemo2.exe.manifest
+C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\bin\Debug\shareDemo2.application
+C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\obj\Debug\shareDemo2.exe.manifest
+C:\Users\Freedom\OneDrive\桌面\Shared-bicycle-management\obj\Debug\shareDemo2.application

@@ -16,6 +16,13 @@ namespace shareDemo3
         public managerForm(string id)
         {
             InitializeComponent();
+
+            #region 控件自适应窗体大小初始化
+            x = this.Width;
+            y = this.Height;
+            setTag(this);
+            #endregion
+
             #region 数据库初始化
             dc = new DBDataContext();
             order1 = dc.orderform;
@@ -2037,7 +2044,7 @@ namespace shareDemo3
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1594, 826);
+            this.tabPage1.Size = new System.Drawing.Size(1914, 1006);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "地图快照";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -2071,8 +2078,8 @@ namespace shareDemo3
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(1588, 791);
-            this.splitContainer1.SplitterDistance = 1349;
+            this.splitContainer1.Size = new System.Drawing.Size(1908, 971);
+            this.splitContainer1.SplitterDistance = 1620;
             this.splitContainer1.TabIndex = 1;
             // 
             // pictureBox1
@@ -2235,9 +2242,9 @@ namespace shareDemo3
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(3, 793);
+            this.statusStrip1.Location = new System.Drawing.Point(3, 973);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1588, 31);
+            this.statusStrip1.Size = new System.Drawing.Size(1908, 31);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "X";
             // 
@@ -2280,7 +2287,7 @@ namespace shareDemo3
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1602, 863);
+            this.tabControl1.Size = new System.Drawing.Size(1922, 1043);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage3
@@ -2292,7 +2299,7 @@ namespace shareDemo3
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Size = new System.Drawing.Size(1594, 826);
+            this.tabPage3.Size = new System.Drawing.Size(1914, 1006);
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "人事管理";
             // 
@@ -2301,6 +2308,7 @@ namespace shareDemo3
             this.uiPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiPanel1.AutoSize = true;
             this.uiPanel1.BackColor = System.Drawing.Color.Transparent;
             this.uiPanel1.Controls.Add(this.clb_user);
             this.uiPanel1.Controls.Add(this.button9);
@@ -2323,16 +2331,19 @@ namespace shareDemo3
             this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(1080, 830);
+            this.uiPanel1.Size = new System.Drawing.Size(1400, 1010);
             this.uiPanel1.TabIndex = 24;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiPanel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiPanel1.Resize += new System.EventHandler(this.Form1_Resize);
             // 
             // clb_user
             // 
+            this.clb_user.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.clb_user.CausesValidation = false;
             this.clb_user.FormattingEnabled = true;
-            this.clb_user.Location = new System.Drawing.Point(128, 150);
+            this.clb_user.Location = new System.Drawing.Point(288, 240);
             this.clb_user.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.clb_user.Name = "clb_user";
             this.clb_user.Size = new System.Drawing.Size(861, 364);
@@ -2340,7 +2351,9 @@ namespace shareDemo3
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(838, 593);
+            this.button9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button9.CausesValidation = false;
+            this.button9.Location = new System.Drawing.Point(998, 683);
             this.button9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(108, 47);
@@ -2351,12 +2364,14 @@ namespace shareDemo3
             // 
             // cb_user_type
             // 
+            this.cb_user_type.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cb_user_type.CausesValidation = false;
             this.cb_user_type.FormattingEnabled = true;
             this.cb_user_type.Items.AddRange(new object[] {
             "顾客",
             "管理员",
             "调度员"});
-            this.cb_user_type.Location = new System.Drawing.Point(266, 79);
+            this.cb_user_type.Location = new System.Drawing.Point(426, 169);
             this.cb_user_type.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cb_user_type.Name = "cb_user_type";
             this.cb_user_type.Size = new System.Drawing.Size(136, 39);
@@ -2365,7 +2380,9 @@ namespace shareDemo3
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(617, 593);
+            this.button10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button10.CausesValidation = false;
+            this.button10.Location = new System.Drawing.Point(777, 683);
             this.button10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(108, 47);
@@ -2376,9 +2393,11 @@ namespace shareDemo3
             // 
             // label20
             // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Location = new System.Drawing.Point(126, 87);
+            this.label20.CausesValidation = false;
+            this.label20.Location = new System.Drawing.Point(286, 177);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(134, 31);
             this.label20.TabIndex = 9;
@@ -2386,7 +2405,9 @@ namespace shareDemo3
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(385, 593);
+            this.button11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button11.CausesValidation = false;
+            this.button11.Location = new System.Drawing.Point(545, 683);
             this.button11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(108, 47);
@@ -2397,9 +2418,11 @@ namespace shareDemo3
             // 
             // label19
             // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Location = new System.Drawing.Point(195, 115);
+            this.label19.CausesValidation = false;
+            this.label19.Location = new System.Drawing.Point(355, 205);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(35, 31);
             this.label19.TabIndex = 12;
@@ -2407,7 +2430,9 @@ namespace shareDemo3
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(149, 593);
+            this.button12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button12.CausesValidation = false;
+            this.button12.Location = new System.Drawing.Point(309, 683);
             this.button12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(108, 47);
@@ -2418,9 +2443,11 @@ namespace shareDemo3
             // 
             // label18
             // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Location = new System.Drawing.Point(158, 679);
+            this.label18.CausesValidation = false;
+            this.label18.Location = new System.Drawing.Point(318, 769);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(35, 31);
             this.label18.TabIndex = 11;
@@ -2428,7 +2455,9 @@ namespace shareDemo3
             // 
             // tb_name
             // 
-            this.tb_name.Location = new System.Drawing.Point(792, 671);
+            this.tb_name.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tb_name.CausesValidation = false;
+            this.tb_name.Location = new System.Drawing.Point(952, 761);
             this.tb_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(178, 39);
@@ -2436,9 +2465,11 @@ namespace shareDemo3
             // 
             // label17
             // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Location = new System.Drawing.Point(406, 115);
+            this.label17.CausesValidation = false;
+            this.label17.Location = new System.Drawing.Point(566, 205);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(62, 31);
             this.label17.TabIndex = 14;
@@ -2446,7 +2477,9 @@ namespace shareDemo3
             // 
             // tb_password
             // 
-            this.tb_password.Location = new System.Drawing.Point(494, 671);
+            this.tb_password.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tb_password.CausesValidation = false;
+            this.tb_password.Location = new System.Drawing.Point(654, 761);
             this.tb_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_password.Name = "tb_password";
             this.tb_password.Size = new System.Drawing.Size(178, 39);
@@ -2454,9 +2487,11 @@ namespace shareDemo3
             // 
             // label16
             // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Location = new System.Drawing.Point(431, 679);
+            this.label16.CausesValidation = false;
+            this.label16.Location = new System.Drawing.Point(591, 769);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(62, 31);
             this.label16.TabIndex = 13;
@@ -2464,7 +2499,9 @@ namespace shareDemo3
             // 
             // tb_id
             // 
-            this.tb_id.Location = new System.Drawing.Point(203, 671);
+            this.tb_id.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tb_id.CausesValidation = false;
+            this.tb_id.Location = new System.Drawing.Point(363, 761);
             this.tb_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_id.Name = "tb_id";
             this.tb_id.Size = new System.Drawing.Size(178, 39);
@@ -2472,9 +2509,11 @@ namespace shareDemo3
             // 
             // label14
             // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Location = new System.Drawing.Point(628, 115);
+            this.label14.CausesValidation = false;
+            this.label14.Location = new System.Drawing.Point(788, 205);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(62, 31);
             this.label14.TabIndex = 16;
@@ -2482,9 +2521,11 @@ namespace shareDemo3
             // 
             // label15
             // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Location = new System.Drawing.Point(724, 677);
+            this.label15.CausesValidation = false;
+            this.label15.Location = new System.Drawing.Point(884, 767);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 31);
             this.label15.TabIndex = 15;
@@ -2505,13 +2546,13 @@ namespace shareDemo3
             // managerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1600, 900);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "managerForm";
             this.Text = "管理员";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ZoomScaleRect = new System.Drawing.Rectangle(22, 22, 1600, 900);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.tabPage6.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel1.PerformLayout();
@@ -2559,6 +2600,7 @@ namespace shareDemo3
             this.statusStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.uiPanel1.ResumeLayout(false);
             this.uiPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -2625,6 +2667,50 @@ namespace shareDemo3
 
         #endregion
 
-        
+        #region 控件大小随窗体大小等比例缩放
+        private float x;//定义当前窗体的宽度
+        private float y;//定义当前窗体的高度
+        private void setTag(Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+                con.Tag = con.Width + ";" + con.Height + ";" + con.Left + ";" + con.Top + ";" + con.Font.Size;
+                if (con.Controls.Count > 0)
+                {
+                    setTag(con);
+                }
+            }
+        }
+        private void setControls(float newx, float newy, Control cons)
+        {
+            //遍历窗体中的控件，重新设置控件的值
+            foreach (Control con in cons.Controls)
+            {
+                //获取控件的Tag属性值，并分割后存储字符串数组
+                if (con.Tag != null)
+                {
+                    string[] mytag = con.Tag.ToString().Split(new char[] { ';' });
+                    //根据窗体缩放的比例确定控件的值
+                    con.Width = Convert.ToInt32(System.Convert.ToSingle(mytag[0]) * newx);//宽度
+                    con.Height = Convert.ToInt32(System.Convert.ToSingle(mytag[1]) * newy);//高度
+                    con.Left = Convert.ToInt32(System.Convert.ToSingle(mytag[2]) * newx);//左边距
+                    con.Top = Convert.ToInt32(System.Convert.ToSingle(mytag[3]) * newy);//顶边距
+                    Single currentSize = System.Convert.ToSingle(mytag[4]) * newy;//字体大小
+                    con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
+                    if (con.Controls.Count > 0)
+                    {
+                        setControls(newx, newy, con);
+                    }
+                }
+            }
+        }
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            float newx = (this.Width) / x;
+            float newy = (this.Height) / y;
+            setControls(newx, newy, this);
+        }
+
+        #endregion
     }
 }
