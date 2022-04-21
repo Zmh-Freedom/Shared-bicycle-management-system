@@ -113,7 +113,6 @@ namespace login_register_Form1
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(registerForm));
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -146,7 +145,7 @@ namespace login_register_Form1
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 23F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(216, 31);
+            this.label1.Location = new System.Drawing.Point(226, 73);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(209, 60);
             this.label1.TabIndex = 1;
@@ -157,7 +156,7 @@ namespace login_register_Form1
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.label2.Location = new System.Drawing.Point(39, 237);
+            this.label2.Location = new System.Drawing.Point(70, 247);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 31);
             this.label2.TabIndex = 2;
@@ -168,7 +167,7 @@ namespace login_register_Form1
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.label3.Location = new System.Drawing.Point(39, 294);
+            this.label3.Location = new System.Drawing.Point(70, 304);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(134, 31);
             this.label3.TabIndex = 3;
@@ -179,7 +178,7 @@ namespace login_register_Form1
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.label4.Location = new System.Drawing.Point(59, 181);
+            this.label4.Location = new System.Drawing.Point(90, 191);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 31);
             this.label4.TabIndex = 4;
@@ -188,7 +187,7 @@ namespace login_register_Form1
             // tb_name
             // 
             this.tb_name.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_name.Location = new System.Drawing.Point(195, 230);
+            this.tb_name.Location = new System.Drawing.Point(226, 240);
             this.tb_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(279, 39);
@@ -200,7 +199,7 @@ namespace login_register_Form1
             // tb_password
             // 
             this.tb_password.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_password.Location = new System.Drawing.Point(195, 291);
+            this.tb_password.Location = new System.Drawing.Point(226, 301);
             this.tb_password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_password.Name = "tb_password";
             this.tb_password.Size = new System.Drawing.Size(279, 39);
@@ -212,7 +211,7 @@ namespace login_register_Form1
             // tb_id
             // 
             this.tb_id.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.tb_id.Location = new System.Drawing.Point(195, 174);
+            this.tb_id.Location = new System.Drawing.Point(226, 184);
             this.tb_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_id.Name = "tb_id";
             this.tb_id.Size = new System.Drawing.Size(279, 39);
@@ -233,7 +232,7 @@ namespace login_register_Form1
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(71, 118);
+            this.panel1.Location = new System.Drawing.Point(67, 66);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(561, 470);
             this.panel1.TabIndex = 7;
@@ -242,7 +241,7 @@ namespace login_register_Form1
             // 
             this.uiAvatar1.BackColor = System.Drawing.Color.Transparent;
             this.uiAvatar1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiAvatar1.Location = new System.Drawing.Point(111, 17);
+            this.uiAvatar1.Location = new System.Drawing.Point(144, 67);
             this.uiAvatar1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiAvatar1.Name = "uiAvatar1";
             this.uiAvatar1.Size = new System.Drawing.Size(76, 74);
@@ -253,9 +252,9 @@ namespace login_register_Form1
             // registerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::shareBike.Properties.Resources.background1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(706, 679);
+            this.ClientSize = new System.Drawing.Size(706, 592);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "registerForm";

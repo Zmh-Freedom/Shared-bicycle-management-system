@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -27,7 +25,7 @@ namespace shareBike
             #endregion
 
             #region 绘图初始化
-            mysbrush1 = new SolidBrush(Color.FromArgb(150,Color.Blue));
+            mysbrush1 = new SolidBrush(Color.Blue);
             mysbrush2 = new SolidBrush(Color.FromArgb(50, Color.SteelBlue));
             bikesDisplay();
             pbox = new PictureBox();
@@ -55,8 +53,7 @@ namespace shareBike
         {
             pbox.Image = Properties.Resources.me;
             pbox.Size = new Size(30, 50);//设置PictureBox控件大小
-
-            //freeMove = false;
+            freeMove = false;
             bias_x = 15;
             bias_y = 45;
         }
@@ -74,7 +71,7 @@ namespace shareBike
         //重绘地图
         private void RepaintMap()
         {
-            pictureBox1.Image = Properties.Resources.map11;
+            pictureBox1.Image = Properties.Resources.map1;
             bikesDisplay();
             pictureBox1.Refresh();
         }
@@ -278,8 +275,7 @@ namespace shareBike
                 order.cid = user_id;
                 order.start_x = now_x;
                 order.start_y = now_y;
-                //startTime = DateTime.Now;
-                startTime = dateTimePicker1.Value;
+                startTime = DateTime.Now;
                 order.start_time = startTime;
                 order.flag = 1;
                 dc.orderform.InsertOnSubmit(order);
@@ -307,8 +303,7 @@ namespace shareBike
             now_bike.current_x = now_x;
             now_bike.current_y = now_y;
 
-            //int last = (int)(DateTime.Now - startTime).TotalSeconds;
-            int last = Convert.ToInt32(textBox1.Text);
+            int last = (int)(DateTime.Now - startTime).TotalSeconds;
             now_bike.total_time += last;
 
             now_order.end_time = startTime.AddMinutes(last);
@@ -386,21 +381,18 @@ namespace shareBike
 
         #region 交互响应函数
         //移动
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             if (freeMove)//选择出发点时可以自由移动
             {
-                var screenPoint = PointToScreen(pictureBox1.Location);//获取图片panel的相对位置
-                now_x = Control.MousePosition.X - screenPoint.X;
-                now_y = Control.MousePosition.Y - screenPoint.Y;
-                //MessageBox.Show(string.Format("{0} {1}",now_x,now_y));
+                now_x = e.X;
+                now_y = e.Y;
                 pbox.Location = new Point(now_x - bias_x, now_y - bias_y);
             }
             else//步行和骑车时不能瞬间移动超过90个像素的距离
             {
-                var screenPoint = PointToScreen(pictureBox1.Location);//获取图片panel的相对位置
-                int new_x = Control.MousePosition.X - screenPoint.X;
-                int new_y = Control.MousePosition.Y - screenPoint.Y;
+                int new_x = e.X;
+                int new_y = e.Y;
                 if (Math.Sqrt(Math.Pow(now_x - new_x, 2) +
                    Math.Pow(now_y - new_y, 2)) < 90)
                 {
@@ -457,7 +449,7 @@ namespace shareBike
                     bias_y = 40;
                     pbox.Location = new Point(now_x - bias_x, now_y - bias_y);
                     RepaintMap();
-                    //freeMove = true;
+                    freeMove = true;
                     timer1.Enabled = false;
                     timer2.Enabled = false;
                     label2.ResetText();
@@ -549,5 +541,7 @@ namespace shareBike
             }
         }
         #endregion
+
+
     }
 }

@@ -26,21 +26,27 @@ namespace login_register_Form1
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private Panel panel1;
+        private UIPanel uiPanel1;
         private Button button2;
         #endregion
         public loginForm()
         {
             InitializeComponent();
             uiComboBox1.SelectedIndex = 0;
+            #region 控件透明化
             label2.BackColor = Color.Transparent;
             label3.BackColor = Color.Transparent;
             label4.BackColor = Color.Transparent;
             panel1.BackColor = Color.FromArgb(100, Color.White);
             pictureBox1.BackColor = Color.Transparent; 
             pictureBox2.BackColor = Color.Transparent;
-            uiLabel1.BackColor = Color.FromArgb(100, Color.White);
             TitleColor = Color.FromArgb(100, Color.White);
+            uiPanel1.FillColor = Color.FromArgb(200, Color.FromArgb(238, 251, 250));
+            uiPanel1.RectColor = Color.FromArgb(0, 190, 172);
+            #endregion
         }
+
+        #region 防止闪屏
         protected override CreateParams CreateParams
         {
             get
@@ -50,6 +56,8 @@ namespace login_register_Form1
                 return cp;
             }
         }
+        #endregion
+
         #region 登录代码
         //登录
         private void button1_Click(object sender, EventArgs e)
@@ -140,9 +148,11 @@ namespace login_register_Form1
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.uiPanel1 = new Sunny.UI.UIPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.uiPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -233,9 +243,10 @@ namespace login_register_Form1
             this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
             this.uiLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel1.Location = new System.Drawing.Point(108, 160);
+            this.uiLabel1.Location = new System.Drawing.Point(3, 6);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(518, 70);
+            this.uiLabel1.Style = Sunny.UI.UIStyle.Colorful;
             this.uiLabel1.TabIndex = 14;
             this.uiLabel1.Text = "共享单车使用和调度系统";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -300,14 +311,35 @@ namespace login_register_Form1
             this.panel1.Size = new System.Drawing.Size(455, 290);
             this.panel1.TabIndex = 15;
             // 
+            // uiPanel1
+            // 
+            this.uiPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.uiPanel1.Controls.Add(this.uiLabel1);
+            this.uiPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(251)))), ((int)(((byte)(250)))));
+            this.uiPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(251)))), ((int)(((byte)(250)))));
+            this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiPanel1.Location = new System.Drawing.Point(111, 88);
+            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPanel1.Name = "uiPanel1";
+            this.uiPanel1.Radius = 20;
+            this.uiPanel1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(190)))), ((int)(((byte)(172)))));
+            this.uiPanel1.RectSize = 2;
+            this.uiPanel1.Size = new System.Drawing.Size(519, 85);
+            this.uiPanel1.Style = Sunny.UI.UIStyle.Colorful;
+            this.uiPanel1.TabIndex = 16;
+            this.uiPanel1.Text = null;
+            this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiPanel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // loginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::shareBike.Properties.Resources._1_2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(722, 739);
+            this.Controls.Add(this.uiPanel1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -321,6 +353,7 @@ namespace login_register_Form1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.uiPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

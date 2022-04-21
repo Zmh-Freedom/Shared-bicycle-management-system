@@ -19,9 +19,9 @@ namespace shareBike
             father = myfather;
             Date_Warehouse(father.dc.bike);
         }
+        //搜索在仓库中的单车
         private void Date_Warehouse(IQueryable<bike> Bike)
         {
-
             int n = 0;
             IQueryable<bike> bikes = from x in Bike
                                      where x.flag == 5
@@ -30,6 +30,7 @@ namespace shareBike
             uiDataGridView1.DataSource = bikes.ToList();
             uiDataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+        //添加单车
         private void add_bike()
         {
             int n = (int)uiDoubleUpDown1.Value;
@@ -40,13 +41,7 @@ namespace shareBike
                 father.dc.SubmitChanges();
             }
         }
-        private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            e.Equals(e.RowIndex);
-            int a = e.ColumnIndex;
-            int b = (int)uiDataGridView1.Rows[a].Cells[0].Value;
-        }
-
+        //添加序号
         private void uiDataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             var dgv = (DataGridView)sender;
@@ -68,13 +63,21 @@ namespace shareBike
             add_bike();
             Date_Warehouse(father.dc.bike);
         }
-
+        //删除单车
         private void uiButton2_Click(object sender, EventArgs e)
         {
+            List<int> list = new List<int>();
+            for(int i=0;i<uiDataGridView1.RowCount;i++)
+            {
+                if(uiDataGridView1.Rows[i].Selected)
+                {
+                    list.Add((int)uiDataGridView1.Rows[i].Cells[0].Value);
+                }
+            }
             int a = uiDataGridView1.SelectedIndex;
             int b = (int)uiDataGridView1.Rows[a].Cells[0].Value;
             IQueryable<bike> bikes = from x in father.dc.bike
-                                     where x.id == b
+                                     where list.Contains(x.id)
                                      select x;
             father.dc.bike.DeleteAllOnSubmit(bikes);
             father.dc.SubmitChanges();

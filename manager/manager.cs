@@ -16,17 +16,8 @@ namespace shareBike
         public managerForm(string id)
         {
             InitializeComponent();
-
-            #region 控件自适应窗体大小初始化
-            x = this.Width;
-            y = this.Height;
-            setTag(this);
-            #endregion
-
             #region 数据库初始化
             dc = new DBDataContext();
-            order1 = dc.orderform;
-            order2 = dc.orderform;
             #endregion
 
             #region 绘图初始化
@@ -57,7 +48,10 @@ namespace shareBike
             comboBox3.SelectedIndex = 0;
             Sel1(comboBox1.SelectedIndex);
             Sel2(comboBox1.SelectedIndex);
-            //Bike_date();
+            Bike_date();
+            x = this.Width;
+            y = this.Height;
+            setTag(this);
             myid = id;
             #endregion
 
@@ -91,22 +85,22 @@ namespace shareBike
                 {
                     if (q.flag == 0)
                     {
-                        g.FillEllipse(blueBrush, q.current_x.Value - 8, q.current_y.Value - 8, 16, 16);
+                        g.FillEllipse(blueBrush, q.current_x.Value - 6, q.current_y.Value - 6, 12, 12);
                         numAvailable += 1;
                     }
                     else if (q.flag == 1)
                     {
-                        g.FillEllipse(silverBrush, q.current_x.Value - 8, q.current_y.Value - 8, 16, 16);
+                        g.FillEllipse(silverBrush, q.current_x.Value - 6, q.current_y.Value - 6, 12, 12);
                         numOutServiceArea += 1;
                     }
                     else if (q.flag == 2)
                     {
-                        g.FillEllipse(goldBrush, q.current_x.Value - 8, q.current_y.Value - 8, 16, 16);
+                        g.FillEllipse(goldBrush, q.current_x.Value - 6, q.current_y.Value - 6, 12, 12);
                         numToOverhaul += 1;
                     }
                     else if (q.flag == 3)
                     {
-                        g.FillEllipse(greenBrush, q.current_x.Value - 8, q.current_y.Value - 8, 16, 16);
+                        g.FillEllipse(greenBrush, q.current_x.Value - 6, q.current_y.Value - 6, 12, 12);
                         numUsing += 1;
                     }
                 }
@@ -116,7 +110,7 @@ namespace shareBike
                                                select p;
                 foreach (var q in bikesToHere)
                 {
-                    g.FillEllipse(redBrush, q.end_x.Value - 8, q.end_y.Value - 8, 16, 16);
+                    g.FillEllipse(redBrush, q.end_x.Value - 6, q.end_y.Value -6, 12, 12);
                 }
                 //绘制服务区阴影
                 IQueryable<fence> qfences = from p in dc.fence
@@ -167,8 +161,8 @@ namespace shareBike
         //捕捉鼠标移动
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            toolStripStatusLabel2.Text = (e.X - 5).ToString();
-            toolStripStatusLabel4.Text = (e.Y - 4).ToString();
+            toolStripStatusLabel2.Text = e.X.ToString();
+            toolStripStatusLabel4.Text = e.Y.ToString();
         }
 
         //利用定时器更新页面时间
@@ -180,7 +174,7 @@ namespace shareBike
         //响应地图快照页"刷新"按钮
         private void button4_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = shareBike.Properties.Resources.map11;
+            pictureBox1.Image = shareBike.Properties.Resources.map1;
             bikesDisplay(pictureBox1.Image);
             pictureBox1.Refresh();
             UpDateCapturePageLabel();
@@ -199,8 +193,8 @@ namespace shareBike
         {
             isMouseDown = true;
             myRect = new Rectangle(e.X, e.Y, 0, 0);
-            origin_SelectX = e.X - 5;
-            origin_SelectY = e.Y - 4;
+            origin_SelectX = e.X;
+            origin_SelectY = e.Y;
         }
 
         //响应鼠标抬起
@@ -458,7 +452,7 @@ namespace shareBike
         }
         private void repaintHotPageMap()
         {
-            pictureBox6.Image = shareBike.Properties.Resources.map11;
+            pictureBox6.Image = shareBike.Properties.Resources.map1;
             pictureBox6.Refresh();
         }
         #endregion
@@ -548,7 +542,7 @@ namespace shareBike
             {
                 foreach (Point p in PointList)
                 {
-                    e.Graphics.FillEllipse(redBrush, p.X - 8, p.Y - 8, 16, 16);
+                    e.Graphics.FillEllipse(redBrush, p.X - 6, p.Y - 6, 12, 12);
                 }
             }
             else if (comboBox3.SelectedIndex == 1)
@@ -717,7 +711,7 @@ namespace shareBike
         //重绘下达任务页地图
         public void repaintTaskDonwnMap()
         {
-            pictureBox7.Image = shareBike.Properties.Resources.map11;
+            pictureBox7.Image = shareBike.Properties.Resources.map1;
             bikesDisplay(pictureBox7.Image);
             pictureBox7.Refresh();
         }
@@ -740,7 +734,7 @@ namespace shareBike
         //绘制支持智能调度的阴影区域
         private void AIAreaDisplay()
         {
-            pictureBox9.Image = shareBike.Properties.Resources.map11;
+            pictureBox9.Image = shareBike.Properties.Resources.map1;
             g = Graphics.FromImage(pictureBox9.Image);
             try
             {
@@ -1238,7 +1232,6 @@ namespace shareBike
                         var users = (from p in dc.customer
                                      where theID == (p.id.ToString())
                                      select p);
-                        //dc.customer.DeleteAllOnSubmit(users);
                         dc.customer.DeleteOnSubmit(users.First());
                     }
                     else if (user_type == 1)
@@ -1601,7 +1594,7 @@ namespace shareBike
             this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage6.Size = new System.Drawing.Size(1594, 826);
+            this.tabPage6.Size = new System.Drawing.Size(1914, 1006);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "智能调度";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1626,17 +1619,17 @@ namespace shareBike
             this.splitContainer4.Panel2.Controls.Add(this.button2);
             this.splitContainer4.Panel2.Controls.Add(this.button3);
             this.splitContainer4.Panel2.Controls.Add(this.label13);
-            this.splitContainer4.Size = new System.Drawing.Size(1588, 822);
-            this.splitContainer4.SplitterDistance = 1339;
+            this.splitContainer4.Size = new System.Drawing.Size(1908, 1002);
+            this.splitContainer4.SplitterDistance = 1608;
             this.splitContainer4.TabIndex = 0;
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::shareBike.Properties.Resources.map11;
+            this.pictureBox9.Image = global::shareBike.Properties.Resources.map1;
             this.pictureBox9.Location = new System.Drawing.Point(-7, -6);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(8960, 3328);
+            this.pictureBox9.Size = new System.Drawing.Size(2048, 2816);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox9.TabIndex = 0;
             this.pictureBox9.TabStop = false;
@@ -1704,7 +1697,7 @@ namespace shareBike
             this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage5.Size = new System.Drawing.Size(1594, 826);
+            this.tabPage5.Size = new System.Drawing.Size(1914, 1006);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "下达任务";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1732,17 +1725,17 @@ namespace shareBike
             this.splitContainer3.Panel2.Controls.Add(this.button6);
             this.splitContainer3.Panel2.Controls.Add(this.label9);
             this.splitContainer3.Panel2.Controls.Add(this.button5);
-            this.splitContainer3.Size = new System.Drawing.Size(1588, 822);
-            this.splitContainer3.SplitterDistance = 1315;
+            this.splitContainer3.Size = new System.Drawing.Size(1908, 1002);
+            this.splitContainer3.SplitterDistance = 1579;
             this.splitContainer3.TabIndex = 0;
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::shareBike.Properties.Resources.map11;
+            this.pictureBox7.Image = global::shareBike.Properties.Resources.map1;
             this.pictureBox7.Location = new System.Drawing.Point(-7, -6);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(8960, 3328);
+            this.pictureBox7.Size = new System.Drawing.Size(2048, 2816);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox7.TabIndex = 0;
             this.pictureBox7.TabStop = false;
@@ -1767,9 +1760,9 @@ namespace shareBike
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(69, 257);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(136, 24);
+            this.label12.Size = new System.Drawing.Size(154, 24);
             this.label12.TabIndex = 9;
-            this.label12.Text = "创建任务的时间";
+            this.label12.Text = "指定任务执行时间";
             // 
             // dateTimePicker1
             // 
@@ -1842,7 +1835,7 @@ namespace shareBike
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1594, 826);
+            this.tabPage2.Size = new System.Drawing.Size(1914, 1006);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "用车热图";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1873,17 +1866,17 @@ namespace shareBike
             this.splitContainer2.Panel2.Controls.Add(this.comboBox2);
             this.splitContainer2.Panel2.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel2.Controls.Add(this.button1);
-            this.splitContainer2.Size = new System.Drawing.Size(1588, 791);
-            this.splitContainer2.SplitterDistance = 1375;
+            this.splitContainer2.Size = new System.Drawing.Size(1908, 971);
+            this.splitContainer2.SplitterDistance = 1652;
             this.splitContainer2.TabIndex = 1;
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::shareBike.Properties.Resources.map11;
+            this.pictureBox6.Image = global::shareBike.Properties.Resources.map1;
             this.pictureBox6.Location = new System.Drawing.Point(-7, -6);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(8960, 3328);
+            this.pictureBox6.Size = new System.Drawing.Size(2048, 2816);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
@@ -1950,10 +1943,10 @@ namespace shareBike
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(47, 598);
+            this.button13.Location = new System.Drawing.Point(43, 598);
             this.button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(118, 47);
+            this.button13.Size = new System.Drawing.Size(130, 50);
             this.button13.TabIndex = 5;
             this.button13.Text = "周趋势分析";
             this.button13.UseVisualStyleBackColor = true;
@@ -2009,10 +2002,10 @@ namespace shareBike
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(47, 535);
+            this.button1.Location = new System.Drawing.Point(43, 544);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 47);
+            this.button1.Size = new System.Drawing.Size(130, 50);
             this.button1.TabIndex = 0;
             this.button1.Text = "小时趋势分析";
             this.button1.UseVisualStyleBackColor = true;
@@ -2023,9 +2016,9 @@ namespace shareBike
             this.statusStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel5});
-            this.statusStrip2.Location = new System.Drawing.Point(3, 793);
+            this.statusStrip2.Location = new System.Drawing.Point(3, 973);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(1588, 31);
+            this.statusStrip2.Size = new System.Drawing.Size(1908, 31);
             this.statusStrip2.TabIndex = 0;
             // 
             // toolStripStatusLabel5
@@ -2084,11 +2077,11 @@ namespace shareBike
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::shareBike.Properties.Resources.map11;
+            this.pictureBox1.Image = global::shareBike.Properties.Resources.map1;
             this.pictureBox1.Location = new System.Drawing.Point(-7, -6);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(8960, 3328);
+            this.pictureBox1.Size = new System.Drawing.Size(2048, 2816);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -2308,7 +2301,6 @@ namespace shareBike
             this.uiPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.uiPanel1.AutoSize = true;
             this.uiPanel1.BackColor = System.Drawing.Color.Transparent;
             this.uiPanel1.Controls.Add(this.clb_user);
             this.uiPanel1.Controls.Add(this.button9);
@@ -2327,11 +2319,11 @@ namespace shareBike
             this.uiPanel1.Controls.Add(this.label14);
             this.uiPanel1.Controls.Add(this.label15);
             this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiPanel1.Location = new System.Drawing.Point(252, 0);
+            this.uiPanel1.Location = new System.Drawing.Point(263, 0);
             this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(1400, 1010);
+            this.uiPanel1.Size = new System.Drawing.Size(1389, 1010);
             this.uiPanel1.TabIndex = 24;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2340,23 +2332,19 @@ namespace shareBike
             // 
             // clb_user
             // 
-            this.clb_user.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.clb_user.CausesValidation = false;
             this.clb_user.FormattingEnabled = true;
-            this.clb_user.Location = new System.Drawing.Point(288, 240);
+            this.clb_user.Location = new System.Drawing.Point(149, 218);
             this.clb_user.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.clb_user.Name = "clb_user";
-            this.clb_user.Size = new System.Drawing.Size(861, 364);
+            this.clb_user.Size = new System.Drawing.Size(1130, 472);
             this.clb_user.TabIndex = 10;
             // 
             // button9
             // 
-            this.button9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button9.CausesValidation = false;
-            this.button9.Location = new System.Drawing.Point(998, 683);
+            this.button9.Location = new System.Drawing.Point(968, 775);
             this.button9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(108, 47);
+            this.button9.Size = new System.Drawing.Size(151, 47);
             this.button9.TabIndex = 20;
             this.button9.Text = "查询数据";
             this.button9.UseVisualStyleBackColor = true;
@@ -2364,14 +2352,12 @@ namespace shareBike
             // 
             // cb_user_type
             // 
-            this.cb_user_type.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cb_user_type.CausesValidation = false;
             this.cb_user_type.FormattingEnabled = true;
             this.cb_user_type.Items.AddRange(new object[] {
             "顾客",
             "管理员",
             "调度员"});
-            this.cb_user_type.Location = new System.Drawing.Point(426, 169);
+            this.cb_user_type.Location = new System.Drawing.Point(299, 140);
             this.cb_user_type.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cb_user_type.Name = "cb_user_type";
             this.cb_user_type.Size = new System.Drawing.Size(136, 39);
@@ -2380,12 +2366,10 @@ namespace shareBike
             // 
             // button10
             // 
-            this.button10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button10.CausesValidation = false;
-            this.button10.Location = new System.Drawing.Point(777, 683);
+            this.button10.Location = new System.Drawing.Point(747, 775);
             this.button10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(108, 47);
+            this.button10.Size = new System.Drawing.Size(142, 47);
             this.button10.TabIndex = 21;
             this.button10.Text = "删除数据";
             this.button10.UseVisualStyleBackColor = true;
@@ -2393,11 +2377,9 @@ namespace shareBike
             // 
             // label20
             // 
-            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.CausesValidation = false;
-            this.label20.Location = new System.Drawing.Point(286, 177);
+            this.label20.Location = new System.Drawing.Point(159, 148);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(134, 31);
             this.label20.TabIndex = 9;
@@ -2405,12 +2387,10 @@ namespace shareBike
             // 
             // button11
             // 
-            this.button11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button11.CausesValidation = false;
-            this.button11.Location = new System.Drawing.Point(545, 683);
+            this.button11.Location = new System.Drawing.Point(515, 775);
             this.button11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(108, 47);
+            this.button11.Size = new System.Drawing.Size(149, 47);
             this.button11.TabIndex = 22;
             this.button11.Text = "修改数据";
             this.button11.UseVisualStyleBackColor = true;
@@ -2418,11 +2398,9 @@ namespace shareBike
             // 
             // label19
             // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.CausesValidation = false;
-            this.label19.Location = new System.Drawing.Point(355, 205);
+            this.label19.Location = new System.Drawing.Point(228, 176);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(35, 31);
             this.label19.TabIndex = 12;
@@ -2430,12 +2408,10 @@ namespace shareBike
             // 
             // button12
             // 
-            this.button12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button12.CausesValidation = false;
-            this.button12.Location = new System.Drawing.Point(309, 683);
+            this.button12.Location = new System.Drawing.Point(279, 775);
             this.button12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(108, 47);
+            this.button12.Size = new System.Drawing.Size(158, 47);
             this.button12.TabIndex = 23;
             this.button12.Text = "插入数据";
             this.button12.UseVisualStyleBackColor = true;
@@ -2443,11 +2419,9 @@ namespace shareBike
             // 
             // label18
             // 
-            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.CausesValidation = false;
-            this.label18.Location = new System.Drawing.Point(318, 769);
+            this.label18.Location = new System.Drawing.Point(278, 931);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(35, 31);
             this.label18.TabIndex = 11;
@@ -2455,9 +2429,7 @@ namespace shareBike
             // 
             // tb_name
             // 
-            this.tb_name.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tb_name.CausesValidation = false;
-            this.tb_name.Location = new System.Drawing.Point(952, 761);
+            this.tb_name.Location = new System.Drawing.Point(912, 923);
             this.tb_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(178, 39);
@@ -2465,11 +2437,9 @@ namespace shareBike
             // 
             // label17
             // 
-            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.CausesValidation = false;
-            this.label17.Location = new System.Drawing.Point(566, 205);
+            this.label17.Location = new System.Drawing.Point(638, 176);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(62, 31);
             this.label17.TabIndex = 14;
@@ -2477,9 +2447,7 @@ namespace shareBike
             // 
             // tb_password
             // 
-            this.tb_password.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tb_password.CausesValidation = false;
-            this.tb_password.Location = new System.Drawing.Point(654, 761);
+            this.tb_password.Location = new System.Drawing.Point(614, 923);
             this.tb_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_password.Name = "tb_password";
             this.tb_password.Size = new System.Drawing.Size(178, 39);
@@ -2487,11 +2455,9 @@ namespace shareBike
             // 
             // label16
             // 
-            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.CausesValidation = false;
-            this.label16.Location = new System.Drawing.Point(591, 769);
+            this.label16.Location = new System.Drawing.Point(551, 931);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(62, 31);
             this.label16.TabIndex = 13;
@@ -2499,9 +2465,7 @@ namespace shareBike
             // 
             // tb_id
             // 
-            this.tb_id.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tb_id.CausesValidation = false;
-            this.tb_id.Location = new System.Drawing.Point(363, 761);
+            this.tb_id.Location = new System.Drawing.Point(323, 923);
             this.tb_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_id.Name = "tb_id";
             this.tb_id.Size = new System.Drawing.Size(178, 39);
@@ -2509,11 +2473,9 @@ namespace shareBike
             // 
             // label14
             // 
-            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.CausesValidation = false;
-            this.label14.Location = new System.Drawing.Point(788, 205);
+            this.label14.Location = new System.Drawing.Point(1159, 176);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(62, 31);
             this.label14.TabIndex = 16;
@@ -2521,11 +2483,9 @@ namespace shareBike
             // 
             // label15
             // 
-            this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.CausesValidation = false;
-            this.label15.Location = new System.Drawing.Point(884, 767);
+            this.label15.Location = new System.Drawing.Point(844, 929);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 31);
             this.label15.TabIndex = 15;
@@ -2552,7 +2512,6 @@ namespace shareBike
             this.Name = "managerForm";
             this.Text = "管理员";
             this.ZoomScaleRect = new System.Drawing.Rectangle(22, 22, 1600, 900);
-            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.tabPage6.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel1.PerformLayout();
@@ -2600,7 +2559,6 @@ namespace shareBike
             this.statusStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.uiPanel1.ResumeLayout(false);
             this.uiPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -2712,5 +2670,6 @@ namespace shareBike
         }
 
         #endregion
+
     }
 }

@@ -2,7 +2,7 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-
+using shareBike;
 namespace shareBike
 {
     public partial class taskManage : Form
