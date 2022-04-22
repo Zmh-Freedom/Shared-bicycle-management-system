@@ -97,7 +97,7 @@ namespace shareBike
             // ColumnTIME
             // 
             this.ColumnTIME.DataPropertyName = "start_time";
-            this.ColumnTIME.HeaderText = "创建时间";
+            this.ColumnTIME.HeaderText = "理论执行时间";
             this.ColumnTIME.MinimumWidth = 8;
             this.ColumnTIME.Name = "ColumnTIME";
             this.ColumnTIME.Width = 116;
@@ -109,7 +109,7 @@ namespace shareBike
             this.ColumnSrc.HeaderText = "来源";
             this.ColumnSrc.MinimumWidth = 8;
             this.ColumnSrc.Name = "ColumnSrc";
-            this.ColumnSrc.Width = 80;
+            this.ColumnSrc.Width = 75;
             // 
             // ColumnEX
             // 
@@ -118,7 +118,7 @@ namespace shareBike
             this.ColumnEX.HeaderText = "终点X";
             this.ColumnEX.MinimumWidth = 8;
             this.ColumnEX.Name = "ColumnEX";
-            this.ColumnEX.Width = 89;
+            this.ColumnEX.Width = 75;
             // 
             // ColumnEY
             // 
@@ -127,7 +127,7 @@ namespace shareBike
             this.ColumnEY.HeaderText = "终点Y";
             this.ColumnEY.MinimumWidth = 8;
             this.ColumnEY.Name = "ColumnEY";
-            this.ColumnEY.Width = 89;
+            this.ColumnEY.Width = 75;
             // 
             // ColumnBid
             // 
@@ -136,7 +136,7 @@ namespace shareBike
             this.ColumnBid.HeaderText = "单车id";
             this.ColumnBid.MinimumWidth = 8;
             this.ColumnBid.Name = "ColumnBid";
-            this.ColumnBid.Width = 98;
+            this.ColumnBid.Width = 91;
             // 
             // taskManage
             // 

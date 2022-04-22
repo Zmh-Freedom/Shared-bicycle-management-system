@@ -1093,7 +1093,7 @@ namespace shareBike
                 string item = "";
                 for (int i = 0; i < 3; i++)
                 {
-                    item += t_user[3 * j + i].ToString() + "                                 ";
+                    item += t_user[3 * j + i].ToString() + "                                              ";
                 }
                 clb_user.Items.Add(item);
             }
@@ -1620,7 +1620,7 @@ namespace shareBike
             this.splitContainer4.Panel2.Controls.Add(this.button3);
             this.splitContainer4.Panel2.Controls.Add(this.label13);
             this.splitContainer4.Size = new System.Drawing.Size(1908, 1002);
-            this.splitContainer4.SplitterDistance = 1608;
+            this.splitContainer4.SplitterDistance = 1620;
             this.splitContainer4.TabIndex = 0;
             // 
             // pictureBox9
@@ -1650,7 +1650,7 @@ namespace shareBike
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(19, 280);
+            this.button8.Location = new System.Drawing.Point(75, 290);
             this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(119, 56);
@@ -1661,7 +1661,7 @@ namespace shareBike
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(19, 216);
+            this.button2.Location = new System.Drawing.Point(75, 226);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 56);
@@ -1672,7 +1672,7 @@ namespace shareBike
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(19, 342);
+            this.button3.Location = new System.Drawing.Point(75, 352);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(119, 59);
@@ -1726,7 +1726,7 @@ namespace shareBike
             this.splitContainer3.Panel2.Controls.Add(this.label9);
             this.splitContainer3.Panel2.Controls.Add(this.button5);
             this.splitContainer3.Size = new System.Drawing.Size(1908, 1002);
-            this.splitContainer3.SplitterDistance = 1579;
+            this.splitContainer3.SplitterDistance = 1620;
             this.splitContainer3.TabIndex = 0;
             // 
             // pictureBox7
@@ -1867,7 +1867,7 @@ namespace shareBike
             this.splitContainer2.Panel2.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel2.Controls.Add(this.button1);
             this.splitContainer2.Size = new System.Drawing.Size(1908, 971);
-            this.splitContainer2.SplitterDistance = 1652;
+            this.splitContainer2.SplitterDistance = 1620;
             this.splitContainer2.TabIndex = 1;
             // 
             // pictureBox6
@@ -2475,7 +2475,7 @@ namespace shareBike
             // 
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Location = new System.Drawing.Point(1159, 176);
+            this.label14.Location = new System.Drawing.Point(1007, 176);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(62, 31);
             this.label14.TabIndex = 16;
@@ -2511,6 +2511,7 @@ namespace shareBike
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "managerForm";
             this.Text = "管理员";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ZoomScaleRect = new System.Drawing.Rectangle(22, 22, 1600, 900);
             this.tabPage6.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
