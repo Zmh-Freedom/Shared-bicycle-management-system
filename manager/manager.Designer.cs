@@ -42,8 +42,6 @@ namespace shareBike
         int numOutServiceArea = 0;
 
         //用车热图页
-        IQueryable<orderform> order1 = null;
-        IQueryable<orderform> order2 = null;
         //框选区域的参数
         int origin_SelectX = 0;
         int origin_SelectY = 0;
