@@ -22,7 +22,6 @@ namespace shareBike
         //搜索在仓库中的单车
         private void Date_Warehouse(IQueryable<bike> Bike)
         {
-            int n = 0;
             IQueryable<bike> bikes = from x in Bike
                                      where x.flag == 5
                                      select x;
@@ -74,8 +73,11 @@ namespace shareBike
                     list.Add((int)uiDataGridView1.Rows[i].Cells[0].Value);
                 }
             }
-            int a = uiDataGridView1.SelectedIndex;
-            int b = (int)uiDataGridView1.Rows[a].Cells[0].Value;
+            if(list.Count == 0)
+            {
+                MessageBox.Show("删除失败，没有选中单车");
+                return;
+            }
             IQueryable<bike> bikes = from x in father.dc.bike
                                      where list.Contains(x.id)
                                      select x;
