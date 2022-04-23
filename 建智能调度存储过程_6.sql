@@ -2,6 +2,7 @@
 -- 改为每小时检查一次，防止提前找车
 -- 增加图上不够从库中调车
 -- 修改了单车游标
+-- 分散了任务位置
 -- ================================================
 SET ANSI_NULLS ON
 GO
@@ -34,8 +35,10 @@ BEGIN
 	@fence_width int,
 	@fence_height int,
 	@delta int	,	--变化量
-	@bike_id int--查询到的单车
-
+	@bike_id int,--查询到的单车
+	@task_x int,
+	@task_y int,
+	@space int
 
 
 	-- 检索所有的智能区获得位置
@@ -55,10 +58,9 @@ BEGIN
 						end_x>@fence_x and end_x<@fence_x+@fence_width 
 						and end_y>@fence_y and end_y<@fence_y+@fence_height)
 
-						
+			
 		
-		
-		if datepart(weekday,getdate())=6 --每执行周高峰策略
+		if datepart(weekday,getdate())=7 --每执行周高峰策略，在此确定周几执行
 		begin
 			--查询周视图
 			declare @view_name nvarchar(20) = 'view_'+ cast(@fence_id as varchar)+'_weekday_1'
@@ -71,9 +73,9 @@ BEGIN
 			EXEC sp_executeSql @s1, N'@need int OUTPUT',@need=@need OUTPUT	--sum(need)
 
 			--分析
-			if @need_max > @need/3 --如果高峰用量 > 总用量*1/3，执行周高峰策略
+			if @need_max > @need/4 --如果高峰用量 > 总用量*1/4，执行周高峰策略
 			begin
-				set @delta = @need_max/(12) - @total--视图共有3*7天数据，每天24小时
+				set @delta = @need_max/2 - @total--视图共有3*7天数据，每天24小时
 				--确定时间（偏移量）
 				set @s1 = 'select @need = period from '+@view_name+' where need='+cast(@need_max as varchar)
 				EXEC sp_executeSql @s1, N'@need int OUTPUT',@need=@need OUTPUT	--这里@need是高峰日期的偏移量
@@ -82,19 +84,41 @@ BEGIN
 				begin
 					-- 声明图上单车游标（生成任务的准备）
 					declare bike_cur1 cursor for 
-						select id from bike --找围栏附近200m车的id
-						where current_x>@fence_x-200 and current_x<@fence_x+@fence_width+200 
-							and current_y>@fence_y-200 and current_y<@fence_y+@fence_height+200
-							and (current_x<@fence_x or current_x>@fence_x+@fence_width)
-							and (current_y<@fence_y or current_y>@fence_y+@fence_height)
+						select id from bike --找围栏附近300m车的id
+						where current_x>@fence_x-300 and current_x<@fence_x+@fence_width+300 
+							and current_y>@fence_y-300 and current_y<@fence_y+@fence_height+300
+							and not(current_x>@fence_x and current_x<@fence_x+@fence_width
+								and current_y>@fence_y and current_y<@fence_y+@fence_height)
 							and flag = 0;
 					open bike_cur1;--打开游标
 					fetch next from bike_cur1 into @bike_id;--移动游标取值
+
+					--安排任务终点位置（生成任务的准备）
+					set @space=1;
+					while (@fence_width/@space)*(@fence_height/@space)>@delta
+					begin
+						set @space+=3
+					end
+					if @space>16
+						set @space-=16
+					set @task_x = @fence_x-@space
+					set @task_y = @fence_y
+
 					while @@FETCH_STATUS = 0 and @delta>0
 					begin
+						--任务终点位置
+						if @task_x<@fence_width+@fence_x
+						begin
+							set @task_x+=@space
+						end
+						else
+						begin
+							set @task_x=@fence_x
+							set @task_y+=@space
+						end
 						--生成任务
 						insert into task(tag,source , flag,end_x,end_y,start_time ,bid)
-							values(3,3,0,(@fence_x+@fence_x+@fence_width)/2, (@fence_y+@fence_y+@fence_height)/2, dateadd(day,(@need+6)%7,GETDATE()),@bike_id)--下周这天前
+							values(3,3,0,@task_x, @task_y, dateadd(day,(@need+6)%7,GETDATE()),@bike_id)--下周这天前
 						--单车待调度
 						update  bike set flag=1 where id=@bike_id
 						set @delta -= 1;
@@ -113,9 +137,19 @@ BEGIN
 						-- 开始找车
 						while @@FETCH_STATUS = 0 and @delta>0
 						begin
+							--任务终点位置
+							if @task_x<@fence_width+@fence_x
+							begin
+								set @task_x+=@space
+							end
+							else
+							begin
+								set @task_x=@fence_x
+								set @task_y+=@space
+							end
 							--生成任务
 							insert into task(tag,source , flag,end_x,end_y,start_time ,bid)
-								values(3,3,0,(@fence_x+@fence_width)/2, (@fence_y+@fence_height)/2, dateadd(day,(@need+6)%7,GETDATE()),@bike_id)--下周这天前
+								values(3,3,0,@task_x,@task_y, dateadd(day,(@need+6)%7,GETDATE()),@bike_id)--下周这天前
 							--单车调度中
 							update  bike set flag=4 where id=@bike_id
 							set @delta -= 1;
@@ -138,9 +172,9 @@ BEGIN
 			set @s1 = 'select @need = sum(need) from '+@view_name
 			EXEC sp_executeSql @s1, N'@need int OUTPUT',@need=@need OUTPUT	--sum(need)
 
-			if @need_max > @need/3 --如果某时段 > 总*1/3，
+			if @need_max > @need/4 --如果某时段 > 总*1/3，
 			begin
-				set @delta = (@need_max/7-@total)--视图共有7天数据
+				set @delta = (@need_max/1-@total)--视图共有7天数据
 				--确定时间（偏移量）
 				set @s1 = 'select @need = period from '+@view_name+' where need='+cast(@need_max as varchar)
 				EXEC sp_executeSql @s1, N'@need int OUTPUT',@need=@need OUTPUT	
@@ -148,19 +182,41 @@ BEGIN
 				begin
 					-- 声明图上单车游标（生成任务的准备）
 					declare bike_cur1 cursor for 
-						select id from bike --找围栏附近200m车的id
-						where current_x>@fence_x-200 and current_x<@fence_x+@fence_width+200 
-							and current_y>@fence_y-200 and current_y<@fence_y+@fence_height+200
-							and (current_x<@fence_x or current_x>@fence_x+@fence_width)
-							and (current_y<@fence_y or current_y>@fence_y+@fence_height)
+						select id from bike --找围栏附近300m车的id
+						where current_x>@fence_x-300 and current_x<@fence_x+@fence_width+300 
+							and current_y>@fence_y-300 and current_y<@fence_y+@fence_height+300
+							and not(current_x>@fence_x and current_x<@fence_x+@fence_width
+								and current_y>@fence_y and current_y<@fence_y+@fence_height)
 							and flag = 0;
 					open bike_cur1;--打开游标
 					fetch next from bike_cur1 into @bike_id;--移动游标取值
+
+					--安排任务终点位置（生成任务的准备）
+					set @space=1;
+					while (@fence_width/@space)*(@fence_height/@space)>@delta
+					begin
+						set @space+=3
+					end
+					if @space >16
+						set @space-=16
+					set @task_x = @fence_x-@space
+					set @task_y = @fence_y
+
 					while @@FETCH_STATUS = 0 and @delta>0
 					begin
+						--任务终点位置
+						if @task_x<@fence_width+@fence_x
+						begin
+							set @task_x+=@space
+						end
+						else
+						begin
+							set @task_x=@fence_x
+							set @task_y+=@space
+						end
 						--生成任务
 						insert into task(tag,source , flag,end_x,end_y,start_time ,bid)
-							values(3,3,0,(@fence_x+@fence_width)/2, (@fence_y+@fence_height)/2,dateadd(hour,(@need+22)%24,GETDATE()),@bike_id)--第二天前2小 时调车
+							values(3,3,0,@task_x,@task_y,dateadd(hour,(@need+22)%24,GETDATE()),@bike_id)--第二天前2小 时调车
 						--单车待调度
 						update  bike set flag=1 where id=@bike_id
 						set @delta -= 1;
@@ -179,9 +235,19 @@ BEGIN
 						-- 开始找车
 						while @@FETCH_STATUS = 0 and @delta>0
 						begin
+							--任务终点位置
+							if @task_x<@fence_width+@fence_x
+							begin
+								set @task_x+=@space
+							end
+							else
+							begin
+								set @task_x=@fence_x
+								set @task_y+=@space
+							end
 							--生成任务
 							insert into task(tag,source , flag,end_x,end_y,start_time ,bid)
-								values(3,3,0,(@fence_x+@fence_width)/2, (@fence_y+@fence_height)/2,dateadd(hour,(@need+22)%24,GETDATE()),@bike_id)--第二天前2小 时调车
+								values(3,3,0,@task_x,@task_y,dateadd(hour,(@need+22)%24,GETDATE()),@bike_id)--第二天前2小 时调车
 							--单车调度中
 							update  bike set flag=4 where id=@bike_id
 							set @delta -= 1;
