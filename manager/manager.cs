@@ -784,7 +784,7 @@ namespace shareBike
                     dc.SubmitChanges();
                     //新建智能调度区视图
                     createView(ai_SelectX, ai_SelectY, aiWidth, aiHeight, "weekday", 1, 3 * 7);//7天策略
-                    createView(ai_SelectX, ai_SelectY, aiWidth, aiHeight, "hour", 1, 7 * 24);//24小时策略
+                    createView(ai_SelectX, ai_SelectY, aiWidth, aiHeight, "hour", 1, 3*7 * 24);//24小时策略
                 }
                 catch (Exception ex)
                 {
