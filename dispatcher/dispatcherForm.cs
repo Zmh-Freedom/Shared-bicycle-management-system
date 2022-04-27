@@ -971,7 +971,7 @@ namespace dispatcher_Form
                     else
                         t_bike.First().flag = (byte?)bFlagTo;//bike.flag
                     if (bTimeTo >= 0) t_bike.First().total_time = bTimeTo;//bike.total_time
-                    if (bLocTo == 0) t_bike.First().current_x = t_bike.First().current_y = 0;//bike位置
+                    if (bLocTo == 0) t_bike.First().current_x = t_bike.First().current_y = null;//bike位置
                     else if (bLocTo == 1)
                     {
                         t_bike.First().current_x = t_task.First().end_x;
@@ -1025,7 +1025,7 @@ namespace dispatcher_Form
                     {
                         t_bike.First().flag = 5;
                         t_bike.First().total_time = 0;
-                        t_bike.First().current_x = t_bike.First().current_y = 0;
+                        t_bike.First().current_x = t_bike.First().current_y = null;
                     }
                     //公共部分
                     //task
